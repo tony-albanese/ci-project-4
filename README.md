@@ -34,3 +34,12 @@ django-admin startproject bookshelf .
 + update settings.py to connect to new database
 + run migrations again
 + check connection though table query in ElephantSQL dashboard
++ go to heroku dashboard for app
+    + click settings
+    + add three config vars: DATABASE_URL, SECRET_KEY, and PORT
++ setup cloudinary account (just in case)
++ add CLOUDINARY_URL as os.environ to settings.py
++ add CLOUDINARY_URL as config var to heroku
++ add cloudinary apps to settings.py in INSTALLED_APPS
++ set static file storage variables
++ add template variables
