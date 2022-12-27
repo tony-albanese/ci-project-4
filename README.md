@@ -45,3 +45,6 @@ django-admin startproject bookshelf .
 + add template variables
 + create media, static, and templates directories
 + add Procfile
++ connect to github respository
+    + deploy from branch
+    
