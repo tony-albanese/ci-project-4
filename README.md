@@ -43,3 +43,5 @@ django-admin startproject bookshelf .
 + add cloudinary apps to settings.py in INSTALLED_APPS
 + set static file storage variables
 + add template variables
++ create media, static, and templates directories
++ add Procfile
