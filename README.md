@@ -1,5 +1,8 @@
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
+# Introduction
+This web is a a chance for people who love books to share their favorites. The idea is not for people to create an extensive catalog of their library (although they may). Rather, it is for people to share from one to fifteen books from their shelf and have others be able to see and comment on what they read.
+
 ## technology used
 
 gunicorn - server to run django on heroku
@@ -47,4 +50,3 @@ django-admin startproject bookshelf .
 + add Procfile
 + connect to github respository
     + deploy from branch
-    
