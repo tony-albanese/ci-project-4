@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from shelf.views import hello_bookshelf, hello_bookshelf_template
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('hello/', hello_bookshelf, name='hello_bookshelf'),
+    path('hello-template/', hello_bookshelf_template, name='hello_bookshelf_template'),
 ]
