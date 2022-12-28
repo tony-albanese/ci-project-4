@@ -29,8 +29,7 @@ class Book(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     genre = models.CharField(max_length=6, choices=GENRES)
     likes = models.ManyToManyField(User, blank=True)
-
-    # TODO add comments
+    comments = models.ForeignKey(Comment, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
@@ -49,5 +48,5 @@ class Comment(models.Model):
 
 
 class Shelf(models.Model):
-    title = models.CharField(max_length=100)
-    # TODO add books field
+    title = models.CharField(max_length=100, default="My Shelf")
+    books = models.ForeignKey(Book, on_delete=models.CASCADE)
