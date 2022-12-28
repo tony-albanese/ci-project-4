@@ -34,6 +34,10 @@ The testing done here is BDD testing.
 |Heroku admin login|When I navigate to the /admin endpoint in heroku, <br> and login with admin username <br> The admin panel is loaded| PASS|
 |Admin Heroku Deployment|When I navigate to the /admin endpoint in heroku, <br> and login with admin username <br> The admin panel looks identical to the local version |FAIL The site loads but there is no styling|
 
+## Model Creation Tests
+| Test Description              | Test | Result |
+|-------------------------------|------------------------------------------|--------|
+|Model tables in Admin Panel|When I log into the admin panel as a superuser <br> I can see tables for Users, Book|PASS|
 
 # Deployment
 
