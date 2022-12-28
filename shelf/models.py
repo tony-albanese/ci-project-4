@@ -28,11 +28,26 @@ class Book(models.Model):
     description = models.TextField()
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     genre = models.CharField(max_length=6, choices=GENRES)
-    # TODO add likes
+    likes = models.ManyToManyField(User, blank=True)
+
     # TODO add comments
+
+    def __str__(self):
+        return self.title
+    
+    def number_of_like(self):
+        return self.likes.count()
 
 
 class Comment(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     body = models.TextField()
     written_on = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['written_on']
+
+
+class Shelf(models.Model):
+    title = models.CharField(max_length=100)
+    # TODO add books field
