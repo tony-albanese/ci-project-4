@@ -3,6 +3,10 @@ from django.contrib.auth.models import User
 
 
 # Create your models here.
+class Shelf(models.Model):
+    title = models.CharField(max_length=100, default="My Shelf")
+
+
 class Book(models.Model):
     GENRES = [
         ('fan', 'Fantasy'),
@@ -26,7 +30,7 @@ class Book(models.Model):
     slug = models.SlugField(max_length=200, unique=True)
     author = models.CharField(max_length=200)
     description = models.TextField()
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='+')
     genre = models.CharField(max_length=6, choices=GENRES)
     likes = models.ManyToManyField(User, blank=True)
     shelf = models.ForeignKey(Shelf, on_delete=models.CASCADE)
@@ -50,6 +54,3 @@ class Comment(models.Model):
     def __str__(self):
         return f"Comment: {self.body} by {self.author}"
 
-
-class Shelf(models.Model):
-    title = models.CharField(max_length=100, default="My Shelf")
