@@ -47,6 +47,9 @@ class Comment(models.Model):
     class Meta:
         ordering = ['written_on']
 
+    def __str__(self):
+        return f"Comment: {self.body} by {self.author}"
+
 
 class Shelf(models.Model):
     title = models.CharField(max_length=100, default="My Shelf")
