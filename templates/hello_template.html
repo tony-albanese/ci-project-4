@@ -1,2 +1,6 @@
-<h1>Hello Django</h1>
-<p>If you see this, it means the template is working.</p>
+{%extends "sample_base.html"%}
+
+{% block content %}
+<h2>This is injected content.</h2>
+<p>I am the content injected into the template.</p>
+{% endblock %}
