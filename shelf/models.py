@@ -29,4 +29,10 @@ class Book(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     genre = models.CharField(max_length=6, choices=GENRES)
     # TODO add likes
-    # TODO add comments 
+    # TODO add comments
+
+
+class Comment(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    body = models.TextField()
+    date_written = models.DateTimeField(auto_now=True)
