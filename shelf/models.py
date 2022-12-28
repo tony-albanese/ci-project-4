@@ -50,3 +50,5 @@ class Comment(models.Model):
 class Shelf(models.Model):
     title = models.CharField(max_length=100, default="My Shelf")
     books = models.ForeignKey(Book, on_delete=models.CASCADE)
+
+# TODO double check relationships between parents and children
