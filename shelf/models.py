@@ -35,4 +35,4 @@ class Book(models.Model):
 class Comment(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     body = models.TextField()
-    date_written = models.DateTimeField(auto_now=True)
+    written_on = models.DateTimeField(auto_now=True)
