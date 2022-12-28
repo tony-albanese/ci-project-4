@@ -8,7 +8,7 @@ clunky.
 This site will allow people to sign in, share the books that they're interested in (called a shelf), and see what other people are reading. Users can comment
 on books and like them. The whole idea is to get inspiration from other readers as to what books are out there.
 
-# User Stories
+## User Stories
 
 As a adminstrator, I can login with privileges so that moderate all content on the site.
 
@@ -18,12 +18,6 @@ As a adminstrator, I can login with privileges so that moderate all content on t
 ## Admin Panel
 There is an admin panel which users with the correct privilefes (superusers), can see and manipulate all of the data in the site.
 > As a adminstrator, I can login with privileges so that moderate all content on the site.
-
-## technology used
-
-gunicorn - server to run django on heroku
-dj-database-url Use Database URLs in your Django Application.
-dj3-cloudinary-storage - Allows use of cloudinary
 
 
 # Testing
@@ -42,6 +36,13 @@ The testing done here is BDD testing.
 
 
 # Deployment
+
+## technology used
+
+gunicorn - server to run django on heroku
+dj-database-url Use Database URLs in your Django Application.
+dj3-cloudinary-storage - Allows use of cloudinary
+
 
 ## Project Creation
 + Cloned CI Repository
