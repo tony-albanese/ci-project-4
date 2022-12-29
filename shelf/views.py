@@ -55,6 +55,22 @@ def add_book(request):
     return redirect('/')
 
 
+def edit_book(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    
+    if request.method == 'POST':
+        form = BookForm(request.POST, instance=book)
+        form.save()
+        return redirect('/')
+
+    form = BookForm(instance=book)
+    context = {
+        'form': form
+    }
+
+    return render(request, 'edit_book_template.html', context)
+
+
 def delete_book(request, book_id):
     book = get_object_or_404(Book, id=book_id)
     book.delete()
