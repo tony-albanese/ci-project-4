@@ -9,3 +9,5 @@ from django.views import generic
 # This method will simply return some HTML
 
 
+def load_home_page(request):
+    return render(request, 'index.html')
