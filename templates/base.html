@@ -11,9 +11,13 @@
         <h1>BookShelf</h1>
         <nav>
             <ul>
-                <li><a href="{% url 'account_login' %}">Login</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'account_logout' %}">Log Out</a></li>
+                {% else %}
+                <li><a href="{% url 'account_login' %}">Login</a></li>
                 <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
+                {% endif %}
             </ul>
         </nav>
     </header>
