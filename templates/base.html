@@ -4,9 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BookShelf</title>
 </head>
 <body>
-    
+    <header>
+        <h1>BookShelf</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'account_login' %}">Login</a></li>
+                <li><a href="{% url 'account_logout' %}">Log Out</a></li>
+                <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h2>From the base template.</h1>
+    <p>This content is from the base template.</p>
+
+    {% block content %}
+    {% endblock %}
+
+    <footer>
+        Footer material.
+    </footer>
 </body>
 </html>
