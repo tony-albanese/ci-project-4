@@ -44,6 +44,7 @@ def add_book_form(request):
 
 
 def add_book(request):
+    # TODO Add validity check
     if request.method == 'POST':
         title = request.POST.get('title')
         author = request.POST.get('author')
@@ -58,6 +59,7 @@ def add_book(request):
 def edit_book(request, book_id):
     book = get_object_or_404(Book, id=book_id)
     
+    # TODO add validity check
     if request.method == 'POST':
         form = BookForm(request.POST, instance=book)
         form.save()
