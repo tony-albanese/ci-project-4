@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from django.views import generic
 from django.template import loader
 
-from django.template.defaultfilters import slugify 
+from django.template.defaultfilters import slugify
 from .models import Book
 
 from .forms import BookForm
@@ -50,7 +50,8 @@ def add_book(request):
         description = request.POST.get('description')
         genre = request.POST.get('genre')
         slug = slugify(title)
-        Book.objects.create(title=title, author=author, description=description, genre=genre, owner=request.user, slug=slug)
+        Book.objects.create(title=title, author=author, description=description,
+                            genre=genre, owner=request.user, slug=slug)
     return redirect('/')
 
 
