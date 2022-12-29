@@ -14,11 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from shelf.views import hello_bookshelf, hello_bookshelf_template
+from django.urls import path, include
+from shelf.views import load_home_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/', hello_bookshelf, name='hello_bookshelf'),
-    path('hello-template/', hello_bookshelf_template, name='hello_bookshelf_template'),
+    path('accounts/', include('allauth.urls')),
+    path('', load_home_page, name='home')
+
 ]
