@@ -15,11 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from shelf.views import load_home_page
+from shelf.views import load_home_page, get_books
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    path('', load_home_page, name='home')
+    path('', get_books, name='home')
 
 ]
