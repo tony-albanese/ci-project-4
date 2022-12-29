@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from django.views import generic
 
 # Create your views here.
@@ -10,4 +10,7 @@ from django.views import generic
 
 
 def load_home_page(request):
-    return render(request, 'index.html')
+    if request.user.is_authenticated:
+        return render(request, 'index.html')
+    else:
+        return redirect('accounts/login')
