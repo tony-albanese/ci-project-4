@@ -1,7 +1,9 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.views import generic
 from django.template import loader
-from . models import Book
+from .models import Book
+
+from .forms import BookForm
 
 # Create your views here.
 
@@ -30,3 +32,25 @@ def get_books(request):
         return HttpResponse(template.render(context, request))
     else:
         return redirect('accounts/login')
+
+
+def add_book_form(request):
+    if request.user.is_authenticated:
+        book_form = BookForm()
+        context = {
+            'form': book_form
+        }
+        template = loader.get_template('add_book_template.html')
+        return HttpResponse(template.render(context, request))
+    else:
+        return redirect('accounts/login')
+
+
+def add_book(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        author = request.POST.get('author')
+        description = request.POST.get('description')
+        genre = request.POST.get('genre')
+        Book.objects.create(title=title, author=author, description=description, genre=genre, owner=request.user)
+    return redirect('/')
