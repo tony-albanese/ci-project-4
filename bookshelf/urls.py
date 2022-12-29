@@ -15,13 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from shelf.views import load_home_page, get_books, add_book_form, add_book
+from shelf.views import load_home_page, get_books, add_book_form, add_book, delete_book
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('', get_books, name='home'),
     path('add_book_form/', add_book_form, name='add_book_form'),
-    path('add_book/', add_book, name="add_book")
+    path('add_book/', add_book, name="add_book"),
+    path('delete_book/<book_id>', delete_book, name='delete_book')
+
 
 ]

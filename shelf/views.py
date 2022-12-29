@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse, redirect
+from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from django.views import generic
 from django.template import loader
 
@@ -8,11 +8,6 @@ from .models import Book
 from .forms import BookForm
 
 # Create your views here.
-
-# Make a function based view just to make sure the wiring will work
-# Especially with Heroku
-
-# This method will simply return some HTML
 
 
 def load_home_page(request):
@@ -56,4 +51,10 @@ def add_book(request):
         genre = request.POST.get('genre')
         slug = slugify(title)
         Book.objects.create(title=title, author=author, description=description, genre=genre, owner=request.user, slug=slug)
+    return redirect('/')
+
+
+def delete_book(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    book.delete()
     return redirect('/')
