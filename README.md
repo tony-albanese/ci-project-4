@@ -15,7 +15,9 @@ As a new user, I can create an account with a user name and password, so that I 
 As a user, I can login with a user name and password, so that I can access the content of the site.
 
 
-As a user, I can see a list of books so that I can get inspiration as to what I want to read next.
+As a user, I can see a list of books so that I can get inspiration as to what I want to read next. 
+As a user, I can add a book from a form so that I can share my recommendation with other users. 
+As a user, I can delete a book from list so that I can keep my recommendations current and germane. 
 
 # Features
 
@@ -32,6 +34,15 @@ After successful account creation or login attempt, they are taken to the home s
 ## Home Page
 On the home page, a logged in user will see a list of all the books in the database. 
 > As a user, I can see a list of books so that I can get inspiration as to what I want to read next.
+
+## Add a Book
+In the nav bar, the user can see an Add Book link if they are logged in. They are taken to a form where they can enter the details for
+a new book.
+> As a user, I can add a book from a form so that I can share my recommendation with other users. 
+
+## Delete a Book
+Next to each book is a link for the user to delete a book. Upon clicking, the book is deleted and the user is redirected to the home page.
+> As a user, I can delete a book from list so that I can keep my recommendations current and germane. 
 
 # Testing
 The testing done here is BDD testing.
