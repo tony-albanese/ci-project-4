@@ -15,6 +15,8 @@ As a new user, I can create an account with a user name and password, so that I 
 As a user, I can login with a user name and password, so that I can access the content of the site.
 
 
+As a user, I can see a list of books so that I can get inspiration as to what I want to read next.
+
 # Features
 
 ## Admin Panel
@@ -25,7 +27,11 @@ There is an admin panel which users with the correct privilefes (superusers), ca
 When the user navigates to the site, they are given a chance to login if they already have an account and to sign up if they do not.
 After successful account creation or login attempt, they are taken to the home screen. If they log out, they are taken back to the login screen.
 > As a new user, I can create an account with a user name and password, so that I can log in to access content.  
-> As a user, I can login with a user name and password, so that I can access the content of the site.   
+> As a user, I can login with a user name and password, so that I can access the content of the site.
+
+## Home Page
+On the home page, a logged in user will see a list of all the books in the database. 
+> As a user, I can see a list of books so that I can get inspiration as to what I want to read next.
 
 # Testing
 The testing done here is BDD testing.
@@ -57,6 +63,10 @@ The testing done here is BDD testing.
 |redirect after sign up|When I successfully create an account <br> The site content is displayed| PASS|
 |redirect after logout|Wheb I successfully logout <br> I am taken to the login screen|PASS|
 
+## CRUD for Book Objects Tests
+| Test Description              | Test | Result |
+|-------------------------------|------------------------------------------|--------|
+|list of books displayed on homepage|As a logged in user <br> when I am on the home screen <br> all of the books in the database are displayed|PASS|
 
 # Deployment
 
