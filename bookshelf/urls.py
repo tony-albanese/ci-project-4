@@ -20,6 +20,6 @@ from shelf.views import load_home_page
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    path('', load_home_page, name='load_home_page')
+    path('', load_home_page, name='home')
 
 ]
