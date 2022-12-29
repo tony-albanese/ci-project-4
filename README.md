@@ -11,6 +11,7 @@ on books and like them. The whole idea is to get inspiration from other readers 
 ## User Stories
 
 As a adminstrator, I can login with privileges so that moderate all content on the site.
+As a user, I can login with a user name and password, so that I can access the content of the site.
 
 
 # Features
@@ -38,6 +39,13 @@ The testing done here is BDD testing.
 | Test Description              | Test | Result |
 |-------------------------------|------------------------------------------|--------|
 |Model tables in Admin Panel|When I log into the admin panel as a superuser <br> I can see tables for Users, Book|PASS|
+
+## User Login Tests
+| Test Description              | Test | Result |
+|-------------------------------|------------------------------------------|--------|
+|allauth installation|When I enter accounts/signup as the url in the site <br> I am taken to the allauth signup screen|PASS|
+|allauth user  creation|When I go the signup screen, and enter a user name and password, and press signup , my account is created and I am redirected to home screen| PASS|
+|user creation verification|When I login to the admin panel, the new user is visible in the user table.| PASS|
 
 # Deployment
 
