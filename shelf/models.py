@@ -33,7 +33,7 @@ class Book(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='+')
     genre = models.CharField(max_length=6, choices=GENRES)
     likes = models.ManyToManyField(User, blank=True)
-    shelf = models.ForeignKey(Shelf, on_delete=models.CASCADE)
+    #shelf = models.ForeignKey(Shelf, on_delete=models.CASCADE, default="My Shelf")
 
     def __str__(self):
         return self.title
