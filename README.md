@@ -78,6 +78,8 @@ The testing done here is BDD testing.
 | Test Description              | Test | Result |
 |-------------------------------|------------------------------------------|--------|
 |list of books displayed on homepage|As a logged in user <br> when I am on the home screen <br> all of the books in the database are displayed|PASS|
+|add book form|As a logged in user <br> when i click on Add Book link <br> and fill in fields and submit forms <br> The added book shows up in the list on the home page. |PASS|
+|delete book link |As a logged in user <br> when I click on the delete book link <br> the book is removed from the list| PASS |
 
 # Deployment
 
