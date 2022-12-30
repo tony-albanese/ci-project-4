@@ -5,7 +5,7 @@ from django.template import loader
 from django.template.defaultfilters import slugify
 from .models import Book
 
-from .forms import BookForm
+from .forms import BookForm, CommentForm
 
 # Create your views here.
 
@@ -80,3 +80,22 @@ def delete_book(request, book_id):
     book = get_object_or_404(Book, id=book_id)
     book.delete()
     return redirect('/')
+
+
+def add_comment(request):
+    # TODO Add body
+    pass
+
+
+def view_book_detail(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    comments = book.comments.order_by("-written_on")
+    template = loader.get_template('book_detail_template.html')
+    form = CommentForm()
+    context = {
+        'comment_form': form,
+        'book': book,
+        'comments': comments
+    }
+
+    return HttpResponse(template.render(context, request))
