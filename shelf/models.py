@@ -32,7 +32,7 @@ class Book(models.Model):
     description = models.TextField()
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='+')
     genre = models.CharField(max_length=6, choices=GENRES)
-    likes = models.ManyToManyField(User, blank=True)
+    likes = models.ManyToManyField(User, blank=True, related_name="book_likes")
     #shelf = models.ForeignKey(Shelf, on_delete=models.CASCADE, default="My Shelf")
 
     def __str__(self):
@@ -47,7 +47,7 @@ class Book(models.Model):
 
 class Comment(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name="comments")
     body = models.TextField()
     written_on = models.DateTimeField(auto_now=True)
 
