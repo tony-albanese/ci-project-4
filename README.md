@@ -19,6 +19,9 @@ As a user, I can see a list of books so that I can get inspiration as to what I 
 As a user, I can add a book from a form so that I can share my recommendation with other users. 
 As a user, I can delete a book from list so that I can keep my recommendations current and germane. 
 
+As a user, I can modify a book so that I can correct mistakes or improve content.
+As a user, I can comment on a book so that I can share my opinion about the book with the community.
+
 # Features
 
 ## Admin Panel
@@ -43,6 +46,15 @@ a new book.
 ## Delete a Book
 Next to each book is a link for the user to delete a book. Upon clicking, the book is deleted and the user is redirected to the home page.
 > As a user, I can delete a book from list so that I can keep my recommendations current and germane. 
+## Modify a Book Entry
+With each book is a link to edit the book. Here, the user is taken to a form field pre-populated with the book's details. They can change the fields
+as they like. When they press update, the new details are updated in the database and the user is taken back to the home page.
+> As a user, I can modify a book so that I can correct mistakes or improve content.
+
+## Leaving a Comment
+When the user clicks on the View Comments link, they are taken to a page where all of the books comments are displayed. And a form is given
+for the user to enter their own comment.
+> As a user, I can comment on a book so that I can share my opinion about the book with the community.
 
 # Testing
 The testing done here is BDD testing.
@@ -80,6 +92,9 @@ The testing done here is BDD testing.
 |list of books displayed on homepage|As a logged in user <br> when I am on the home screen <br> all of the books in the database are displayed|PASS|
 |add book form|As a logged in user <br> when i click on Add Book link <br> and fill in fields and submit forms <br> The added book shows up in the list on the home page. |PASS|
 |delete book link |As a logged in user <br> when I click on the delete book link <br> the book is removed from the list| PASS |
+|list of comments is displayed| As a logged in user <br> when I click on View Comments <br> I am taken to the details page where book details and comments displayed.| PASS|
+|update book link navigation|As a logged in user <br> when I click on the edit book link <br> A page with a form pre-populated with the book's details is displayed|PASS|
+|updated data submission|As a logged in user <br> When I press the "Update Book" button on the edit page <br> I am taken to the home page and the updated fields are reflected in the list.|PASS|
 
 # Deployment
 
