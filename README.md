@@ -22,6 +22,8 @@ As a user, I can delete a book from list so that I can keep my recommendations c
 As a user, I can modify a book so that I can correct mistakes or improve content.
 As a user, I can comment on a book so that I can share my opinion about the book with the community.
 
+As a user, I can only modify or delete my own entries so that others may not tamper with my recommendations.
+
 # Features
 
 ## Admin Panel
@@ -44,12 +46,16 @@ a new book.
 > As a user, I can add a book from a form so that I can share my recommendation with other users. 
 
 ## Delete a Book
-Next to each book is a link for the user to delete a book. Upon clicking, the book is deleted and the user is redirected to the home page.
+Next to each book is a link for the user to delete a book. Upon clicking, the book is deleted and the user is redirected to the home page. The user will only see link to delete a book if they are the owner of the book - they are the one that submitted it.
 > As a user, I can delete a book from list so that I can keep my recommendations current and germane. 
+> As a user, I can only modify or delete my own entries so that others may not tamper with my recommendations.
+
 ## Modify a Book Entry
 With each book is a link to edit the book. Here, the user is taken to a form field pre-populated with the book's details. They can change the fields
-as they like. When they press update, the new details are updated in the database and the user is taken back to the home page.
+as they like. When they press update, the new details are updated in the database and the user is taken back to the home page. The user will only see a link
+to edit a book if they are the owner of that book - they are the one that submitted it.
 > As a user, I can modify a book so that I can correct mistakes or improve content.
+> As a user, I can only modify or delete my own entries so that others may not tamper with my recommendations.
 
 ## Leaving a Comment
 When the user clicks on the View Comments link, they are taken to a page where all of the books comments are displayed. And a form is given
@@ -97,7 +103,7 @@ The testing done here is BDD testing.
 |update book link navigation|As a logged in user <br> when I click on the edit book link <br> A page with a form pre-populated with the book's details is displayed|PASS|
 |updated data submission|As a logged in user <br> When I press the "Update Book" button on the edit page <br> I am taken to the home page and the updated fields are reflected in the list.|PASS|
 |Add a comment|As a logged in user <br> when I have entered a comment <br> and press submit <br> my comment is saved and is displayed in the list comments|PASS|
-
+|Delete/modify own content|As a logged in user <br> when I am on the home page <br> I see links to edit / delete books only for entries I have submitted| PASS|
 # Deployment
 
 ## technology used
