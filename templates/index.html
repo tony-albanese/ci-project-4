@@ -1,10 +1,7 @@
 {%extends "base.html"%}
 
 {% block content %}
-<h2>Book List Template</h2>
-
-
-
+<h2>Books</h2>
 
 {% for book in books %}
 <div class="card" style="width: 18rem;">
@@ -14,51 +11,25 @@
         <h6 class="card-subtitle mb-2 text-muted">{{book.genre}}</h6>
         <p class="card-text">{{book.description}}</p>
 
-        {% if book.owner == user %}
-        <a href="edit_book/{{book.id}}" class="card-link"><i class="fa-regular fa-pen-to-square"></i> Edit Book</a>
-        <a href="delete_book/{{book.id}}" class="card-link"><i class="fa-regular fa-trash-can"></i> Delete Book</a>
-        {% endif %}
-        <a href="book_detail/{{book.id}}" class="card-link">
-            <i class="fa-regular fa-comment"></i> Comments
-        </a>
-        {% if book.id in liked_books %}
-        <a href="/unlike/{{book.id}}"><i class="fa-solid fa-heart" class="card-link"></i>
-            {{ book.number_of_like }}</a>
-        {% else %}
-        <a href="/like/{{book.id}}"><i class="fa-regular fa-heart" class="card-link"></i>
-            {{ book.number_of_like }}</a>
-        {% endif %}
+        <div class="card-footer">
+
+            {% if book.owner == user %}
+            <a href="edit_book/{{book.id}}" class="card-link"><i class="fa-regular fa-pen-to-square"></i></a>
+            <a href="delete_book/{{book.id}}" class="card-link"><i class="fa-regular fa-trash-can"></i></a>
+            {% endif %}
+            <a href="book_detail/{{book.id}}" class="card-link">
+                <i class="fa-regular fa-comment"></i> 
+            </a>
+            {% if book.id in liked_books %}
+            <a href="/unlike/{{book.id}}" class="card-link"><i class="fa-solid fa-heart" ></i>
+                {{ book.number_of_like }}</a>
+            {% else %}
+            <a href="/like/{{book.id}}" class="card-link"><i class="fa-regular fa-heart" ></i>
+                {{ book.number_of_like }}</a>
+            {% endif %}
+
+        </div>
     </div>
 </div>
-
-
 {% endfor %}
-<ul>
-    {% for book in books %}
-    <li>
-        <div>
-            <h3>{{book.title}}</h3>
-            <h4>{{book.author}}</h4>
-            <p>Genre: {{book.genre}}</p>
-            <p>Description: {{book.description}}</p>
-            {% if book.owner == user %}
-            <p><a href="edit_book/{{book.id}}"><i class="fa-regular fa-pen-to-square"></i> Edit Book</a></p>
-            <p><a href="delete_book/{{book.id}}"><i class="fa-regular fa-trash-can"></i> Delete Book</a></p>
-            {% endif %}
-            <p><a href="book_detail/{{book.id}}">
-                    <i class="fa-regular fa-comment"></i> Comments
-                </a></p>
-            {% if book.id in liked_books %}
-            <p><a href="/unlike/{{book.id}}"><i class="fa-solid fa-heart"></i> {{ book.number_of_like }}</a> </p>
-            {% else %}
-            <p><a href="/like/{{book.id}}"><i class="fa-regular fa-heart"></i> {{ book.number_of_like }}</a> </p>
-            {% endif %}
-        </div>
-        <hr>
-
-    </li>
-    {% endfor %}
-
-</ul>
-
 {% endblock %}
