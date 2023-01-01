@@ -21,6 +21,7 @@ As a user, I can delete a book from list so that I can keep my recommendations c
 
 As a user, I can modify a book so that I can correct mistakes or improve content.
 As a user, I can comment on a book so that I can share my opinion about the book with the community.
+As a user, I can like or unlike a book so that other users can make a decision to read a book based on popularity.
 
 As a user, I can only modify or delete my own entries so that others may not tamper with my recommendations.
 
@@ -63,6 +64,12 @@ for the user to enter their own comment. Upon clicking on the submit button, the
 reflected in the list.
 > As a user, I can comment on a book so that I can share my opinion about the book with the community.
 
+## Liking a Book
+For each book, there is an icon for the user to like the book. If the user has already liked the book, the icon is filled. Otherwise it
+is empty. The total likes are displayed next to the icon. When the user clicks on the like icon, the status toggles - like goes to unlike
+and vice versa. 
+> As a user, I can like or unlike a book so that other users can make a decision to read a book based on popularity.
+
 # Testing
 The testing done here is BDD testing.
 ## Initial Setup Testing
@@ -104,6 +111,14 @@ The testing done here is BDD testing.
 |updated data submission|As a logged in user <br> When I press the "Update Book" button on the edit page <br> I am taken to the home page and the updated fields are reflected in the list.|PASS|
 |Add a comment|As a logged in user <br> when I have entered a comment <br> and press submit <br> my comment is saved and is displayed in the list comments|PASS|
 |Delete/modify own content|As a logged in user <br> when I am on the home page <br> I see links to edit / delete books only for entries I have submitted| PASS|
+
+## User Likes
+| Test Description              | Test | Result |
+|-------------------------------|------------------------------------------|--------|
+|Total likes displayed|As a logged in user <br> the total likes for each book is displayed| PASS|
+|Link to unlike| As logged in user <br> If I have liked a book, a link to unlike the book is displayed | PASS|
+|Link to like|As logged in user <br> If I have not liked a book, a link to like the book is displayed| PASS|
+
 # Deployment
 
 ## technology used
