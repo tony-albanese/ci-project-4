@@ -32,19 +32,22 @@ class Book(models.Model):
     description = models.TextField()
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='+')
     genre = models.CharField(max_length=6, choices=GENRES)
-    likes = models.ManyToManyField(User, blank=True)
-    shelf = models.ForeignKey(Shelf, on_delete=models.CASCADE)
+    likes = models.ManyToManyField(User, blank=True, related_name="book_likes")
+    #shelf = models.ForeignKey(Shelf, on_delete=models.CASCADE, default="My Shelf")
 
     def __str__(self):
         return self.title
 
     def number_of_like(self):
         return self.likes.count()
+    
+    def get_absolute_url(self):
+        return reverse("book_detail",  kwargs={"slug": self.slug})
 
 
 class Comment(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name="comments")
     body = models.TextField()
     written_on = models.DateTimeField(auto_now=True)
 

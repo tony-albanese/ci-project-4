@@ -20,6 +20,9 @@
                 {% endif %}
             </ul>
         </nav>
+        {% if user.is_authenticated %}
+        <a href="add_book_form/">Add a Book</a>
+        {% endif %}
     </header>
 
     <h2>From the base template.</h1>
@@ -29,7 +32,7 @@
     {% endblock %}
 
     <footer>
-        Footer material.
+        For all those who love the printed word.
     </footer>
 </body>
 </html>
