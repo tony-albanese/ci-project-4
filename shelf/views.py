@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
-from django.views import generic
+from django.views import generic, View
 from django.template import loader
 
 from django.template.defaultfilters import slugify
@@ -19,11 +19,16 @@ def load_home_page(request):
 
 def get_books(request):
     books = Book.objects.all()
+    liked_books = []
     for book in books:
         book.genre = book.get_genre_display()
+        if book.likes.filter(id=request.user.id).exists():
+            liked_books.append(book.id)
+
     template = loader.get_template('index.html')
     context = {
         'books': books,
+        'liked_books': liked_books
     }
     if request.user.is_authenticated:
         return HttpResponse(template.render(context, request))
@@ -114,3 +119,16 @@ def view_book_detail(request, book_id):
     }
 
     return HttpResponse(template.render(context, request))
+
+
+def add_like(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    book.likes.add(request.user)
+    return redirect('/')
+
+
+def remove_like(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    book.likes.remove(request.user)
+    return redirect('/')
+ 

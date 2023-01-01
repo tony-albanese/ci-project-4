@@ -19,6 +19,12 @@
         <p><a href="book_detail/{{book.id}}">
             View Comments.
         </a></p>
+        <p>Likes: {{ book.number_of_like }}</p>
+        {% if book.id in liked_books %}
+        <p><a href="/unlike/{{book.id}}">Unlike</a> </p>
+        {% else %}
+        <p><a href="/like/{{book.id}}">Like</a> </p>
+        {% endif %}
         </div>
         <hr>
 
