@@ -11,7 +11,7 @@
 {% endfor %}
 
 <h3>Leave a Comment</h3>
-<form method="post" >
+<form method="post" action="/add_comment/{{ book.id}}">
     {{ comment_form }}
     {% csrf_token %}
     <button type="submit">Submit</button>

@@ -82,9 +82,24 @@ def delete_book(request, book_id):
     return redirect('/')
 
 
-def add_comment(request):
-    # TODO Add body
-    pass
+def add_comment(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    comment_form = CommentForm(data=request.POST)
+
+    if comment_form.is_valid():
+        comment_form.instance.author = request.user
+        comment_form.instance.book = book
+        comment_form.save()
+    else:
+        comment_form = CommentForm()
+    
+    comments = book.comments.order_by("-written_on")
+    context = {
+        'comment_form': CommentForm(),
+        'book': book,
+        'comments': comments
+    }
+    return render(request, 'book_detail_template.html', context)
 
 
 def view_book_detail(request, book_id):

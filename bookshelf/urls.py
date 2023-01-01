@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from shelf.views import load_home_page, get_books, add_book_form, add_book, delete_book, edit_book, add_comment, view_book_detail
+from shelf.views import load_home_page, get_books, add_book_form, add_book, delete_book, edit_book, add_comment, view_book_detail, add_comment
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,8 +25,8 @@ urlpatterns = [
     path('add_book/', add_book, name="add_book"),
     path('delete_book/<book_id>', delete_book, name='delete_book'),
     path('edit_book/<book_id>', edit_book, name='edit_book'),
-    path('book_detail/<book_id>', view_book_detail, name='book_detail')
-
+    path('book_detail/<book_id>', view_book_detail, name='book_detail'),
+    path('add_comment/<book_id>', add_comment, name='add_comment')
 
 
 ]
