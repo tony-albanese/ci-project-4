@@ -53,7 +53,8 @@ as they like. When they press update, the new details are updated in the databas
 
 ## Leaving a Comment
 When the user clicks on the View Comments link, they are taken to a page where all of the books comments are displayed. And a form is given
-for the user to enter their own comment.
+for the user to enter their own comment. Upon clicking on the submit button, the comment is saved to the database and the new comment is 
+reflected in the list.
 > As a user, I can comment on a book so that I can share my opinion about the book with the community.
 
 # Testing
@@ -61,7 +62,7 @@ The testing done here is BDD testing.
 ## Initial Setup Testing
 | Test Description              | Test | Result |
 |-------------------------------|------------------------------------------|--------|
-| Test djano installation| When I run the danjo server, <br> and open the webrowser with the address, <br> the default django landing page is shown| PASS|
+|Test djano installation| When I run the danjo server, <br> and open the webrowser with the address, <br> the default django landing page is shown| PASS|
 |Test basic routing|When I run the server <br> and enter the hello/ endpoint <br> "Hello world" is displayed| PASS|
 |Test static template| When I run the server <br>  and enter hello-template/ as the endpoint <br> I see the contents of hello_template.html displayed|PASS|
 |Test static css loaded|When I run the server <br>  and enter hello-template/ as the endpoint <br> I see the contents of hello_template.html displayed with blanchedalmond background color and h1 as blue font |PASS|
