@@ -10,19 +10,7 @@
 
     <div class="row">
 
-        <div class="col-md-6">
-
-            <h3 class="display-4">Comments</h3>
-            {% for comment in comments %}
-            <p>{{ comment.body }}</p>
-            <span class="text-muted">{{ comment.author.username}}</span>    
-            <span class="text-muted small">{{ comment.written_on}}</span>
-            <hr>
-            {% endfor %}
-
-        </div>
-
-        <div class="col-md-6">
+        <div class="col-md-6 order-md-2">
 
             <h3 class="display-4">Leave a Comment</h3>
             <form method="post" action="/add_comment/{{ book.id}}">
@@ -33,6 +21,17 @@
 
         </div>
 
+        <div class="col-md-6 order-md-1">
+
+            <h3 class="display-4">Comments</h3>
+            {% for comment in comments %}
+            <p>{{ comment.body }}</p>
+            <span class="text-muted">{{ comment.author.username}}</span>    
+            <span class="text-muted small">{{ comment.written_on}}</span>
+            <hr>
+            {% endfor %}
+
+        </div>
 
     </div>
 
