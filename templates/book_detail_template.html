@@ -1,19 +1,26 @@
 {%extends "base.html"%}
-
+{% load crispy_forms_tags %}
 {% block content %}
+<div class="container">
+
+
 <h2>{{ book.title }}</h2>
 <p>{{ book.author }}</p>
 
 <h3>Comments:</h3>
 {% for comment in comments %}
+<h4>Written by: {{ comment.author.username}}</h4>
+<h4>On: {{ comment.written_on}}</h4>
 <p>{{ comment.body }}</p>
 <hr>
 {% endfor %}
 
 <h3>Leave a Comment</h3>
 <form method="post" action="/add_comment/{{ book.id}}">
-    {{ comment_form }}
+    {{ comment_form | crispy }}
     {% csrf_token %}
-    <button type="submit">Submit</button>
+    <button type="submit" class="btn btn-secondary">Submit</button>
 </form>
+
+</div>
 {% endblock %}
