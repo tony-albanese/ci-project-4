@@ -30,6 +30,33 @@ As a user, I can recieve feedback when I interact with the site so that I know i
 # UX Design
 
 # Database Design
+## Classes
+The **User** class is the default User class from Django.
+
+The **Book** class is the key custom class in this project as the main function of the site is for users to share their book recommendations. The genres are generated from a predefined list of choices. This is for consistency - ie we do not want users to each define their own genre.
+
+|Book ||
+|-----|----|
+|type|field name|
+|CharField|title|
+|SlugField|slug|
+|CharField|author|
+|TextField|description|
+|ForeignKey User|owner|
+|CharField|genre|
+|User|likes|
+
+The **Comment** class is used to represent a block of text that a user creates and is attached to a book. A **Book** can have many **Comment**s but each **Comment** can only belong to one **Book**. Each **Comment** can have only one **User** author, but each **User** author can write many **Comment**s.
+|Comment ||
+|-----|----|
+|type|field name|
+|ForegnKey User|author|
+|ForegnKey Book|book|
+|TextField|body|
+|DateTimeField|written_on|
+
+## Database Relationships
+
 
 # Agile Workflow
 
