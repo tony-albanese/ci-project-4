@@ -25,6 +25,8 @@ As a user, I can like or unlike a book so that other users can make a decision t
 
 As a user, I can only modify or delete my own entries so that others may not tamper with my recommendations.
 
+As a user, I can recieve feedback when I interact with the site so that I know if my actions are successful.
+
 # UX Design
 
 # Database Design
@@ -77,6 +79,12 @@ is empty. The total likes are displayed next to the icon. When the user clicks o
 and vice versa. 
 > As a user, I can like or unlike a book so that other users can make a decision to read a book based on popularity.
 
+## Alerts
+When the user has successfully interacted with the site - signing in or out, creating an account,  adding a book entry, updating a book entry, adding a comment or a like, the user is alerted.
+Upon success, a green alert message undeneath the navbar appears letting the user know they have successfully interacted with the site.
+
+> As a user, I can recieve feedback when I interact with the site so that I know if my actions are successful or not and why.  
+
 # Testing
 The testing done here is BDD testing.
 ## Initial Setup Testing
@@ -126,6 +134,16 @@ The testing done here is BDD testing.
 |Link to unlike| As logged in user <br> If I have liked a book, a link to unlike the book is displayed | PASS|
 |Link to like|As logged in user <br> If I have not liked a book, a link to like the book is displayed| PASS|
 
+## 
+| Test Description              | Test | Result |
+|-------------------------------|------------------------------------------|--------|
+|Successully add book alert| As a logged in user <br> When I successfully add a book <br> An alert is shown under the nav bar telling me. |PASS|
+|Successully edit book alert|As a logged in user <br> When I successfully edit a book <br> An alert is shown under the nav bar telling me.|PASS|
+|Successully add comment alert|As a logged in user <br> When I successfully add a comment <br> An alert is shown under the nav bar telling me.|PASS|
+|Successully sign in alert|As a logged in user <br> When I successfully sign in <br> An alert is shown under the nav bar telling me.|PASS|
+|Successully sign out alert|As a logged in user <br> When I successfully sign out <br> An alert is shown under the nav bar telling me.|PASS|
+|Successully create account alert|As a logged in user <br> When I successfully create an account <br> An alert is shown under the nav bar telling me.|PASS|
+|Alert auto dismiss|After the alert is shown <br> The alert dismisses itslef.|PASS|
 
 # Deployment
 
