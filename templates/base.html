@@ -32,10 +32,10 @@
                         {% if user.is_authenticated %}
                         <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">Home</a></li>
                         <li class="nav-item"><a href="/add_book_form/" class="nav-link">Add a Book</a></li>
-                        <li class="nav-item"><a href="{% url 'account_logout' %}" class="nav-link">Log Out</a></li>
+                        <li class="nav-item"><a href="{% url 'account_logout' %}" class="nav-link">SignOut</a></li>
 
                         {% else %}
-                        <li class="nav-item"><a href="{% url 'account_login' %}" class="nav-link">Login</a></li>
+                        <li class="nav-item"><a href="{% url 'account_login' %}" class="nav-link">SignIn</a></li>
                         <li class="nav-item"><a href="{% url 'account_signup' %}" class="nav-link">Sign Up</a></li>
                         {% endif %}
                     </ul>
