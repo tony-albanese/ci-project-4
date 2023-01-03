@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from django.views import generic, View
 from django.template import loader
-
+from django.contrib import messages
 from django.template.defaultfilters import slugify
 from .models import Book
 
@@ -58,6 +58,7 @@ def add_book(request):
         slug = slugify(title)
         Book.objects.create(title=title, author=author, description=description,
                             genre=genre, owner=request.user, slug=slug)
+        messages.success(request, "Successfully added your book.")
     return redirect('/')
 
 
@@ -71,6 +72,7 @@ def edit_book(request, book_id):
         updated_book = get_object_or_404(Book, id=book_id)
         updated_book.slug = slugify(book.title)
         updated_book.save()
+        messages.success(request, "Successfully updated your book.")
         return redirect('/')
 
     form = BookForm(instance=book)
@@ -95,7 +97,9 @@ def add_comment(request, book_id):
         comment_form.instance.author = request.user
         comment_form.instance.book = book
         comment_form.save()
+        messages.success(request, "Successfully added comment.")
     else:
+        messages.error(request, "Something went wrong.")
         comment_form = CommentForm()
     
     comments = book.comments.order_by("-written_on")
