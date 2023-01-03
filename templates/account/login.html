@@ -33,28 +33,30 @@
 
   <div class="row justify-content-center align-items-center h-100">
 
-    <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-      <h1>{% trans "Sign In" %}</h1>
-    <form class="login" method="POST" action="{% url 'account_login' %}">
-      {% csrf_token %}
-      {{ form.as_p }}
-      {% if redirect_field_value %}
-      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-      {% endif %}
-      <button class="primaryAction btn btn-primary" type="submit">{% trans "Sign In" %}</button>
-    </form>
-
-    </div>
-
-
-    <div class="col">
+    <div class="col-md-9 col-lg-6 col-xl-5">
       <h2> Welcome to BookShelf</h2>
+      <p>A place for readers to share what is on their shelves.</p>
 
       <p>{% blocktrans %}No account? Then please
         <a href="{{ signup_url }}">create an account</a> first.{% endblocktrans %}</p>
       {% endif %}
-  
     </div>
+
+
+    <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+      <h1>{% trans "Sign In" %}</h1>
+      <form class="login" method="POST" action="{% url 'account_login' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% if redirect_field_value %}
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        {% endif %}
+        <button class="primaryAction btn btn-primary" type="submit">{% trans "Sign In" %}</button>
+      </form>
+    </div>
+
+
+
 
  
 
