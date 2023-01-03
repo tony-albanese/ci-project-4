@@ -1,38 +1,62 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    </script>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>BookShelf</title>
 </head>
+
 <body>
     <header>
-        <h1>BookShelf</h1>
-        <nav>
-            <ul>
-                {% if user.is_authenticated %}
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'account_logout' %}">Log Out</a></li>
-                {% else %}
-                <li><a href="{% url 'account_login' %}">Login</a></li>
-                <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
-                {% endif %}
-            </ul>
-        </nav>
-        {% if user.is_authenticated %}
-        <a href="add_book_form/">Add a Book</a>
-        {% endif %}
-    </header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+            <div class="container">
+                <span class="navbar-brand mb-0 h1">BookShelf</span>
 
-    <h2>From the base template.</h1>
-    <p>This content is from the base template.</p>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navmenu">
+                    <ul class="navbar-nav ms-auto">
+                        {% if user.is_authenticated %}
+                        <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="/add_book_form/" class="nav-link">Add a Book</a></li>
+                        <li class="nav-item"><a href="{% url 'account_logout' %}" class="nav-link">SignOut</a></li>
+
+                        {% else %}
+                        <li class="nav-item"><a href="{% url 'account_login' %}" class="nav-link">SignIn</a></li>
+                        <li class="nav-item"><a href="{% url 'account_signup' %}" class="nav-link">Sign Up</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+
+            </div>
+
+        </nav>
+    </header>
 
     {% block content %}
     {% endblock %}
 
-    <footer>
-        For all those who love the printed word.
+    
+        <footer class="fixed-bottom text-center text-lg-start bg-light text-muted">
+            <!-- Section: Social media -->
+            <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+                For everyone who loves the printed word.
+            </section>
     </footer>
+    <script src="https://kit.fontawesome.com/6a251fd2ee.js" crossorigin="anonymous"></script>
 </body>
+
 </html>

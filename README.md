@@ -25,6 +25,13 @@ As a user, I can like or unlike a book so that other users can make a decision t
 
 As a user, I can only modify or delete my own entries so that others may not tamper with my recommendations.
 
+# UX Design
+
+# Database Design
+
+# Agile Workflow
+
+
 # Features
 
 ## Admin Panel
@@ -119,6 +126,7 @@ The testing done here is BDD testing.
 |Link to unlike| As logged in user <br> If I have liked a book, a link to unlike the book is displayed | PASS|
 |Link to like|As logged in user <br> If I have not liked a book, a link to like the book is displayed| PASS|
 
+
 # Deployment
 
 ## technology used
@@ -126,6 +134,8 @@ The testing done here is BDD testing.
 gunicorn - server to run django on heroku
 dj-database-url Use Database URLs in your Django Application.
 dj3-cloudinary-storage - Allows use of cloudinary
+crispy-forms
+bootstrap 5
 
 
 ## Project Creation
