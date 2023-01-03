@@ -9,7 +9,6 @@
 
 <div class="container">
 
-  <h1>{% trans "Sign In" %}</h1>
 
   {% get_providers as socialaccount_providers %}
 
@@ -32,10 +31,10 @@
 
   {% else %}
 
-  <div class="row">
+  <div class="row justify-content-center align-items-center h-100">
 
-    <div class="col">
-
+    <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+      <h1>{% trans "Sign In" %}</h1>
     <form class="login" method="POST" action="{% url 'account_login' %}">
       {% csrf_token %}
       {{ form.as_p }}
@@ -51,8 +50,8 @@
     <div class="col">
       <h2> Welcome to BookShelf</h2>
 
-      <p>{% blocktrans %}If you have not created an account yet, then please
-        <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+      <p>{% blocktrans %}No account? Then please
+        <a href="{{ signup_url }}">create an account</a> first.{% endblocktrans %}</p>
       {% endif %}
   
     </div>
