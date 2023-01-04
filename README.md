@@ -222,3 +222,8 @@ django-admin startproject bookshelf .
 + add Procfile
 + connect to github respository
     + deploy from branch
+
+
+# Credits
+
+The idea and code for using the Bootstrap modals and django messages was from this YouTube video by [DjangoMastery](https://www.youtube.com/watch?v=zbsY-4ZLSkI).
