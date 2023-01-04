@@ -58,7 +58,7 @@ def add_book(request):
         slug = slugify(title)
         Book.objects.create(title=title, author=author, description=description,
                             genre=genre, owner=request.user, slug=slug)
-        messages.success(request, "Successfully added your book.")
+        messages.info(request, "Successfully added your book.")
     return redirect('/')
 
 
@@ -72,7 +72,7 @@ def edit_book(request, book_id):
         updated_book = get_object_or_404(Book, id=book_id)
         updated_book.slug = slugify(book.title)
         updated_book.save()
-        messages.success(request, "Successfully updated your book.")
+        messages.info(request, "Successfully updated your book.")
         return redirect('/')
 
     form = BookForm(instance=book)
@@ -97,7 +97,7 @@ def add_comment(request, book_id):
         comment_form.instance.author = request.user
         comment_form.instance.book = book
         comment_form.save()
-        messages.success(request, "Successfully added comment.")
+        messages.info(request, "You have added a comment.")
     else:
         messages.error(request, "Something went wrong.")
         comment_form = CommentForm()
