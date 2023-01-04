@@ -52,18 +52,32 @@
         <div class="row">
             <div class="col-md-8 offset-md-2">
                 {% for message in messages %}
+                {% if message.tags == 'alert-success' or message.tags == 'alert-danger' %}
                 <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
                     {{ message | safe }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
+                {% endif %}
                 {% endfor %}
             </div>
         </div>
     </div>
 
+    {% for message in messages %}
+    {% if message.tags == 'alert-info' %}
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            $("#alert-modal").modal('show');
+            $("#modal-text").text( "{{ message | safe}}")
+        });
+    </script>
+      {% endif %}
+    {% endfor %}
+
+
     {% block content %}
     {% endblock %}
-
     
         <footer class="fixed-bottom text-center text-lg-start bg-light text-muted">
             <!-- Section: Social media -->
@@ -71,6 +85,30 @@
                 For everyone who loves the printed word.
             </section>
     </footer>
+
+
+  <!-- Modal -->
+  <div id="alert-modal" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="modal-label" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal-label">Excellent!</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p  class="text-center"><i id="modal-success-icon" class="fa-regular fa-circle-check"></i></p>
+          <p id="modal-text" class="text-center"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
     <script src="https://kit.fontawesome.com/6a251fd2ee.js" crossorigin="anonymous"></script>
     <script>
         setTimeout(function () {
