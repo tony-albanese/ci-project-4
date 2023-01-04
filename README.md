@@ -25,9 +25,38 @@ As a user, I can like or unlike a book so that other users can make a decision t
 
 As a user, I can only modify or delete my own entries so that others may not tamper with my recommendations.
 
+As a user, I can recieve feedback when I interact with the site so that I know if my actions are successful.
+
 # UX Design
 
 # Database Design
+## Classes
+The **User** class is the default User class from Django.
+
+The **Book** class is the key custom class in this project as the main function of the site is for users to share their book recommendations. The genres are generated from a predefined list of choices. This is for consistency - ie we do not want users to each define their own genre.
+
+|Book ||
+|-----|----|
+|type|field name|
+|CharField|title|
+|SlugField|slug|
+|CharField|author|
+|TextField|description|
+|ForeignKey User|owner|
+|CharField|genre|
+|ManyToManyField User|likes|
+
+The **Comment** class is used to represent a block of text that a user creates and is attached to a book. A **Book** can have many **Comment**s but each **Comment** can only belong to one **Book**. Each **Comment** can have only one **User** author, but each **User** author can write many **Comment**s.
+|Comment ||
+|-----|----|
+|type|field name|
+|ForegnKey User|author|
+|ForegnKey Book|book|
+|TextField|body|
+|DateTimeField|written_on|
+
+## Database Relationships
+
 
 # Agile Workflow
 
@@ -76,6 +105,12 @@ For each book, there is an icon for the user to like the book. If the user has a
 is empty. The total likes are displayed next to the icon. When the user clicks on the like icon, the status toggles - like goes to unlike
 and vice versa. 
 > As a user, I can like or unlike a book so that other users can make a decision to read a book based on popularity.
+
+## Alerts
+When the user has successfully interacted with the site - signing in or out, creating an account,  adding a book entry, updating a book entry, adding a comment or a like, the user is alerted.
+Upon success, a green alert message undeneath the navbar appears letting the user know they have successfully interacted with the site.
+
+> As a user, I can recieve feedback when I interact with the site so that I know if my actions are successful or not and why.  
 
 # Testing
 The testing done here is BDD testing.
@@ -126,6 +161,16 @@ The testing done here is BDD testing.
 |Link to unlike| As logged in user <br> If I have liked a book, a link to unlike the book is displayed | PASS|
 |Link to like|As logged in user <br> If I have not liked a book, a link to like the book is displayed| PASS|
 
+## 
+| Test Description              | Test | Result |
+|-------------------------------|------------------------------------------|--------|
+|Successully add book alert| As a logged in user <br> When I successfully add a book <br> An alert is shown under the nav bar telling me. |PASS|
+|Successully edit book alert|As a logged in user <br> When I successfully edit a book <br> An alert is shown under the nav bar telling me.|PASS|
+|Successully add comment alert|As a logged in user <br> When I successfully add a comment <br> An alert is shown under the nav bar telling me.|PASS|
+|Successully sign in alert|As a logged in user <br> When I successfully sign in <br> An alert is shown under the nav bar telling me.|PASS|
+|Successully sign out alert|As a logged in user <br> When I successfully sign out <br> An alert is shown under the nav bar telling me.|PASS|
+|Successully create account alert|As a logged in user <br> When I successfully create an account <br> An alert is shown under the nav bar telling me.|PASS|
+|Alert auto dismiss|After the alert is shown <br> The alert dismisses itslef.|PASS|
 
 # Deployment
 
@@ -177,3 +222,8 @@ django-admin startproject bookshelf .
 + add Procfile
 + connect to github respository
     + deploy from branch
+
+
+# Credits
+
+The idea and code for using the Bootstrap modals and django messages was from this YouTube video by [DjangoMastery](https://www.youtube.com/watch?v=zbsY-4ZLSkI).

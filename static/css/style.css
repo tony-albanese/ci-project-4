@@ -10,3 +10,8 @@ body {
 a {
     text-decoration: none;
 }
+
+#modal-success-icon {
+    font-size: xxx-large;
+    color: green;
+}
