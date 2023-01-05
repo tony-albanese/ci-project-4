@@ -50,15 +50,24 @@ def add_book_form(request):
 def add_book(request):
     # TODO Add validity check
     if request.method == 'POST':
-        title = request.POST.get('title')
-        author = request.POST.get('author')
-        description = request.POST.get('description')
-        genre = request.POST.get('genre')
-        slug = slugify(title)
-        Book.objects.create(title=title, author=author, description=description,
+
+        book_form = BookForm(data=request.POST)
+        if book_form.is_valid():
+            title = request.POST.get('title')
+            author = request.POST.get('author')
+            description = request.POST.get('description')
+            genre = request.POST.get('genre')
+            slug = slugify(title)
+            Book.objects.create(title=title, author=author, description=description,
                             genre=genre, owner=request.user, slug=slug)
-        messages.info(request, "Successfully added your book.")
-    return redirect('/')
+            messages.info(request, "Successfully added your book.")
+            return redirect('/')
+        else:
+            messages.error(request, "Woops. Something went wrong. Could not save your book.")
+            context = {
+                'form': book_form
+            }
+            return render(request, 'add_book_template.html', context)
 
 
 def edit_book(request, book_id):
