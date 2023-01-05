@@ -185,3 +185,24 @@ def get_favorites(request):
         return HttpResponse(template.render(context, request))
     else:
         return redirect('accounts/login')
+
+
+def books_by_owner(request, owner_id):
+    books = Book.objects.filter(owner__id=owner_id)
+    
+
+    liked_books = []
+    for book in books:
+        liked_books.append(book.id)
+
+    template = loader.get_template('index.html')
+    context = {
+        'books': books,
+        'liked_books': liked_books,
+        'heading_label': 'Owner Books',
+    }
+
+    if request.user.is_authenticated:
+        return HttpResponse(template.render(context, request))
+    else:
+        return redirect('accounts/login')

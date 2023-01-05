@@ -23,6 +23,13 @@
                         <h6 class="card-subtitle mb-2 text-muted">{{book.author}}</h6>
                         <h6 class="card-subtitle mb-2 text-muted">{{book.get_genre_display}}</h6>
                         <p class="card-text">{{book.description}}</p>
+
+                        {% if book.owner == user%}
+                        <p class="card-text text-muted">Posted by {{book.owner}}</p>
+                        {% else %}
+                        <p class="card-text text-muted">Posted by <a href="/books_by_owner/{{book.owner.id}}">{{book.owner}}</a> </p>
+                        {% endif%}
+                        
                     </div>
 
                     <div class="card-footer">
