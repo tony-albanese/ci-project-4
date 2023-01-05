@@ -31,6 +31,8 @@ As a user, I can see a list of books so that I can get inspiration as to what I 
 As a user, I can see a list of my liked books so that I can keep track of books I am really interested in.
 As a user, I can see a list of books that I have added so I can better manage the content I contribute.
 
+
+As a user, I can fliter posts by contributor so that I can better find content that is relevant to me.
 # UX Design
 
 # Database Design
@@ -134,6 +136,12 @@ Upon success, a green alert message undeneath the navbar appears letting the use
 
 > As a user, I can recieve feedback when I interact with the site so that I know if my actions are successful or not and why.  
 
+## Filter and Search
+### Filter by User
+In each book post, there is a line stating the user that posted that book. For all other users (ie, users that are not the logged in user), their name 
+appears as a link. When clicked, a list of all the posts by that user are shown. 
+> As a user, I can fliter posts so that I can better find content that is relevant to me.  
+
 # Testing
 The testing done here is BDD testing.
 ## Initial Setup Testing
@@ -177,6 +185,8 @@ The testing done here is BDD testing.
 |Delete/modify own content|As a logged in user <br> when I am on the home page <br> I see links to edit / delete books only for entries I have submitted| PASS|
 |My Books Page|As a logged in user <br> when I navigate to the My Books page <br> I see a list of only the books that I have added. |PASS|
 |Favorites Page|As a logged in user <br> when I navigate to the Favorites page <br> I see a list of the books that I have liked| PASS|
+|Username as link in post|As a logged in user <br> When I look at each book post <br> the other users' names appear as a link |PASS|
+|Links to user posts|As a logged in user <br> when I click on the user name link in a post <br> All of the posts by that user are shown|PASS|
 
 
 ## User Likes
