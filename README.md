@@ -177,7 +177,7 @@ The testing done here is BDD testing.
 |Link to unlike| As logged in user <br> If I have liked a book, a link to unlike the book is displayed | PASS|
 |Link to like|As logged in user <br> If I have not liked a book, a link to like the book is displayed| PASS|
 
-## 
+## Alerts 
 | Test Description              | Test | Result |
 |-------------------------------|------------------------------------------|--------|
 |Successully add book alert| As a logged in user <br> When I successfully add a book <br> An alert is shown under the nav bar telling me. |PASS|
