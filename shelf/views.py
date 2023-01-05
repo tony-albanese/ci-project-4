@@ -21,7 +21,6 @@ def get_books(request):
     books = Book.objects.all()
     liked_books = []
     for book in books:
-        book.genre = book.get_genre_display()
         if book.likes.filter(id=request.user.id).exists():
             liked_books.append(book.id)
 
