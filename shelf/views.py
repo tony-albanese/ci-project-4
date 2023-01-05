@@ -166,3 +166,22 @@ def get_my_books(request):
     else:
         return redirect('accounts/login')
 
+
+def get_favorites(request):
+    books = Book.objects.filter(likes__id=request.user.id)
+
+    liked_books = []
+    for book in books:
+        liked_books.append(book.id)
+
+    template = loader.get_template('index.html')
+    context = {
+        'books': books,
+        'liked_books': liked_books,
+        'heading_label': 'My Favorites',
+    }
+
+    if request.user.is_authenticated:
+        return HttpResponse(template.render(context, request))
+    else:
+        return redirect('accounts/login')
