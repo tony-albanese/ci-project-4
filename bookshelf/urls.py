@@ -31,6 +31,7 @@ urlpatterns = [
     path('like/<book_id>', add_like, name='add_like'),
     path('unlike/<book_id>', remove_like, name='remove_like'),
     path('my_books/', get_my_books, name='my_books'),
+    path('favorites/', get_favorites, name='favorites')
 
 
 ]
