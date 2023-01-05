@@ -67,13 +67,15 @@ def edit_book(request, book_id):
     # TODO add validity check
     if request.method == 'POST':
         form = BookForm(request.POST, instance=book)
-        form.save()
-        updated_book = get_object_or_404(Book, id=book_id)
-        updated_book.slug = slugify(book.title)
-        updated_book.save()
-        messages.info(request, "Successfully updated your book.")
-        return redirect('/')
-
+        if form.is_valid():
+            form.save()
+            updated_book = get_object_or_404(Book, id=book_id)
+            updated_book.slug = slugify(book.title)
+            updated_book.save()
+            messages.info(request, "Successfully updated your book.")
+            return redirect('/')
+        else:
+            messages.error(request, "Woops. Something went wrong.")
     form = BookForm(instance=book)
     context = {
         'form': form
