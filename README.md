@@ -25,7 +25,11 @@ As a user, I can like or unlike a book so that other users can make a decision t
 
 As a user, I can only modify or delete my own entries so that others may not tamper with my recommendations.
 
-As a user, I can recieve feedback when I interact with the site so that I know if my actions are successful.
+As a user, I can receive feedback when I interact with the site so that I know if my actions are successful.
+
+As a user, I can see a list of books so that I can get inspiration as to what I want to read next.
+As a user, I can see a list of my liked books so that I can keep track of books I am really interested in.
+As a user, I can see a list of books that I have added so I can better manage the content I contribute.
 
 # UX Design
 
@@ -76,6 +80,18 @@ After successful account creation or login attempt, they are taken to the home s
 ## Home Page
 On the home page, a logged in user will see a list of all the books in the database. 
 > As a user, I can see a list of books so that I can get inspiration as to what I want to read next.
+
+## Favorites
+This is the list of books that the user has liked. This is so that they can keep track of the books that they have liked and should serve as 
+a list of what they might be interested in reading.
+> As a user, I can see a list of my liked books so that I can keep track of books I am really interested in.
+
+
+
+## My Books
+This is a list of the books that the user has posted themselves. This is so that the user can best manage the content that they have created.
+> As a user, I can see a list of books that I have added so I can better manage the content I contribute.
+
 
 ## Add a Book
 In the nav bar, the user can see an Add Book link if they are logged in. They are taken to a form where they can enter the details for
