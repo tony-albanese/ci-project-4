@@ -145,3 +145,24 @@ def remove_like(request, book_id):
     book.likes.remove(request.user)
     return redirect('/')
  
+
+def get_my_books(request):
+
+    books = Book.objects.filter(owner=request.user)
+    liked_books = []
+    for book in books:
+        if book.likes.filter(id=request.user.id).exists():
+            liked_books.append(book.id)
+
+    template = loader.get_template('index.html')
+    context = {
+        'books': books,
+        'liked_books': liked_books,
+        'heading_label': 'My Books',
+    }
+
+    if request.user.is_authenticated:
+        return HttpResponse(template.render(context, request))
+    else:
+        return redirect('accounts/login')
+
