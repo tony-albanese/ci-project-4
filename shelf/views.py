@@ -190,10 +190,10 @@ def get_favorites(request):
 def books_by_owner(request, owner_id):
     books = Book.objects.filter(owner__id=owner_id)
     
-
     liked_books = []
     for book in books:
-        liked_books.append(book.id)
+        if book.likes.filter(id=request.user.id).exists():
+            liked_books.append(book.id)
 
     template = loader.get_template('index.html')
     context = {
