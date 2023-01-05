@@ -60,7 +60,13 @@ The **Comment** class is used to represent a block of text that a user creates a
 |DateTimeField|written_on|
 
 ## Database Relationships
+The following Entity Relationship Diagram shows how the models are related to each other
++ User-Book is one-to-many because a User can have many Books but each Book can belong to onyl one User
++ Book-Liks is many-to-many because a Book can have have likes from many users and a User can like many Books
++ Book-Comment is one-to-many because a Book can have many Comments but each Comment can belong to only one Book
++ Comment-User is one-to-many because a User can have many Comments but each Comment can belong to only one User.
 
+![ERD](assets/screenshots/erd.png)
 
 # Agile Workflow
 
