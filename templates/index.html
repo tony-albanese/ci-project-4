@@ -92,26 +92,40 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          
+          <div class="container-fluid">
+
+        
             <form action="/search/" method="POST">
                 {% csrf_token %}
 
                 {% if genres %}
                 <h3>Genre</h3>
-              
-      
-                {% for genre in genres %}
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="{{ genre.0 }}" id="{{ genre.0 }}" name="genres">
-                    <label class="form-check-label" for="{{ genre.0 }}">
-                      {{ genre.1 }}
-                    </label>
+
+                <div class="row">
+                    {% for genre in genres %}
+
+                    <div class="col-md-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="{{ genre.0 }}" id="{{ genre.0 }}"
+                                name="genres">
+                            <label class="form-check-label" for="{{ genre.0 }}">
+                                {{ genre.1 }}
+                            </label>
+                        </div>
+
+                    </div>
+
+                    {% if forloop.counter|divisibleby:2 %}
                 </div>
-                {% endfor %}
-                {% else %}
-                <p>Form content goes here.</p>
-                {% endif %}
-          
+                <div class="row">
+                    {% endif %}
+                    
+                    {% endfor %}
+                    {% else %}
+                    <p>Form content goes here.</p>
+                    {% endif %}
+
+                </div>
         
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -119,6 +133,7 @@
                   </div>
             </form>
 
+        </div>
 
         </div>
       
