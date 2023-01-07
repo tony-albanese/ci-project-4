@@ -33,4 +33,5 @@ urlpatterns = [
     path('my_books/', get_my_books, name='my_books'),
     path('favorites/', get_favorites, name='favorites'),
     path('books_by_owner/<owner_id>', books_by_owner, name='books_by_owner'),
+    path('search/', perform_search, name='perform_search'),
 ]

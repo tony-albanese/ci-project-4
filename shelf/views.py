@@ -27,7 +27,8 @@ def get_books(request):
     template = loader.get_template('index.html')
     context = {
         'books': books,
-        'liked_books': liked_books
+        'liked_books': liked_books,
+        'genres': Book.GENRES,
     }
     if request.user.is_authenticated:
         return HttpResponse(template.render(context, request))
@@ -206,3 +207,11 @@ def books_by_owner(request, owner_id):
         return HttpResponse(template.render(context, request))
     else:
         return redirect('accounts/login')
+
+
+def perform_search(request):
+    list = request.POST.getlist('genres')
+    print(list)
+
+    # TODO Perform query based on passed in values.
+    return HttpResponse(list)
