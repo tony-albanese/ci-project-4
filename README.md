@@ -33,6 +33,8 @@ As a user, I can see a list of books that I have added so I can better manage th
 
 
 As a user, I can fliter posts by contributor so that I can better find content that is relevant to me.
+As a user, I can filter posts by genre so that I can better find content that is relevant to me.
+As a user, I can search for posts so that I can better find books to suit my interests.
 # UX Design
 
 # Database Design
@@ -140,8 +142,16 @@ Upon success, a green alert message undeneath the navbar appears letting the use
 ### Filter by User
 In each book post, there is a line stating the user that posted that book. For all other users (ie, users that are not the logged in user), their name 
 appears as a link. When clicked, a list of all the posts by that user are shown. 
-> As a user, I can fliter posts so that I can better find content that is relevant to me.  
+> As a user, I can fliter posts so that I can better find content that is relevant to me. 
 
+### Filter by Genre
+When the user clicks on the magnifying glass icon in the upper right corner, a modal search form is displayed. In the form are the check-boxes that correspond to each of the genres in the database. The user can select one, several, (or none) to filter by. When the user clicks the Search button, only those books whose genres match the selected ones are displayed. The search is an OR search - since that is what a user would expect. If they select 'Mysteries', 'Cookbooks',  and 'Biographies' they expect to get books in any of these genres not books that have all three.
+> As a user, I can filter posts by genre so that I can better find content that is relevant to me.  
+
+### Search by Author, Title, Description
+When the user clicks on the magnifying glass icon in the upper right corner, a modal search form is displayed. In addition to the check boxes corresponding to the genres, there are three text input fields for Title, Author, and Description. These are all optional. The database will queries the fields based on the words entered. The search is an AND search, since that is how the user would expect the database to behave. For example, if they enter "Ray Bradbury" for the author and "gripping and exciting", they mean books by Ray Bradbury that are also described as being gripping and exciting.
+
+> As a user, I can search for posts so that I can better find books to suit my interests.  
 # Testing
 The testing done here is BDD testing.
 ## Initial Setup Testing
@@ -206,6 +216,9 @@ The testing done here is BDD testing.
 |Successully sign out alert|As a logged in user <br> When I successfully sign out <br> An alert is shown under the nav bar telling me.|PASS|
 |Successully create account alert|As a logged in user <br> When I successfully create an account <br> An alert is shown under the nav bar telling me.|PASS|
 |Alert auto dismiss|After the alert is shown <br> The alert dismisses itslef.|PASS|
+
+
+## Search and Filtering Tests
 
 # Deployment
 
