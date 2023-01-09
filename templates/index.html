@@ -28,6 +28,9 @@
 
                 {% for book in books %}
                 <div class="card mx-3" style="width: 18rem;">
+                   
+                    <img src="{{book.image_url}}" class="card-img-top" alt="An image to describe the genre {{book.get_genre_display}}">
+                    
                     <div class="card-body">
                         <h5 class="card-title">{{book.title}}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">{{book.author}}</h6>
