@@ -162,6 +162,7 @@ def get_my_books(request):
         'books': books,
         'liked_books': liked_books,
         'heading_label': 'My Books',
+        'genres': Book.GENRES
     }
 
     if request.user.is_authenticated:
@@ -182,6 +183,7 @@ def get_favorites(request):
         'books': books,
         'liked_books': liked_books,
         'heading_label': 'My Favorites',
+        'genres': Book.GENRES
     }
 
     if request.user.is_authenticated:
@@ -203,6 +205,7 @@ def books_by_owner(request, owner_id):
         'books': books,
         'liked_books': liked_books,
         'heading_label': 'Owner Books',
+        'genres': Book.GENRES
     }
 
     if request.user.is_authenticated:
