@@ -4,6 +4,7 @@ from django.template import loader
 from django.contrib import messages
 from django.template.defaultfilters import slugify
 from django.db.models import Q
+from django.contrib.auth.models import User
 
 from .models import Book
 
@@ -194,6 +195,9 @@ def get_favorites(request):
 
 def books_by_owner(request, owner_id):
     books = Book.objects.filter(owner__id=owner_id)
+    owner = User.objects.get(id=owner_id)
+
+    print(owner.username)
     
     liked_books = []
     for book in books:
@@ -201,10 +205,11 @@ def books_by_owner(request, owner_id):
             liked_books.append(book.id)
 
     template = loader.get_template('index.html')
+    heading = f'{owner.username}\'s Books'
     context = {
         'books': books,
         'liked_books': liked_books,
-        'heading_label': 'Owner Books',
+        'heading_label': heading,
         'genres': Book.GENRES
     }
 
