@@ -22,7 +22,7 @@ class Book(models.Model):
         ('cook', 'Cookbook'),
         ('mot', 'Motivational'),
         ('health', 'Health'),
-        ('his', 'history'),
+        ('his', 'History'),
         ('travel', 'Travel'),
         ('diy', 'How-to'),
     ]
