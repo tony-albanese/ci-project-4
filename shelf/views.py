@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.template.defaultfilters import slugify
 from django.db.models import Q
 from django.contrib.auth.models import User
+from django.contrib.postgres.search import SearchVector
 
 from .models import Book
 
@@ -221,15 +222,36 @@ def books_by_owner(request, owner_id):
 
 def perform_search(request):
     list = request.POST.getlist('genres')
-    print(list)
+    genre_query = Q()
+    author_query = Q()
+    title_query = Q()
+    description_query = Q()
 
-    query = Q()
     liked_books = []
-    for gen in list:
 
-        query = query | Q(genre__icontains=gen)
+    for gen in list:
+        genre_query = genre_query | Q(genre__icontains=gen)
     
-    books = Book.objects.filter(query)
+    title_search_terms = request.POST['title-search-input']
+    author_search_terms = request.POST['author-search-input']
+    description_search_terms = request.POST['description-search-input']
+
+    if title_search_terms:
+        terms = title_search_terms.split()
+        for term in terms:
+            title_query = title_query | Q(title__icontains=term)
+        print(title_query)
+
+    if author_search_terms:
+        terms = author_search_terms.split()
+        for term in terms:
+            author_query = author_query | Q(author__icontains=term)
+
+    if description_search_terms:
+        pass
+
+    
+    books = Book.objects.filter(author_query, title_query, genre_query)
 
     for book in books:
         if book.likes.filter(id=request.user.id).exists():
