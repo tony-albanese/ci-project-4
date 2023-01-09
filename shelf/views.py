@@ -5,7 +5,6 @@ from django.contrib import messages
 from django.template.defaultfilters import slugify
 from django.db.models import Q
 from django.contrib.auth.models import User
-from django.contrib.postgres.search import SearchVector
 
 from .models import Book
 
@@ -248,11 +247,11 @@ def perform_search(request):
             author_query = author_query | Q(author__icontains=term)
 
     if description_search_terms:
-        pass
-
+        terms = description_search_terms.split()
+        for term in terms:
+            description_query = description_query | Q(description__icontains=term)
     
-    books = Book.objects.filter(author_query, title_query, genre_query)
-
+    books = Book.objects.filter(author_query, title_query, genre_query, description_query)
     for book in books:
         if book.likes.filter(id=request.user.id).exists():
             liked_books.append(book.id)
