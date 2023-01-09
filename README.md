@@ -286,5 +286,6 @@ django-admin startproject bookshelf .
 The idea and code for using the Bootstrap modals and django messages was from this YouTube video by [DjangoMastery](https://www.youtube.com/watch?v=zbsY-4ZLSkI).
 
 ## Image Credits
-+ The image for on the login page was taken from [unDraw Illustrations](https://undraw.co/illustrations)
++ The image on the Login screen was taken from [Pexels](https://www.pexels.com/) and was taken by [Pixabay](https://www.pexels.com/photo/pages-on-an-opened-book-415071/)
++ The image for on the Signup page was taken from [unDraw Illustrations](https://undraw.co/illustrations)
 + The question mark image was created by [Roundicons](https://www.flaticon.com/free-icons/question") and was downloaded from [flaticon](https://www.flaticon.com/)
