@@ -31,6 +31,8 @@ As a user, I can see a list of books so that I can get inspiration as to what I 
 As a user, I can see a list of my liked books so that I can keep track of books I am really interested in.
 As a user, I can see a list of books that I have added so I can better manage the content I contribute.
 
+As a user, I can see the relevant information for a book entry in an organized, visually appealing format.
+As a user, I can see a image for book based on genre so that it is visually easier to find books of the genre I am interested in.
 
 As a user, I can fliter posts by contributor so that I can better find content that is relevant to me.
 As a user, I can filter posts by genre so that I can better find content that is relevant to me.
@@ -78,7 +80,7 @@ The following Entity Relationship Diagram shows how the models are related to ea
 # Features
 
 ## Admin Panel
-There is an admin panel which users with the correct privilefes (superusers), can see and manipulate all of the data in the site.
+There is an admin panel which users with the correct privileges (superusers), can see and manipulate all of the data in the site.
 > As a adminstrator, I can login with privileges so that moderate all content on the site.
 
 ## allauth authentication
@@ -89,14 +91,18 @@ After successful account creation or login attempt, they are taken to the home s
 
 ## Home Page
 On the home page, a logged in user will see a list of all the books in the database. 
-> As a user, I can see a list of books so that I can get inspiration as to what I want to read next.
+> As a user, I can see a list of books so that I can get inspiration as to what I want to read next.  
+
+### Book Card
+Each book entry is displayed as a Bootstrap card. In addition to the Title, Author, Description and Genre, each book card has an image that corresponds to the genre of the book. In addition, at the footer of each card is an icon bar where the user can view the comments, like the book, or (if they are the owner of the book) can edit or delete it.
+
+> As a user, I can see the relevant information for a book entry in an organized, visually appealing format.  
+> As a user, I can see a image for book based on genre so that it is visually easier to find books of the genre I am interested in.  
 
 ## Favorites
 This is the list of books that the user has liked. This is so that they can keep track of the books that they have liked and should serve as 
 a list of what they might be interested in reading.
 > As a user, I can see a list of my liked books so that I can keep track of books I am really interested in.
-
-
 
 ## My Books
 This is a list of the books that the user has posted themselves. This is so that the user can best manage the content that they have created.
