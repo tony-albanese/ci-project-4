@@ -3,6 +3,8 @@ from django.views import generic, View
 from django.template import loader
 from django.contrib import messages
 from django.template.defaultfilters import slugify
+from django.db.models import Q
+
 from .models import Book
 
 from .forms import BookForm, CommentForm
@@ -213,5 +215,27 @@ def perform_search(request):
     list = request.POST.getlist('genres')
     print(list)
 
-    # TODO Perform query based on passed in values.
-    return HttpResponse(list)
+    query = Q()
+    liked_books = []
+    for gen in list:
+
+        query = query | Q(genre__icontains=gen)
+    
+    books = Book.objects.filter(query)
+
+    for book in books:
+        if book.likes.filter(id=request.user.id).exists():
+            liked_books.append(book.id)
+
+    template = loader.get_template('index.html')
+    context = {
+        'books': books,
+        'liked_books': liked_books,
+        'heading_label': 'Search Result',
+        'genres': Book.GENRES
+    }
+
+    if request.user.is_authenticated:
+        return HttpResponse(template.render(context, request))
+    else:
+        return redirect('accounts/login')
