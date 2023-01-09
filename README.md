@@ -25,8 +25,16 @@ As a user, I can like or unlike a book so that other users can make a decision t
 
 As a user, I can only modify or delete my own entries so that others may not tamper with my recommendations.
 
-As a user, I can recieve feedback when I interact with the site so that I know if my actions are successful.
+As a user, I can receive feedback when I interact with the site so that I know if my actions are successful.
 
+As a user, I can see a list of books so that I can get inspiration as to what I want to read next.
+As a user, I can see a list of my liked books so that I can keep track of books I am really interested in.
+As a user, I can see a list of books that I have added so I can better manage the content I contribute.
+
+
+As a user, I can fliter posts by contributor so that I can better find content that is relevant to me.
+As a user, I can filter posts by genre so that I can better find content that is relevant to me.
+As a user, I can search for posts so that I can better find books to suit my interests.
 # UX Design
 
 # Database Design
@@ -56,7 +64,13 @@ The **Comment** class is used to represent a block of text that a user creates a
 |DateTimeField|written_on|
 
 ## Database Relationships
+The following Entity Relationship Diagram shows how the models are related to each other
++ User-Book is one-to-many because a User can have many Books but each Book can belong to onyl one User
++ Book-Liks is many-to-many because a Book can have have likes from many users and a User can like many Books
++ Book-Comment is one-to-many because a Book can have many Comments but each Comment can belong to only one Book
++ Comment-User is one-to-many because a User can have many Comments but each Comment can belong to only one User.
 
+![ERD](assets/screenshots/erd.png)
 
 # Agile Workflow
 
@@ -76,6 +90,18 @@ After successful account creation or login attempt, they are taken to the home s
 ## Home Page
 On the home page, a logged in user will see a list of all the books in the database. 
 > As a user, I can see a list of books so that I can get inspiration as to what I want to read next.
+
+## Favorites
+This is the list of books that the user has liked. This is so that they can keep track of the books that they have liked and should serve as 
+a list of what they might be interested in reading.
+> As a user, I can see a list of my liked books so that I can keep track of books I am really interested in.
+
+
+
+## My Books
+This is a list of the books that the user has posted themselves. This is so that the user can best manage the content that they have created.
+> As a user, I can see a list of books that I have added so I can better manage the content I contribute.
+
 
 ## Add a Book
 In the nav bar, the user can see an Add Book link if they are logged in. They are taken to a form where they can enter the details for
@@ -112,6 +138,20 @@ Upon success, a green alert message undeneath the navbar appears letting the use
 
 > As a user, I can recieve feedback when I interact with the site so that I know if my actions are successful or not and why.  
 
+## Filter and Search
+### Filter by User
+In each book post, there is a line stating the user that posted that book. For all other users (ie, users that are not the logged in user), their name 
+appears as a link. When clicked, a list of all the posts by that user are shown. 
+> As a user, I can fliter posts so that I can better find content that is relevant to me. 
+
+### Filter by Genre
+When the user clicks on the magnifying glass icon in the upper right corner, a modal search form is displayed. In the form are the check-boxes that correspond to each of the genres in the database. The user can select one, several, (or none) to filter by. When the user clicks the Search button, only those books whose genres match the selected ones are displayed. The search is an OR search - since that is what a user would expect. If they select 'Mysteries', 'Cookbooks',  and 'Biographies' they expect to get books in any of these genres not books that have all three.
+> As a user, I can filter posts by genre so that I can better find content that is relevant to me.  
+
+### Search by Author, Title, Description
+When the user clicks on the magnifying glass icon in the upper right corner, a modal search form is displayed. In addition to the check boxes corresponding to the genres, there are three text input fields for Title, Author, and Description. These are all optional. The database will queries the fields based on the words entered. The search is an AND search, since that is how the user would expect the database to behave. For example, if they enter "Ray Bradbury" for the author and "gripping and exciting", they mean books by Ray Bradbury that are also described as being gripping and exciting.
+
+> As a user, I can search for posts so that I can better find books to suit my interests.  
 # Testing
 The testing done here is BDD testing.
 ## Initial Setup Testing
@@ -153,6 +193,11 @@ The testing done here is BDD testing.
 |updated data submission|As a logged in user <br> When I press the "Update Book" button on the edit page <br> I am taken to the home page and the updated fields are reflected in the list.|PASS|
 |Add a comment|As a logged in user <br> when I have entered a comment <br> and press submit <br> my comment is saved and is displayed in the list comments|PASS|
 |Delete/modify own content|As a logged in user <br> when I am on the home page <br> I see links to edit / delete books only for entries I have submitted| PASS|
+|My Books Page|As a logged in user <br> when I navigate to the My Books page <br> I see a list of only the books that I have added. |PASS|
+|Favorites Page|As a logged in user <br> when I navigate to the Favorites page <br> I see a list of the books that I have liked| PASS|
+|Username as link in post|As a logged in user <br> When I look at each book post <br> the other users' names appear as a link |PASS|
+|Links to user posts|As a logged in user <br> when I click on the user name link in a post <br> All of the posts by that user are shown|PASS|
+
 
 ## User Likes
 | Test Description              | Test | Result |
@@ -161,7 +206,7 @@ The testing done here is BDD testing.
 |Link to unlike| As logged in user <br> If I have liked a book, a link to unlike the book is displayed | PASS|
 |Link to like|As logged in user <br> If I have not liked a book, a link to like the book is displayed| PASS|
 
-## 
+## Alerts 
 | Test Description              | Test | Result |
 |-------------------------------|------------------------------------------|--------|
 |Successully add book alert| As a logged in user <br> When I successfully add a book <br> An alert is shown under the nav bar telling me. |PASS|
@@ -171,6 +216,18 @@ The testing done here is BDD testing.
 |Successully sign out alert|As a logged in user <br> When I successfully sign out <br> An alert is shown under the nav bar telling me.|PASS|
 |Successully create account alert|As a logged in user <br> When I successfully create an account <br> An alert is shown under the nav bar telling me.|PASS|
 |Alert auto dismiss|After the alert is shown <br> The alert dismisses itslef.|PASS|
+
+
+## Search and Filtering Tests
+| Test Description              | Test | Result |
+|-------------------------------|------------------------------------------|--------|
+|Modal Form Loads|As a logged in user <br> when I click on the magnifying glass  <br> a modal form appears. |PASS|
+|Modal Form Dismissal|As a logged in user <br> when I load the modal form <br> and click the Close button  <br> the modal form disapeears |PASS|
+|Filter by Genre|As a logged in user <br> when I select one or several genres <br> and click on the Search button <br> A page showing all books whos genre I have selected loads.|PASS|
+|Search by Author|As a logged in user <br> when I enter a name in the Author field <br> and click the Search Button <br> A page listing the books whose author contain any of the entered terms is loaded. |PASS|
+|Search by Title|As a logged in user <br> when I enter text in the Title field <br> and click the Search Button <br> A page listing the books whose Title contains any of the entered terms is loaded.|PASS|
+|Search by Description|As a logged in user<br> when I enter text in the description field <br> and click the Search Button <br> A page listing the books whose Description contains any of the entered terms is loaded.|PASS|
+
 
 # Deployment
 

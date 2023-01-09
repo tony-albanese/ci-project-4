@@ -5,7 +5,23 @@
 
 
 <div class="container">
+    {% if heading_label%}
+    <h2>{{ heading_label }}</h2>
+    {% else%}
     <h2>Books</h2>
+    {% endif %}
+
+    <div class="row  justify-content-end">
+        <div class="col-4">
+
+
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <i id="search-icon" class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            
+        </div>
+
+    </div>
     <div class="row">
 
         <div class="col-12 mt-3 ">
@@ -17,8 +33,15 @@
                     <div class="card-body">
                         <h5 class="card-title">{{book.title}}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">{{book.author}}</h6>
-                        <h6 class="card-subtitle mb-2 text-muted">{{book.genre}}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">{{book.get_genre_display}}</h6>
                         <p class="card-text">{{book.description}}</p>
+
+                        {% if book.owner == user%}
+                        <p class="card-text text-muted">Posted by {{book.owner}}</p>
+                        {% else %}
+                        <p class="card-text text-muted">Posted by <a href="/books_by_owner/{{book.owner.id}}">{{book.owner}}</a> </p>
+                        {% endif%}
+                        
                     </div>
 
                     <div class="card-footer">
@@ -52,11 +75,89 @@
 
             </div>
 
-
-
         </div>
 
     </div>
 
+
+
+
+
+    <!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Search</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+
+        
+            <form action="/search/" method="POST">
+                {% csrf_token %}
+
+                {% if genres %}
+                <h3>Genre</h3>
+
+                <div class="row">
+                    {% for genre in genres %}
+
+                    <div class="col-md-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="{{ genre.0 }}" id="{{ genre.0 }}"
+                                name="genres">
+                            <label class="form-check-label" for="{{ genre.0 }}">
+                                {{ genre.1 }}
+                            </label>
+                        </div>
+
+                    </div>
+
+                    {% if forloop.counter|divisibleby:2 %}
+                </div>
+                <div class="row">
+                    {% endif %}
+                    
+                    {% endfor %}
+                
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="title-search-input">Title</label>
+                            <input type="text" class="form-control" id="title-search-input" name="title-search-input">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="author-search-input">Author</label>
+                            <input type="text" class="form-control" id="author-search-input" name="author-search-input">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description-search-input">Description Search</label>
+                            <input type="text" class="form-control" id="description-search-input" name="description-search-input">
+                        </div>
+                    </div>
+                </div>
+                    {% else %}
+                    <p>Woops. Something didn't load properly.</p>
+                    {% endif %}
+
+                </div>
+        
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Search</button>
+                  </div>
+            </form>
+
+        </div>
+
+        </div>
+      
+      </div>
+    </div>
+  </div>
 
     {% endblock %}
