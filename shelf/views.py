@@ -83,6 +83,7 @@ def edit_book(request, book_id):
             form.save()
             updated_book = get_object_or_404(Book, id=book_id)
             updated_book.slug = slugify(book.title)
+            updated_book.image_url = Book.COVER_URLS.get(updated_book.genre)
             updated_book.save()
             messages.info(request, "Successfully updated your book.")
             return redirect('/')
