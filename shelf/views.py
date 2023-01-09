@@ -61,8 +61,9 @@ def add_book(request):
             description = request.POST.get('description')
             genre = request.POST.get('genre')
             slug = slugify(title)
+            image_url = Book.COVER_URLS.get(genre)
             Book.objects.create(title=title, author=author, description=description,
-                            genre=genre, owner=request.user, slug=slug)
+                            genre=genre, owner=request.user, slug=slug, image_url=image_url)
             messages.info(request, "Successfully added your book.")
             return redirect('/')
         else:
