@@ -53,8 +53,7 @@ class Book(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='+')
     genre = models.CharField(max_length=6, choices=GENRES)
     likes = models.ManyToManyField(User, blank=True, related_name="book_likes")
-    # cover_image = 
-    #shelf = models.ForeignKey(Shelf, on_delete=models.CASCADE, default="My Shelf")
+    image_url = models.URLField(default="https://res.cloudinary.com/dzg7yacrw/image/upload/v1673273165/assets/book_covers/cover_placeholder_vqd1hn.jpg")
 
     def __str__(self):
         return self.title
