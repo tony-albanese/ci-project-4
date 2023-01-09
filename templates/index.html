@@ -121,6 +121,25 @@
                     {% endif %}
                     
                     {% endfor %}
+                
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="title-search-input">Title</label>
+                            <input type="text" class="form-control" id="title-search-input">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="author-search-input">Author</label>
+                            <input type="text" class="form-control" id="author-search-input">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description-search-input">Description Search</label>
+                            <input type="text" class="form-control" id="description-search-input">
+                        </div>
+                    </div>
+                </div>
                     {% else %}
                     <p>Woops. Something didn't load properly.</p>
                     {% endif %}
