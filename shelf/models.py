@@ -25,6 +25,8 @@ class Book(models.Model):
         ('his', 'History'),
         ('travel', 'Travel'),
         ('diy', 'How-to'),
+        ('sci', 'Science'),
+        ('math', 'Math')
     ]
 
     COVER_URLS = {
@@ -43,7 +45,9 @@ class Book(models.Model):
         'health': 'https://res.cloudinary.com/dzg7yacrw/image/upload/v1673270018/assets/book_covers/cover_health_lfdgjr.jpg',
         'his': 'https://res.cloudinary.com/dzg7yacrw/image/upload/v1673270319/assets/book_covers/cover_history_oajjvt.jpg',
         'travel': 'https://res.cloudinary.com/dzg7yacrw/image/upload/v1673270505/assets/book_covers/cover_travel_ortf8u.jpg',
-        'diy': 'https://res.cloudinary.com/dzg7yacrw/image/upload/v1673270719/assets/book_covers/cover_howto_v00rx2.jpg'
+        'diy': 'https://res.cloudinary.com/dzg7yacrw/image/upload/v1673270719/assets/book_covers/cover_howto_v00rx2.jpg',
+        'sci': 'https://res.cloudinary.com/dzg7yacrw/image/upload/v1673332629/assets/book_covers/cover_science_lqzaum.jpg',
+        'math': 'https://res.cloudinary.com/dzg7yacrw/image/upload/v1673332629/assets/book_covers/cover_maths_mtobkq.jpg'
     }
 
     title = models.CharField(max_length=200)
