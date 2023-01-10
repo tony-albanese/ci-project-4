@@ -10,7 +10,7 @@
   <div class="row justify-content-center align-items-center h-100">
 
     <div class="col-md-9 col-lg-6 col-xl-5">
-      <h1>{% trans "Sign Up" %}</h1>
+      <h1 class="display-4">{% trans "Sign Up" %}</h1>
 
 
       <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
@@ -19,15 +19,15 @@
         {% if redirect_field_value %}
         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
         {% endif %}
-        <button type="submit" class="btn btn-primary">{% trans "Sign Up" %} &raquo;</button>
+        <button type="submit" class="btn btn-primary"> <span class="display-6">{% trans "Sign Up" %} &raquo;</span></button>
       </form>
     </div>
 
 
-    <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+    <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1 text-center">
       <img src="https://res.cloudinary.com/dzg7yacrw/image/upload/v1673261191/assets/site_images/secure_login_nryojt.png"
           class="img-fluid" alt="Secure login illustration">
-      <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}
+      <p class="lead">{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}
       </p>
     </div>
 
