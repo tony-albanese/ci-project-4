@@ -231,7 +231,7 @@ def perform_search(request):
     liked_books = []
 
     for gen in list:
-        genre_query = genre_query | Q(genre__icontains=gen)
+        genre_query = genre_query | Q(genre__iexact=gen)
     
     title_search_terms = request.POST['title-search-input']
     author_search_terms = request.POST['author-search-input']
