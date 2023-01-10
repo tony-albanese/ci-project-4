@@ -31,6 +31,8 @@ As a user, I can see a list of books so that I can get inspiration as to what I 
 As a user, I can see a list of my liked books so that I can keep track of books I am really interested in.
 As a user, I can see a list of books that I have added so I can better manage the content I contribute.
 
+As a user, I can see the relevant information for a book entry in an organized, visually appealing format.
+As a user, I can see a image for book based on genre so that it is visually easier to find books of the genre I am interested in.
 
 As a user, I can fliter posts by contributor so that I can better find content that is relevant to me.
 As a user, I can filter posts by genre so that I can better find content that is relevant to me.
@@ -78,7 +80,7 @@ The following Entity Relationship Diagram shows how the models are related to ea
 # Features
 
 ## Admin Panel
-There is an admin panel which users with the correct privilefes (superusers), can see and manipulate all of the data in the site.
+There is an admin panel which users with the correct privileges (superusers), can see and manipulate all of the data in the site.
 > As a adminstrator, I can login with privileges so that moderate all content on the site.
 
 ## allauth authentication
@@ -89,14 +91,18 @@ After successful account creation or login attempt, they are taken to the home s
 
 ## Home Page
 On the home page, a logged in user will see a list of all the books in the database. 
-> As a user, I can see a list of books so that I can get inspiration as to what I want to read next.
+> As a user, I can see a list of books so that I can get inspiration as to what I want to read next.  
+
+### Book Card
+Each book entry is displayed as a Bootstrap card. In addition to the Title, Author, Description and Genre, each book card has an image that corresponds to the genre of the book. In addition, at the footer of each card is an icon bar where the user can view the comments, like the book, or (if they are the owner of the book) can edit or delete it.
+
+> As a user, I can see the relevant information for a book entry in an organized, visually appealing format.  
+> As a user, I can see a image for book based on genre so that it is visually easier to find books of the genre I am interested in.  
 
 ## Favorites
 This is the list of books that the user has liked. This is so that they can keep track of the books that they have liked and should serve as 
 a list of what they might be interested in reading.
 > As a user, I can see a list of my liked books so that I can keep track of books I am really interested in.
-
-
 
 ## My Books
 This is a list of the books that the user has posted themselves. This is so that the user can best manage the content that they have created.
@@ -284,3 +290,45 @@ django-admin startproject bookshelf .
 # Credits
 
 The idea and code for using the Bootstrap modals and django messages was from this YouTube video by [DjangoMastery](https://www.youtube.com/watch?v=zbsY-4ZLSkI).
+
+## Page Image Credits
++ The image on the Login screen was taken from [Pexels](https://www.pexels.com/) and was taken by [Pixabay](https://www.pexels.com/photo/pages-on-an-opened-book-415071/)
++ Library image is from <a href="https://www.freepik.com/free-vector/library-with-books-shelves-laptop-table_7743156.htm#query=empty%20shelf&position=8&from_view=search&track=sph">upklyak</a> on Freepik
+
++ Image for empty results <a href="https://www.freepik.com/free-vector/empty-concept-illustration_7117865.htm#query=no%20data&position=2&from_view=search&track=sph">Image by storyset</a> on Freepik
++ The image for on the Signup page was taken from [unDraw Illustrations](https://undraw.co/illustrations)
++ The question mark image was created by [Roundicons](https://www.flaticon.com/free-icons/question") and was downloaded from [flaticon](https://www.flaticon.com/)
+
+## Book Genre Image Credits
++ Fantasy Book Cover Image: <a href="https://www.freepik.com/free-vector/black-spooky-castle-flying-dragon-canyon-with-mountains-forest-cartoon-fantasy-illustration-with-medieval-palace-with-towers-creepy-beast-with-wings-rocks-pine-trees_12207978.htm#query=fantasy&position=1&from_view=search&track=sph">Image by upklyak</a> on Freepik
++ Adventure Book Cover Image: <a href="https://www.freepik.com/free-vector/camping-place-cartoon-composition-with-yellow-tent-lamp-pot-with-dinner-fire-night-sky_13749110.htm#query=adventure&position=21&from_view=search&track=sph">Image by macrovector</a> on Freepik
++ Romance Book Cover Image: <a href="https://www.freepik.com/free-photo/paper-valentines-day-hearts-pink_3915611.htm#query=romance&position=41&from_view=search&track=sph">Image by valeria_aksakova</a> on Freepik
++ Mystery Book Cover Image: <a href="https://www.freepik.com/free-photo/mobile-smartphone-magnifier-notebook-with-leather-cover-isolated-black-farm-wooden-table_11333683.htm#query=mystery&position=27&from_view=search&track=sph">Image by bublikhaus</a> on Freepik
++ Horror Book Cover Image: <a href="https://www.freepik.com/free-vector/frightening-halloween-realistic-background_3824490.htm#query=horror&position=2&from_view=search&track=sph">Image by vectorpouch</a> on Freepik
++ Thriller Book Cover Image: <a href="https://www.freepik.com/free-vector/crime-scene-night-murder-place-dark-room_6823044.htm#query=thriller&position=3&from_view=search&track=sph">Image by vectorpouch</a> on Freepik
+
++ Science Fiction Book Cover Image: <a href="https://www.freepik.com/free-photo/alien-planet-building_14541108.htm#query=science%20fiction&position=10&from_view=search&track=sph">Image by liuzishan</a> on Freepik
+
++ Biography Book Cover Image: <a href="https://www.freepik.com/free-vector/social-biography-concept-illustration_12704426.htm#query=biography&position=45&from_view=search&track=sph">Image by storyset</a> on Freepik
+
++ Dystopia Book Cover Image: Photo by [cottonbro studio](https://www.pexels.com/photo/person-in-brown-coat-and-black-pants-standing-on-gray-concrete-floor-4888474/)
+
++ Cookbook Book Cover Image: <a href="https://www.freepik.com/free-vector/set-people-cooking-their-favourite-food_8247921.htm#query=cooking&position=0&from_view=search&track=sph">Image by pikisuperstar</a> on Freepik
+
++ Motivation Book Cover Image: <a href="https://www.freepik.com/free-photo/hikers-top_7630716.htm#query=motivation&position=3&from_view=search&track=sph">Image by wirestock</a> on Freepik
+
++ Health Book Cover Image: <a href="https://www.freepik.com/free-photo/doctors-hands-holding-medical-care-objects_18417027.htm#query=health&position=5&from_view=search&track=sph">Image by rawpixel.com</a> on Freepik
+
++ History Book Cover Image: [Pixabay](https://www.pexels.com/photo/stonehenge-under-nimbostratus-clouds-161798/)
+
++ Travel Book Cover Image: [Leah Kelley](https://www.pexels.com/photo/woman-looking-at-the-map-3935702/)
+
++ How-To Book Cover Image: [Thijs van der Weide](https://www.pexels.com/photo/man-holding-wooden-stick-while-drilling-hole-1094767/)
+
++ Historical Fiction Cover Image: [JJ Jordan](https://www.pexels.com/photo/focused-woman-in-old-outfit-reading-book-with-oil-lamp-4145059/)
+
++ Placeholder Cover Image: [Photo by Pixabay](https://www.pexels.com/photo/selective-focus-photography-of-white-softbound-book-267586/)
+
++ Science Book Cover Image: <a href="https://www.freepik.com/free-vector/science-laboratory-composition_21078541.htm#query=science&position=17&from_view=search&track=sph">Image by macrovector</a> on Freepik
+
++ Maths Book Cover Image: <a href="https://www.freepik.com/free-vector/math-background_4365871.htm#query=mathematics&position=13&from_view=search&track=sph">Freepik</a>

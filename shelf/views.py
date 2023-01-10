@@ -61,8 +61,9 @@ def add_book(request):
             description = request.POST.get('description')
             genre = request.POST.get('genre')
             slug = slugify(title)
+            image_url = Book.COVER_URLS.get(genre)
             Book.objects.create(title=title, author=author, description=description,
-                            genre=genre, owner=request.user, slug=slug)
+                            genre=genre, owner=request.user, slug=slug, image_url=image_url)
             messages.info(request, "Successfully added your book.")
             return redirect('/')
         else:
@@ -82,6 +83,7 @@ def edit_book(request, book_id):
             form.save()
             updated_book = get_object_or_404(Book, id=book_id)
             updated_book.slug = slugify(book.title)
+            updated_book.image_url = Book.COVER_URLS.get(updated_book.genre)
             updated_book.save()
             messages.info(request, "Successfully updated your book.")
             return redirect('/')
@@ -229,7 +231,7 @@ def perform_search(request):
     liked_books = []
 
     for gen in list:
-        genre_query = genre_query | Q(genre__icontains=gen)
+        genre_query = genre_query | Q(genre__iexact=gen)
     
     title_search_terms = request.POST['title-search-input']
     author_search_terms = request.POST['author-search-input']

@@ -22,22 +22,20 @@
   {% block content %}
   <div class="container">
 
-    <div class="row">
+    <div class="row justify-content-center align-items-center h-100">
 
-      <div class="col-md-6">
-        <p>making sure</p>
-      </div>
+      <div class="col-4 text-center">
 
-      <div class="col-md-6">
-
-        <p>{% trans 'Are you sure you want to sign out?' %}</p>
+        <p class="mt-5 display-6">{% trans 'Are you sure you want to sign out?' %}</p>
+        <img src="https://res.cloudinary.com/dzg7yacrw/image/upload/v1673262941/assets/site_images/question_aqbsll.png"
+        class="img-fluid" alt="A question mark on a blue circle background.">
 
         <form method="post" action="{% url 'account_logout' %}">
           {% csrf_token %}
           {% if redirect_field_value %}
           <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
           {% endif %}
-          <button type="submit" class="btn btn-light">{% trans 'Sign Out' %}</button>
+          <button type="submit" class="btn btn-secondary mt-3"><span class="display-6">{% trans 'Sign Out' %}</span></button>
         </form>
       </div>
 
@@ -49,6 +47,14 @@
 
 
   {% endblock %}
+
+
+  <footer class="fixed-bottom text-center text-lg-start bg-light text-muted">
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+      <a href="https://www.flaticon.com/free-icons/question" title="question icons">Question icons created by Roundicons - Flaticon</a>
+  </section>
+   
+  </footer>
 
 </body>
 
