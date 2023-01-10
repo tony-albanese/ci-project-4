@@ -7,12 +7,12 @@
     <div class="row justify-content-between">
         <div class="col-4">
             {% if heading_label%}
-            <h2>{{ heading_label }}</h2>
+            <h2 class="display-3">{{ heading_label }}</h2>
             {% else%}
-            <h2>Books</h2>
+            <h2 class="display-3">Books</h2>
             {% endif %}
         </div>
-        <div class="col-4 text-end">
+        <div class="col-4 text-end my-auto">
             <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 <i id="search-icon" class="fa-solid fa-magnifying-glass"></i>
               </button>
