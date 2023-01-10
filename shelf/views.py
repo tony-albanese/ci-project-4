@@ -205,7 +205,7 @@ def get_favorites(request):
 
 
 def books_by_owner(request, owner_id):
-    books = Book.objects.filter(owner__id=owner_id)
+    books = Book.objects.filter(owner__id=owner_id).order_by('-posted_on')
     owner = User.objects.get(id=owner_id)
 
     print(owner.username)
