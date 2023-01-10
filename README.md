@@ -37,7 +37,8 @@ As a user, I can see a image for book based on genre so that it is visually easi
 As a user, I can fliter posts by contributor so that I can better find content that is relevant to me.
 As a user, I can filter posts by genre so that I can better find content that is relevant to me.
 As a user, I can search for posts so that I can better find books to suit my interests.
-# UX Design
+
+As a user, I can interact with content that is paginated so that I can more easily consume large lists of content.
 
 # Database Design
 ## Classes
@@ -90,8 +91,9 @@ After successful account creation or login attempt, they are taken to the home s
 > As a user, I can login with a user name and password, so that I can access the content of the site.
 
 ## Home Page
-On the home page, a logged in user will see a list of all the books in the database. 
+On the home page, a logged in user will see a list of all the books in the database. The content on this page is paginated, since it will have the most content on it and users will be very frustrated dealing with large lists of content. This is the only page that has paginated content since the others (the user's own books, likes, and search results) will most likely have enough limitation in result size that pagination is not necessary.
 > As a user, I can see a list of books so that I can get inspiration as to what I want to read next.  
+> As a user, I can interact with content that is paginated so that I can more easily consume large lists of content.  
 
 ### Book Card
 Each book entry is displayed as a Bootstrap card. In addition to the Title, Author, Description and Genre, each book card has an image that corresponds to the genre of the book. In addition, at the footer of each card is an icon bar where the user can view the comments, like the book, or (if they are the owner of the book) can edit or delete it.
