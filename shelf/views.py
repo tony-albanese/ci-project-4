@@ -5,9 +5,8 @@ from django.contrib import messages
 from django.template.defaultfilters import slugify
 from django.db.models import Q
 from django.contrib.auth.models import User
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Book
-
 from .forms import BookForm, CommentForm
 
 # Create your views here.
@@ -27,9 +26,19 @@ def get_books(request):
         if book.likes.filter(id=request.user.id).exists():
             liked_books.append(book.id)
 
+    page = request.GET.get('page', 1)
+    paginator = Paginator(books, 6)
+
+    try:
+        paginated_books = paginator.page(page)
+    except PageNotAnInteger:
+        paginated_books = paginator.page(1)
+    except EmptyPage:
+        paginated_books = paginator.page(paginator.num_pages)
+
     template = loader.get_template('index.html')
     context = {
-        'books': books,
+        'books': paginated_books,
         'liked_books': liked_books,
         'genres': Book.GENRES,
     }

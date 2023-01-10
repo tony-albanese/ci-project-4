@@ -81,6 +81,31 @@
     </div>
     <!--END Display Books-->
 
+
+    <!--BEGIN Pagination Code-->
+    {% if books.has_other_pages %}
+    <ul class="pagination">
+        {% if books.has_previous %}
+        <li  class="page-item"><a class="page-link" href="?page={{ books.previous_page_number }}">&laquo;</a></li>
+      {% else %}
+        <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+      {% endif %}
+      {% for i in books.paginator.page_range %}
+        {% if books.number == i %}
+          <li class="page-item active"><span class="page-link">{{ i }}</span></li>
+        {% else %}
+          <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+        {% endif %}
+      {% endfor %}
+      {% if books.has_next %}
+        <li  class="page-item"><a class="page-link" href="?page={{ books.next_page_number }}">&raquo;</a></li>
+      {% else %}
+        <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+      {% endif %}
+    </ul>
+    {% endif %}
+    <!--END Pagination Code-->
+
     {% else %}
     <!--Display empty list content.-->
     <div class="row justify-content-center text-center">
