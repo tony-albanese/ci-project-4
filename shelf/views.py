@@ -20,7 +20,7 @@ def load_home_page(request):
 
 
 def get_books(request):
-    books = Book.objects.all()
+    books = Book.objects.all().order_by('-posted_on')
     liked_books = []
     for book in books:
         if book.likes.filter(id=request.user.id).exists():
