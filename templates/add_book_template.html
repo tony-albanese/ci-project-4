@@ -3,6 +3,7 @@
 {% block content %}
 {% load crispy_forms_tags %}
 <div class="container">
+<h2 class="display-2">Add a Book</h2>
 <form method="POST" action="/add_book/">
     {% csrf_token %}
     {{ form | crispy }}
