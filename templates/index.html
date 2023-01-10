@@ -23,8 +23,8 @@
 
     <!--START Display Books-->
     <div class="row">
-        <div class="col-12 mt-3 ">
-            <div class="row my-3">
+        <div class="col-12 mt-3">
+            <div class="row my-3 g-0">
 
                 {% for book in books %}
                 <div class="card mx-3" style="width: 22rem;">
@@ -39,6 +39,7 @@
 
                         <hr class="hr">
                        <p class="card-text">{{book.description}}</p>
+                       <hr class="hr">
                         {% if book.owner == user%}
                         <p class="card-text text-end">Posted by {{book.owner}} </p>
                         {% else %}
@@ -71,7 +72,7 @@
 
                 {% if forloop.counter|divisibleby:3 %}
             </div>
-            <div class="row  my-3">
+            <div class="row  my-3 g-0">
 
                 {% endif %}
 
