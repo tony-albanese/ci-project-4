@@ -56,6 +56,8 @@ The **Book** class is the key custom class in this project as the main function 
 |ForeignKey User|owner|
 |CharField|genre|
 |ManyToManyField User|likes|
+|URLField|image_url|
+|DateField|posted_on|
 
 The **Comment** class is used to represent a block of text that a user creates and is attached to a book. A **Book** can have many **Comment**s but each **Comment** can only belong to one **Book**. Each **Comment** can have only one **User** author, but each **User** author can write many **Comment**s.
 |Comment ||
