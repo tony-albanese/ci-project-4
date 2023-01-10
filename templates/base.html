@@ -77,19 +77,17 @@
       {% endif %}
     {% endfor %}
 
-
     {% block content %}
     {% endblock %}
     
         <footer class="fixed-bottom text-center text-lg-start bg-light text-muted">
             <section class="d-flex justify-content-center   p-4 border-bottom">
-                <p class="lead">View Image Credits</p>
+                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#credits-modal">View Image Credits</button>
             </section>
-    </footer>
+        </footer>
 
-
-  <!-- Modal -->
-  <div id="alert-modal" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="modal-label" aria-hidden="true">
+  <!-- Success Modal Dialog-->
+  <div id="alert-modal" class="modal fade" tabindex="-1" aria-labelledby="modal-label" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -109,6 +107,23 @@
 
 
 
+  <!--Image Credits Modal Dialog-->
+  <div id="credits-modal" class="modal fade " tabindex="-1" aria-labelledby="modal-credit-title" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal-credit-title">Image Credits</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Credits</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
     <script src="https://kit.fontawesome.com/6a251fd2ee.js" crossorigin="anonymous"></script>
     <script>
