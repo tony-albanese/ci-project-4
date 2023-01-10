@@ -1,11 +1,39 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
-<title>Wrong address</title>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    </script>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Page not Found</title>
+</head>
+
 <body>
 
-<h1>Ooops!</h1>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-8 text-center">
+                <h1 class="display-3">Oops</h1>
+                <p class="lead">Looks like something went wrong.</p>
+                <img class="img-fluid" src="https://res.cloudinary.com/dzg7yacrw/image/upload/v1673348473/assets/site_images/404_error_ldskmm.jpg" alt="An error image showing someone lying down on a computer screen.">
+                <a href="/" class="btn btn-primary"><span class="display-5">Take Me Home</span></a>
+            </div>
 
-<h2>I cannot find the file you requested!</h2>
+        </div>
 
+
+    </div>
+    
 </body>
+
+
 </html>
