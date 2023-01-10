@@ -126,11 +126,22 @@ def add_comment(request, book_id):
         messages.error(request, "Something went wrong.")
         comment_form = CommentForm()
     
+    # Paginate the comments
     comments = book.comments.order_by("-written_on")
+    page = request.GET.get('page', 1)
+    paginator = Paginator(comments, 4)
+    
+    try:
+        paginated_comments = paginator.page(page)
+    except PageNotAnInteger:
+        paginated_comments = paginator.page(1)
+    except EmptyPage:
+        paginated_comments = paginator.page(paginator.num_pages)
+    
     context = {
         'comment_form': CommentForm(),
         'book': book,
-        'comments': comments
+        'comments': paginated_comments
     }
     return render(request, 'book_detail_template.html', context)
 
@@ -140,10 +151,23 @@ def view_book_detail(request, book_id):
     comments = book.comments.order_by("-written_on")
     template = loader.get_template('book_detail_template.html')
     form = CommentForm()
+
+
+    # Paginate the comments
+    page = request.GET.get('page', 1)
+    paginator = Paginator(comments, 4)
+    
+    try:
+        paginated_comments = paginator.page(page)
+    except PageNotAnInteger:
+        paginated_comments = paginator.page(1)
+    except EmptyPage:
+        paginated_comments = paginator.page(paginator.num_pages)
+
     context = {
         'comment_form': form,
         'book': book,
-        'comments': comments
+        'comments': paginated_comments
     }
 
     return HttpResponse(template.render(context, request))
