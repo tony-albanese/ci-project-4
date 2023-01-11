@@ -209,7 +209,7 @@ and vice versa.
 
 ## Alerts
 When the user has successfully interacted with the site - signing in or out, creating an account,  adding a book entry, updating a book entry, adding a comment or a like, the user is alerted.
-Upon success, a green alert message undeneath the navbar appears letting the user know they have successfully interacted with the site.
+Upon success, a green alert message undeneath the navbar appears letting the user know they have successfully interacted with the site. The following is an example to let the user know their comment has been successfuly added.
 ![Modal Alert](assets/screenshots/modal-add-comment.png)
 > As a user, I can recieve feedback when I interact with the site so that I know if my actions are successful or not and why.  
 
