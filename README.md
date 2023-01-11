@@ -1,12 +1,10 @@
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
 # Introduction
-This web is a a chance for people who love books to share their favorites. The idea is not for people to create an extensive catalog of their library (although they may). Rather, it is for people to share from one to fifteen books from their shelf and have others be able to see and comment on what they read. There are 
-many sites such as Goodreads where book lovers can discuss books. However, the website is rather slow, the search is poor, and the user interface is rather 
-clunky. 
+This web is a a chance for people who love books to share their favorites. The idea is not for people to create an extensive catalog of their library (although they may). Rather, it is for people to share one or several books from their shelf and have others see, comment on, or like what the books they have posted. 
 
-This site will allow people to sign in, share the books that they're interested in (called a shelf), and see what other people are reading. Users can comment
-on books and like them. The whole idea is to get inspiration from other readers as to what books are out there.
+This site will allow people to sign in, share the books that they're interested in, and see what other people are reading. Users can comment
+on books and like them. The whole idea is to get inspiration from other readers as to what books are out there and to share one's love of the printed word with similarly minded people.
 
 ## User Stories
 
