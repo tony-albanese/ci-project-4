@@ -108,7 +108,21 @@ In subsequent iterations, extra features such as basic search and filtering were
 + Finally, searching based on genre, title, author and description was added using a modal search form.
 
 
+## GitHub Features
+GitHub's project management features were used to organize, prioritize, and document the build process.
+### Issues
+Each larger scale task was given a GitHub issue. This included the user stories, and anything else that would require attention. Issues were assigned labels to help prioritize them in the work flow. As can be seen, some issues are marked as "Must Do" while others are marked as "Should Do". Some issues are enhancements, others are questions requiring research. Often, if I ran into a problem that was not critical to fix (an ugly margin for example) or if I thought of a feature that I would like to add, I created an issue and assigned it a label to help me keep track of how important it is. The key is that essential features and critical issues were fixed first.
 
+![GitHub Issue](assets/agile/issues.png)
+
+### Projects
+Issues often are related to each other - this includes user stories and additional features. For example, user stories around CRUD operations belong together as well as issues involved with search and styling. To help keep issues organized, those that are related to each other were organized into projects.
+![GitHub Project](assets/agile/projects.png)
+For example, one can see here that there are projects based on CRUD, django setup, etc. (These projects are closed. At the time of this writing, there is still an open project for styling.) Within each project, the related issues are organized into a kanban board. In the following example, one can see the user story issues displayed in the Done column. 
+![GitHub kanban board](assets/agile/sample-project-board.png)
+Of course, not every task in the board is an issue. The reason is that each issue often requires several steps to achieve. Therefore, under each issue, I would plan the steps to solve each issue. This was for two reasons:
+ 1. It helped break the task down into smaller chunks which helped me organize my workday productively - I was able to dedicate time and effort to completing each task rather than planning over and over again.
+ 2. It is very satisfying to move tasks from the ToDo, to Doing to Done. It gives me a sense of accomplishment - even if the issue is not entirely solved, progress was made in its resolution.
 
 
 # Features
