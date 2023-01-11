@@ -367,13 +367,14 @@ Git was employed in this project and the project code hosted on GitHub. I used b
 > ![GitHub Branches](assets/screenshots/branches.png)
 
 # Deployment
-## technology used
-+ gunicorn - server to run django on heroku
-+ dj-database-url- Use Database URLs in your Django Application.
-+ dj3-cloudinary-storage - Allows use of Cloudinary storage to serve static files and media. This is important since django is not really designed to serve static files itself.
-+ crispy-forms - A package to help automatically style django forms
-+ bootstrap 5 - A CSS/JavaScript library developed at Twitter to make responsive websites.
-
+## Technology used
++ [gunicorn](https://gunicorn.org/) - Server to run django on heroku
++ [dj-database-url](https://pypi.org/project/dj-database-url/) - Use Database URLs in your Django Application.
++ [dj3-cloudinary-storage](https://pypi.org/project/dj3-cloudinary-storage/) - Allows use of Cloudinary storage to serve static files and media. This is important since django is not really designed to serve static files itself.
++ [Cloudinary](https://cloudinary.com/) - Media cloud storage service to serve static files
++ [ElephantSQL](https://www.elephantsql.com/) - An online service running a PostgreSQL server as a service.
++ [crispy-forms](https://django-crispy-forms.readthedocs.io/en/latest/) - A package to help automatically style django forms
++ [Bootstrap 5](https://getbootstrap.com/) - A CSS/JavaScript library to make responsive websites.
 
 ## Project Creation
 + Cloned CI Repository
@@ -421,7 +422,10 @@ django-admin startproject bookshelf .
 
 The idea and code for using the Bootstrap modals and django messages was from this YouTube video by [DjangoMastery](https://www.youtube.com/watch?v=zbsY-4ZLSkI).
 
+The HTML code for the Modals was taken from the [Bootstrap](https://getbootstrap.com/docs/5.2/components/modal/) website and modified accordingly. 
+
 I used this tutorial on [SimpleIsBetterThanComplex](https://simpleisbetterthancomplex.com/) for the pagination feature using function based views: [How to Paginate with Django](https://simpleisbetterthancomplex.com/tutorial/2016/08/03/how-to-paginate-with-django.html)
+
 
 The Table of Contents was created with <a href='http://ecotrust-canada.github.io/markdown-toc/'>markdown-toc</a>.
 
