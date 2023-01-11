@@ -134,23 +134,35 @@ There is an admin panel which users with the correct privileges (superusers), ca
 ## allauth authentication
 When the user navigates to the site, they are given a chance to login if they already have an account and to sign up if they do not.
 After successful account creation or login attempt, they are taken to the home screen. If they log out, they are taken back to the login screen.
+> The login screen:  
+> ![Login Screen](assets/screenshots/login-page.png)  
+> When the user logs out, they are asked to confirm their choice.  
+> ![The Confirm Logout Screen](assets/screenshots/confirm-logout.png)  
+> This is the account creation screen when the user clicks Sign Up  
+> ![Sign Up Page](assets/screenshots/sign-up-page.png)
+
+
 > As a new user, I can create an account with a user name and password, so that I can log in to access content.  
 > As a user, I can login with a user name and password, so that I can access the content of the site.
 
 ## Home Page
 On the home page, a logged in user will see a list of all the books in the database. The content on this page is paginated, since it will have the most content on it and users will be very frustrated dealing with large lists of content. This is the only page that has paginated content since the others (the user's own books, likes, and search results) will most likely have enough limitation in result size that pagination is not necessary.
+![Home Page](assets/screenshots/main-page.png)
+![Pgination](assets/screenshots/card-pagination.png) 
 > As a user, I can see a list of books so that I can get inspiration as to what I want to read next.  
 > As a user, I can interact with content that is paginated so that I can more easily consume large lists of content.  
 
 ### Book Card
 Each book entry is displayed as a Bootstrap card. In addition to the Title, Author, Description and Genre, each book card has an image that corresponds to the genre of the book. In addition, at the footer of each card is an icon bar where the user can view the comments, like the book, or (if they are the owner of the book) can edit or delete it.
-
+![Book Card](assets/screenshots/book-card-row.png)
+![Book Card Footer](assets/screenshots/card-footer-user.png)
 > As a user, I can see the relevant information for a book entry in an organized, visually appealing format.  
 > As a user, I can see a image for book based on genre so that it is visually easier to find books of the genre I am interested in.  
 
 ## Favorites
 This is the list of books that the user has liked. This is so that they can keep track of the books that they have liked and should serve as 
 a list of what they might be interested in reading.
+![Favorites](assets/screenshots/favorites.png)
 > As a user, I can see a list of my liked books so that I can keep track of books I am really interested in.
 
 ## My Books
@@ -161,10 +173,15 @@ This is a list of the books that the user has posted themselves. This is so that
 ## Add a Book
 In the nav bar, the user can see an Add Book link if they are logged in. They are taken to a form where they can enter the details for
 a new book.
+![Add Book Form](assets/screenshots/add-book-form.png)
 > As a user, I can add a book from a form so that I can share my recommendation with other users. 
 
 ## Delete a Book
 Next to each book is a link for the user to delete a book. Upon clicking, the book is deleted and the user is redirected to the home page. The user will only see link to delete a book if they are the owner of the book - they are the one that submitted it.
+> This is the card footer when the user is the owner of the book. ![Card Footer for User](assets/screenshots/card-footer-user.png)   
+and this
+> is the footers when the user is NOT the owner of the book. ![Card Footer Others](assets/screenshots/card-footer-others.png)
+> So the user can only delete (or edit) a book that they own.  
 > As a user, I can delete a book from list so that I can keep my recommendations current and germane. 
 > As a user, I can only modify or delete my own entries so that others may not tamper with my recommendations.
 
@@ -172,6 +189,7 @@ Next to each book is a link for the user to delete a book. Upon clicking, the bo
 With each book is a link to edit the book. Here, the user is taken to a form field pre-populated with the book's details. They can change the fields
 as they like. When they press update, the new details are updated in the database and the user is taken back to the home page. The user will only see a link
 to edit a book if they are the owner of that book - they are the one that submitted it.
+![Modify Book Page](assets/screenshots/edit-book.png)  
 > As a user, I can modify a book so that I can correct mistakes or improve content.
 > As a user, I can only modify or delete my own entries so that others may not tamper with my recommendations.
 
@@ -179,34 +197,50 @@ to edit a book if they are the owner of that book - they are the one that submit
 When the user clicks on the View Comments link, they are taken to a page where all of the books comments are displayed. And a form is given
 for the user to enter their own comment. Upon clicking on the submit button, the comment is saved to the database and the new comment is 
 reflected in the list.
+![Comment Form](assets/screenshots/comment-form.png)
 > As a user, I can comment on a book so that I can share my opinion about the book with the community.
 
 ## Liking a Book
 For each book, there is an icon for the user to like the book. If the user has already liked the book, the icon is filled. Otherwise it
 is empty. The total likes are displayed next to the icon. When the user clicks on the like icon, the status toggles - like goes to unlike
 and vice versa. 
+![Card Footer](assets/screenshots/card-footer-others.png)  
 > As a user, I can like or unlike a book so that other users can make a decision to read a book based on popularity.
 
 ## Alerts
 When the user has successfully interacted with the site - signing in or out, creating an account,  adding a book entry, updating a book entry, adding a comment or a like, the user is alerted.
 Upon success, a green alert message undeneath the navbar appears letting the user know they have successfully interacted with the site.
-
+![Modal Alert](assets/screenshots/modal-add-comment.png)
 > As a user, I can recieve feedback when I interact with the site so that I know if my actions are successful or not and why.  
 
 ## Filter and Search
 ### Filter by User
 In each book post, there is a line stating the user that posted that book. For all other users (ie, users that are not the logged in user), their name 
 appears as a link. When clicked, a list of all the posts by that user are shown. 
+![Filter by User](assets/screenshots/user-link.png)
 > As a user, I can fliter posts so that I can better find content that is relevant to me. 
 
 ### Filter by Genre
 When the user clicks on the magnifying glass icon in the upper right corner, a modal search form is displayed. In the form are the check-boxes that correspond to each of the genres in the database. The user can select one, several, (or none) to filter by. When the user clicks the Search button, only those books whose genres match the selected ones are displayed. The search is an OR search - since that is what a user would expect. If they select 'Mysteries', 'Cookbooks',  and 'Biographies' they expect to get books in any of these genres not books that have all three.
+![Modal Filter Form](assets/screenshots/search-modal.png)
 > As a user, I can filter posts by genre so that I can better find content that is relevant to me.  
 
 ### Search by Author, Title, Description
 When the user clicks on the magnifying glass icon in the upper right corner, a modal search form is displayed. In addition to the check boxes corresponding to the genres, there are three text input fields for Title, Author, and Description. These are all optional. The database will queries the fields based on the words entered. The search is an AND search, since that is how the user would expect the database to behave. For example, if they enter "Ray Bradbury" for the author and "gripping and exciting", they mean books by Ray Bradbury that are also described as being gripping and exciting.
-
+> For example, the following books were returned after entering 'Sicilian' and 'Holmes' in the description of the form. The books have Holmes OR Sicilian in the description.  
+> ![Description Search Result](assets/screenshots/description-search-result.png)
 > As a user, I can search for posts so that I can better find books to suit my interests.  
+
+### No Results Found
+If the results are empty, then the user is shown a message with a graphic telling them nothing has been found.
+![Empty Search](assets/screenshots/empty-search.png)  
+> As a user, I can receive feedback when I interact with the site so that I know if my actions are successful.
+
+### 404 
+If the user decides to type random endpoints, they will be served the following 404 page with a large button offering them to be taken to the home screen.
+![404 Page](assets/screenshots/404-page.png)
+
+
 # Testing
 The testing done here is BDD testing.
 ## Initial Setup Testing
@@ -287,12 +321,11 @@ The testing done here is BDD testing.
 # Deployment
 
 ## technology used
-
-gunicorn - server to run django on heroku
-dj-database-url Use Database URLs in your Django Application.
-dj3-cloudinary-storage - Allows use of cloudinary
-crispy-forms
-bootstrap 5
++ gunicorn - server to run django on heroku
++ dj-database-url- Use Database URLs in your Django Application.
++ dj3-cloudinary-storage - Allows use of cloudinary
++ crispy-forms
++ bootstrap 5
 
 
 ## Project Creation
