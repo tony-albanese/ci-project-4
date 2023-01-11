@@ -63,8 +63,8 @@ The **Comment** class is used to represent a block of text that a user creates a
 |Comment ||
 |-----|----|
 |type|field name|
-|ForegnKey User|author|
-|ForegnKey Book|book|
+|ForeignKey User|author|
+|ForeignKey Book|book|
 |TextField|body|
 |DateTimeField|written_on|
 
