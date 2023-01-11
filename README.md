@@ -317,15 +317,16 @@ The testing done here is BDD testing.
 |Search by Title|As a logged in user <br> when I enter text in the Title field <br> and click the Search Button <br> A page listing the books whose Title contains any of the entered terms is loaded.|PASS|
 |Search by Description|As a logged in user<br> when I enter text in the description field <br> and click the Search Button <br> A page listing the books whose Description contains any of the entered terms is loaded.|PASS|
 
+# Version Control Strategy
 
 # Deployment
 
 ## technology used
 + gunicorn - server to run django on heroku
 + dj-database-url- Use Database URLs in your Django Application.
-+ dj3-cloudinary-storage - Allows use of cloudinary
-+ crispy-forms
-+ bootstrap 5
++ dj3-cloudinary-storage - Allows use of Cloudinary storage to serve static files and media. This is important since django is not really designed to serve static files itself.
++ crispy-forms - A package to help automatically style django forms
++ bootstrap 5 - A CSS/JavaScript library developed at Twitter to make responsive websites.
 
 
 ## Project Creation
@@ -367,7 +368,8 @@ django-admin startproject bookshelf .
 + add Procfile
 + connect to github respository
     + deploy from branch
-
++ before final deployment, the debug setting was set to false for security
++ before final deployment, the DISABLE_COLLECTSTATIC config var in Heroku was removed
 
 # Credits
 
