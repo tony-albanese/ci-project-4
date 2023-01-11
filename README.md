@@ -78,6 +78,37 @@ The following Entity Relationship Diagram shows how the models are related to ea
 ![ERD](assets/screenshots/erd.png)
 
 # Agile Workflow
+An approximation of the agile workflow was used in the development of this project. The key ideas adopted were:
++ focus on the essential features first
++ work in small iterations
++ add extra features as time permitted
++ using GitHub's kanban board, issues, labels, and project features to organize these iterations.
+
+## Adding essential features first.
+For example, in this project, a minimally functioning backend was built first. No consideration was given to styling the output or templates.
+A sketch of how the site was built is as follows:
++ the simplest authentication with allauth - username and password
++ creating the simplest database models and relationships that would give a minimally functioning product. This included:
+    + adding a book with basic info: title, author, description, genre
+    + deleting a book (only books the user themself posted)
+    + leaving a comment
+    + loading books and displaying them
+Search and filter would be added later.
++ Once these features were implemented, a minimum front-end was built. Attention was first paid to basic styling and layout with Bootstrap
+    + Adding a navbar and footer
+    + Adding responsive layout to the login, logout, and sign up pages, and comment form
+    + Displaying the essential information of a book in a Bootstrap card
+    + Placing those cards in responsive rows and columns.
+    + Adding links to add comments and likes
+
+In subsequent iterations, extra features such as basic search and filtering were added. This included:
++ MyBooks - Only the users own books are displayed
++ MyFavorites - All of the books the user liked are displyed
++ Once these features were styled and functioning properly, imagery was added to the site. This included adding images representing each genre to the Book class. 
++ Finally, searching based on genre, title, author and description was added using a modal search form.
+
+
+
 
 
 # Features
