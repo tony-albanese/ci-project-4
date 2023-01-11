@@ -318,9 +318,12 @@ The testing done here is BDD testing.
 |Search by Description|As a logged in user<br> when I enter text in the description field <br> and click the Search Button <br> A page listing the books whose Description contains any of the entered terms is loaded.|PASS|
 
 # Version Control Strategy
+Git was employed in this project and the project code hosted on GitHub. I used branches in order to keep the main branch as "pure" as possible. The strategy was to have each branch dedicated to one feature or fix. Once I was satisfied at a particular stage of a branch, I would navigate to GitHub, click on my repository, select the branch, and create a pull request. GitHub would then check if there are no conflicts and indicate if the branch could be merged into main. (One can choose which branch to merge into.) Once the pull request is created, I navigated down, wrote a comment, and clicked on the green Merge button and the commits would be merged into the main branch. I tried to keep commits as atomic as possible - focusing only on one element or feature at a time. This was not always the case, but most of the commits are relatively small changes. In addition, I tried not to mix features in a branch. Small tweaks to other features were allowed, but the majority of the work on each branch was dedicated to that one feature. This is in line with the agile method of tackling a project - the team (in this case me) should only work on one feature at a time. 
+
+> The following screenshot shows some of the git branches in the project. Each branch is clearly labelled and is dedicated to one feature.  
+> ![GitHub Branches](assets/screenshots/branches.png)
 
 # Deployment
-
 ## technology used
 + gunicorn - server to run django on heroku
 + dj-database-url- Use Database URLs in your Django Application.
