@@ -6,7 +6,7 @@ from django.template.defaultfilters import slugify
 from django.db.models import Q
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .models import Book
+from .models import Book, Comment
 from .forms import BookForm, CommentForm
 
 # Create your views here.
@@ -144,6 +144,19 @@ def add_comment(request, book_id):
         'comments': paginated_comments
     }
     return render(request, 'book_detail_template.html', context)
+
+
+def delete_comment(request, comment_id):
+    # Get the book that belongs to the comment
+    comment = get_object_or_404(Comment, id=comment_id)
+    book_id = comment.book.id
+    # Add that book to the context
+    # Delete the comment
+    # redirect to the comments page and pass in the book id.
+    comment.delete()
+    messages.info(request, "Comment deleted.")
+    return redirect(f'/book_detail/{book_id}')
+    # return HttpResponse(f'Delete comment {comment_id}')
 
 
 def view_book_detail(request, book_id):
