@@ -471,3 +471,5 @@ The Table of Contents was created with <a href='http://ecotrust-canada.github.io
 + Science Book Cover Image: <a href="https://www.freepik.com/free-vector/science-laboratory-composition_21078541.htm#query=science&position=17&from_view=search&track=sph">Image by macrovector</a> on Freepik
 
 + Maths Book Cover Image: <a href="https://www.freepik.com/free-vector/math-background_4365871.htm#query=mathematics&position=13&from_view=search&track=sph">Freepik</a>
+
++ Comments Image: Image by <a href="https://www.freepik.com/free-vector/reviews-concept-landing-page_5168344.htm#query=comments&position=20&from_view=search&track=sph">Freepik</a>
