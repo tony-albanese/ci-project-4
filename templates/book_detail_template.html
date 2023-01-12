@@ -31,8 +31,12 @@
               <div class="card-body">
                 <h5 class="card-title fs-6">
                   {{ comment.author.username}}
+                  <span class="float-end action-buttons">
+                    <button class="btn btn-light btn-small"><a href="#"><i class="fa-solid fa-pen"></i></a></button>
+                    <button class="btn btn-light btn-small"><a href="#"><i class="fa-regular fa-trash-can"></i></a></button>
+                  </span>
                 </h5>
-              
+            
                 <h6 class="card-subtitle mb-2 text-secondary small">
                   {{ comment.written_on}}
                 </h6>
