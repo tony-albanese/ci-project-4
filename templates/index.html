@@ -57,7 +57,7 @@
                         <a href="/delete_book/{{book.id}}" class="card-link"><i class="fa-regular fa-trash-can"></i></a>
                         {% endif %}
                         <a href="/book_detail/{{book.id}}" class="card-link">
-                            <i class="fa-regular fa-comment"> {{ book.comments.count }}</i>
+                            <i class="fa-regular fa-comment"></i> {{ book.comments.count }}
                         </a>
                         {% if book.id in liked_books %}
                         <a href="/unlike/{{book.id}}" class="card-link"><i class="fa-solid fa-heart"></i>
