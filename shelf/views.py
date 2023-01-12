@@ -149,8 +149,12 @@ def add_comment(request, book_id):
 def delete_comment(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
     book_id = comment.book.id
-    comment.delete()
-    messages.info(request, "Comment deleted.")
+
+    if request.user == comment.author:
+        comment.delete()
+        messages.info(request, "Comment deleted.")
+    else:
+        messages.error(request, "Could not delete comment.")
     return redirect(f'/book_detail/{book_id}')
 
 
