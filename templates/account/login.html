@@ -34,26 +34,27 @@
   <div class="row justify-content-center align-items-center h-100">
 
     <div class="col-md-9 col-lg-6 col-xl-5">
-      <h2> Welcome to BookShelf</h2>
-      <p>A place for readers to share what is on their shelves.</p>
+      <h2 class="display-5"> Welcome to BookShelf</h2>
+      <p class="lead">A place for you to share what is on your shelf with people who love books as much as you do.</p>
       <img src="https://res.cloudinary.com/dzg7yacrw/image/upload/v1673261774/assets/site_images/book_mahrak.jpg"
           class="img-fluid" alt="An open book.">
 
       <p>{% blocktrans %}No account? Then please
         <a href="{{ signup_url }}">create an account</a> first.{% endblocktrans %}</p>
+      <p>Or you can log in to the <a href="/admin">Admin Panel</a></p>
       {% endif %}
     </div>
 
 
     <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-      <h1>{% trans "Sign In" %}</h1>
+      <h2 class="display-5">{% trans "Sign In" %}</h2>
       <form class="login" method="POST" action="{% url 'account_login' %}">
         {% csrf_token %}
         {{ form.as_p }}
         {% if redirect_field_value %}
         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
         {% endif %}
-        <button class="primaryAction btn btn-primary" type="submit">{% trans "Sign In" %}</button>
+        <button class="primaryAction btn btn-primary" type="submit"><span class="display-6">{% trans "Sign In" %}</span> </button>
       </form>
     </div>
 

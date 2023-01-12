@@ -5,9 +5,8 @@ from django.contrib import messages
 from django.template.defaultfilters import slugify
 from django.db.models import Q
 from django.contrib.auth.models import User
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Book
-
 from .forms import BookForm, CommentForm
 
 # Create your views here.
@@ -21,15 +20,25 @@ def load_home_page(request):
 
 
 def get_books(request):
-    books = Book.objects.all()
+    books = Book.objects.all().order_by('-posted_on')
     liked_books = []
     for book in books:
         if book.likes.filter(id=request.user.id).exists():
             liked_books.append(book.id)
 
+    page = request.GET.get('page', 1)
+    paginator = Paginator(books, 6)
+
+    try:
+        paginated_books = paginator.page(page)
+    except PageNotAnInteger:
+        paginated_books = paginator.page(1)
+    except EmptyPage:
+        paginated_books = paginator.page(paginator.num_pages)
+
     template = loader.get_template('index.html')
     context = {
-        'books': books,
+        'books': paginated_books,
         'liked_books': liked_books,
         'genres': Book.GENRES,
     }
@@ -117,11 +126,22 @@ def add_comment(request, book_id):
         messages.error(request, "Something went wrong.")
         comment_form = CommentForm()
     
+    # Paginate the comments
     comments = book.comments.order_by("-written_on")
+    page = request.GET.get('page', 1)
+    paginator = Paginator(comments, 4)
+    
+    try:
+        paginated_comments = paginator.page(page)
+    except PageNotAnInteger:
+        paginated_comments = paginator.page(1)
+    except EmptyPage:
+        paginated_comments = paginator.page(paginator.num_pages)
+    
     context = {
         'comment_form': CommentForm(),
         'book': book,
-        'comments': comments
+        'comments': paginated_comments
     }
     return render(request, 'book_detail_template.html', context)
 
@@ -131,10 +151,23 @@ def view_book_detail(request, book_id):
     comments = book.comments.order_by("-written_on")
     template = loader.get_template('book_detail_template.html')
     form = CommentForm()
+
+
+    # Paginate the comments
+    page = request.GET.get('page', 1)
+    paginator = Paginator(comments, 4)
+    
+    try:
+        paginated_comments = paginator.page(page)
+    except PageNotAnInteger:
+        paginated_comments = paginator.page(1)
+    except EmptyPage:
+        paginated_comments = paginator.page(paginator.num_pages)
+
     context = {
         'comment_form': form,
         'book': book,
-        'comments': comments
+        'comments': paginated_comments
     }
 
     return HttpResponse(template.render(context, request))
@@ -196,7 +229,7 @@ def get_favorites(request):
 
 
 def books_by_owner(request, owner_id):
-    books = Book.objects.filter(owner__id=owner_id)
+    books = Book.objects.filter(owner__id=owner_id).order_by('-posted_on')
     owner = User.objects.get(id=owner_id)
 
     print(owner.username)

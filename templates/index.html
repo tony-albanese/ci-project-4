@@ -7,12 +7,12 @@
     <div class="row justify-content-between">
         <div class="col-4">
             {% if heading_label%}
-            <h2>{{ heading_label }}</h2>
+            <h2 class="display-3">{{ heading_label }}</h2>
             {% else%}
-            <h2>Books</h2>
+            <h2 class="display-3">Books</h2>
             {% endif %}
         </div>
-        <div class="col-4">
+        <div class="col-4 text-end my-auto">
             <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 <i id="search-icon" class="fa-solid fa-magnifying-glass"></i>
               </button>
@@ -23,37 +23,41 @@
 
     <!--START Display Books-->
     <div class="row">
-        <div class="col-12 mt-3 ">
-            <div class="row my-3">
+        <div class="col-12 mt-3">
+            <div class="row my-3 g-0 d-flex justify-content-center">
 
                 {% for book in books %}
-                <div class="card mx-3" style="width: 18rem;">
+                <div class="card mx-3 my-2" style="width: 22rem;">
                    
                     <img src="{{book.image_url}}" class="card-img-top" alt="An image to describe the genre {{book.get_genre_display}}">
                     
                     <div class="card-body">
-                        <h5 class="card-title">{{book.title}}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">{{book.author}}</h6>
-                        <h6 class="card-subtitle mb-2 text-muted">{{book.get_genre_display}}</h6>
-                        <p class="card-text">{{book.description}}</p>
+                        <h4 class="card-title text-center">{{book.title}}</h5>
+                        <h5 class="card-subtitle mb-2 text-muted">{{book.author}}</h6>
+                        <h5 class="card-subtitle mb-2 text-muted">{{book.get_genre_display}}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Posted on {{ book.posted_on }}</h6>
 
+                        <hr class="hr">
+                       <p class="card-text">{{book.description}}</p>
+                       <hr class="hr">
                         {% if book.owner == user%}
-                        <p class="card-text text-muted">Posted by {{book.owner}}</p>
+                        <p class="card-text text-end">Posted by {{book.owner}} </p>
                         {% else %}
-                        <p class="card-text text-muted">Posted by <a href="/books_by_owner/{{book.owner.id}}">{{book.owner}}</a> </p>
+                        <p class="card-text text-end">Posted by <a href="/books_by_owner/{{book.owner.id}}">{{book.owner}}</a> </p>
                         {% endif%}
                         
+                 
                     </div>
 
-                    <div class="card-footer">
+                    <div class="card-footer text-center">
 
                         {% if book.owner == user %}
-                        <a href="edit_book/{{book.id}}" class="card-link"><i
+                        <a href="/edit_book/{{book.id}}" class="card-link"><i
                                 class="fa-regular fa-pen-to-square"></i></a>
-                        <a href="delete_book/{{book.id}}" class="card-link"><i class="fa-regular fa-trash-can"></i></a>
+                        <a href="/delete_book/{{book.id}}" class="card-link"><i class="fa-regular fa-trash-can"></i></a>
                         {% endif %}
-                        <a href="book_detail/{{book.id}}" class="card-link">
-                            <i class="fa-regular fa-comment"> {{ book.comments.count }}</i>
+                        <a href="/book_detail/{{book.id}}" class="card-link">
+                            <i class="fa-regular fa-comment"></i> {{ book.comments.count }}
                         </a>
                         {% if book.id in liked_books %}
                         <a href="/unlike/{{book.id}}" class="card-link"><i class="fa-solid fa-heart"></i>
@@ -68,7 +72,7 @@
 
                 {% if forloop.counter|divisibleby:3 %}
             </div>
-            <div class="row  my-3">
+            <div class="row  my-3 g-0 d-flex justify-content-center">
 
                 {% endif %}
 
@@ -81,11 +85,36 @@
     </div>
     <!--END Display Books-->
 
+
+    <!--BEGIN Pagination Code-->
+    {% if books.has_other_pages %}
+    <ul class="pagination justify-content-center">
+        {% if books.has_previous %}
+        <li  class="page-item"><a class="page-link" href="?page={{ books.previous_page_number }}">&laquo;</a></li>
+      {% else %}
+        <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+      {% endif %}
+      {% for i in books.paginator.page_range %}
+        {% if books.number == i %}
+          <li class="page-item active"><span class="page-link">{{ i }}</span></li>
+        {% else %}
+          <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+        {% endif %}
+      {% endfor %}
+      {% if books.has_next %}
+        <li  class="page-item"><a class="page-link" href="?page={{ books.next_page_number }}">&raquo;</a></li>
+      {% else %}
+        <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+      {% endif %}
+    </ul>
+    {% endif %}
+    <!--END Pagination Code-->
+
     {% else %}
     <!--Display empty list content.-->
     <div class="row justify-content-center text-center">
         <div class="col-6">
-            <p class="display-6">Looks like nothing matched your search.</p>
+            <p class="display-6">Looks like I have no books to display.</p>
             <img src="https://res.cloudinary.com/dzg7yacrw/image/upload/v1673264914/assets/site_images/no_results_w3u5d8.jpg"
             class="img-fluid" alt="Empty shelf.">
         </div>

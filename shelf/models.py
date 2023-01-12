@@ -58,6 +58,7 @@ class Book(models.Model):
     genre = models.CharField(max_length=6, choices=GENRES)
     likes = models.ManyToManyField(User, blank=True, related_name="book_likes")
     image_url = models.URLField(default="https://res.cloudinary.com/dzg7yacrw/image/upload/v1673273165/assets/book_covers/cover_placeholder_vqd1hn.jpg")
+    posted_on = models.DateField(auto_now=True)
 
     def __str__(self):
         return self.title

@@ -15,7 +15,7 @@
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
     </script>
 
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://res.cloudinary.com/dzg7yacrw/raw/upload/v1673277978/static/css/style.c73845544dd2.css">
     <title>BookShelf</title>
 </head>
 
@@ -36,10 +36,10 @@
                         <li class="nav-item"><a href="/my_books/" class="nav-link">My Books</a></li>
                         <li class="nav-item"><a href="/favorites/" class="nav-link">Favorites</a></li>
                         <li class="nav-item"><a href="/add_book_form/" class="nav-link">Add a Book</a></li>
-                        <li class="nav-item"><a href="{% url 'account_logout' %}" class="nav-link">SignOut</a></li>
+                        <li class="nav-item"><a href="{% url 'account_logout' %}" class="nav-link">Sign Out</a></li>
 
                         {% else %}
-                        <li class="nav-item"><a href="{% url 'account_login' %}" class="nav-link">SignIn</a></li>
+                        <li class="nav-item"><a href="{% url 'account_login' %}" class="nav-link">Sign In</a></li>
                         <li class="nav-item"><a href="{% url 'account_signup' %}" class="nav-link">Sign Up</a></li>
                         {% endif %}
                     </ul>
@@ -77,20 +77,17 @@
       {% endif %}
     {% endfor %}
 
-
     {% block content %}
     {% endblock %}
     
         <footer class="fixed-bottom text-center text-lg-start bg-light text-muted">
-            <!-- Section: Social media -->
-            <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-                For everyone who loves the printed word.
+            <section class="d-flex justify-content-center   p-4 border-bottom">
+                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#credits-modal">View Image Credits</button>
             </section>
-    </footer>
+        </footer>
 
-
-  <!-- Modal -->
-  <div id="alert-modal" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="modal-label" aria-hidden="true">
+  <!-- Success Modal Dialog-->
+  <div id="alert-modal" class="modal fade" tabindex="-1" aria-labelledby="modal-label" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -110,6 +107,50 @@
 
 
 
+  <!--Image Credits Modal Dialog-->
+  <div id="credits-modal" class="modal fade " tabindex="-1" aria-labelledby="modal-credit-title" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal-credit-title">Image Credits</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        
+            <ul>
+                <li>Login Page: <a href="https://www.pexels.com/photo/pages-on-an-opened-book-415071/">Pixabay</a></li>
+                <li>Empty Results: <a href="https://www.freepik.com/free-vector/empty-concept-illustration_7117865.htm#query=no%20data&position=2&from_view=search&track=sph">storyset</a> on Freepik</li> 
+                <li>Signup Page: <a href="https://undraw.co/illustrations">unDraw Illustrations</a></li> 
+                <li>Question Mark: <a href="https://www.flaticon.com/free-icons/question">Flaticon</a></li> 
+                <li>404 Error Page: <a href="https://www.freepik.com/free-vector/internet-network-warning-404-error-page-file-found-web-page-internet-error-page-issue-found-network-404-error-present-by-man-sleep-display_21586054.htm#query=404%20page&position=3&from_view=search&track=sph">jcomp</a> on Freepik</li>
+                <li>Fantasy Cover: <a href="https://www.freepik.com/free-vector/black-spooky-castle-flying-dragon-canyon-with-mountains-forest-cartoon-fantasy-illustration-with-medieval-palace-with-towers-creepy-beast-with-wings-rocks-pine-trees_12207978.htm#query=fantasy&position=1&from_view=search&track=sph">Image by upklyak</a> on Freepik</li>
+                <li>Adventure Cover: <a href="https://www.freepik.com/free-vector/camping-place-cartoon-composition-with-yellow-tent-lamp-pot-with-dinner-fire-night-sky_13749110.htm#query=adventure&position=21&from_view=search&track=sph">Image by macrovector</a> on Freepik</li>
+                <li>Romance Cover: <a href="https://www.freepik.com/free-photo/paper-valentines-day-hearts-pink_3915611.htm#query=romance&position=41&from_view=search&track=sph">Image by valeria_aksakova</a> on Freepik</li>   
+                <li>Mystery Cover: <a href="https://www.freepik.com/free-photo/mobile-smartphone-magnifier-notebook-with-leather-cover-isolated-black-farm-wooden-table_11333683.htm#query=mystery&position=27&from_view=search&track=sph">Image by bublikhaus</a> on Freepik </li>
+                <li>Horror Cover: <a href="https://www.freepik.com/free-vector/frightening-halloween-realistic-background_3824490.htm#query=horror&position=2&from_view=search&track=sph">Image by vectorpouch</a> on Freepik </li>
+                <li>Thriller Cover: <a href="https://www.freepik.com/free-vector/crime-scene-night-murder-place-dark-room_6823044.htm#query=thriller&position=3&from_view=search&track=sph">Image by vectorpouch</a> on Freepik</li>
+                <li>Science Fiction Cover: <a href="https://www.freepik.com/free-photo/alien-planet-building_14541108.htm#query=science%20fiction&position=10&from_view=search&track=sph">Image by liuzishan</a> on Freepik </li>
+                <li>Biography Cover: <a href="https://www.freepik.com/free-vector/social-biography-concept-illustration_12704426.htm#query=biography&position=45&from_view=search&track=sph">Image by storyset</a> on Freepik</li>
+                <li>Dystopia Cover: <a href="https://www.pexels.com/photo/person-in-brown-coat-and-black-pants-standing-on-gray-concrete-floor-4888474/">cottonbro studio</a></li>
+                <li>Cookbook Cover: <a href="https://www.freepik.com/free-vector/set-people-cooking-their-favourite-food_8247921.htm#query=cooking&position=0&from_view=search&track=sph">Image by pikisuperstar</a> on Freepik</li>
+                <li>Motivation Cover: <a href="https://www.freepik.com/free-photo/hikers-top_7630716.htm#query=motivation&position=3&from_view=search&track=sph">Image by wirestock</a> on Freepik</li>
+                <li>Health Cover: <a href="https://www.freepik.com/free-photo/doctors-hands-holding-medical-care-objects_18417027.htm#query=health&position=5&from_view=search&track=sph">Image by rawpixel.com</a> on Freepik</li>
+                <li>History Cover: <a href="https://www.pexels.com/photo/stonehenge-under-nimbostratus-clouds-161798/">Pixabay</a></li>
+                <li>Travel Cover: <a href="https://www.pexels.com/photo/woman-looking-at-the-map-3935702/">Leah Kelley</a></li>
+                <li>How-to Cover: <a href="https://www.pexels.com/photo/man-holding-wooden-stick-while-drilling-hole-1094767/">Thijs van der Weide</a></li>
+                <li>Historical Fiction Cover: <a href="https://www.pexels.com/photo/focused-woman-in-old-outfit-reading-book-with-oil-lamp-4145059/">JJ Jordan</a></li>
+                <li>Placeholder Image: <a href="https://www.pexels.com/photo/selective-focus-photography-of-white-softbound-book-267586/">Photo by Pixabay</a> </li>
+                <li>Science Cover: <a href="https://www.freepik.com/free-vector/science-laboratory-composition_21078541.htm#query=science&position=17&from_view=search&track=sph">Image by macrovector</a> on Freepik</li>
+                <li>Maths Cover: <a href="https://www.freepik.com/free-vector/math-background_4365871.htm#query=mathematics&position=13&from_view=search&track=sph">Freepik</a></li>
+            </ul>
+            
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
     <script src="https://kit.fontawesome.com/6a251fd2ee.js" crossorigin="anonymous"></script>
     <script>
