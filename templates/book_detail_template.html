@@ -35,7 +35,7 @@
                   {% if comment.author == user %}
                   <span class="float-end action-buttons">
                     <button class="btn btn-light btn-small"><a href="#"><i class="fa-solid fa-pen"></i></a></button>
-                    <button class="btn btn-light btn-small"><a href="#"><i class="fa-regular fa-trash-can"></i></a></button>
+                    <button class="btn btn-light btn-small" data-bs-toggle="modal" data-bs-target="#confirm-delete-modal"><a href="#"><i class="fa-regular fa-trash-can"></i></a></button>
                   </span>
                   {% endif %}
 
@@ -88,6 +88,23 @@
 
 
     <!--Begin confirm delete modal-->
+    <div class="modal modal-fade" id="confirm-delete-modal" tabindex="-1" aria-labelledby="confirm-delete-label" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" aria-label="confirm-delete-label">Delete Comment</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure you want to delete the comment?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary">Delete Comment</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <!--End confirm delete modal-->
 
     <!--Begin edit comment modal-->
