@@ -64,6 +64,8 @@ on books and like them. The whole idea is to get inspiration from other readers 
 
 + As a user, I can modify a book so that I can correct mistakes or improve content.
 + As a user, I can comment on a book so that I can share my opinion about the book with the community.
++ As a user, I can delete a comment that I have made so that I can remove content that I no longer wish others to see.
+
 + As a user, I can like or unlike a book so that other users can make a decision to read a book based on popularity.
 
 + As a user, I can only modify or delete my own entries so that others may not tamper with my recommendations.
@@ -239,9 +241,10 @@ to edit a book if they are the owner of that book - they are the one that submit
 ## Leaving a Comment
 When the user clicks on the View Comments link, they are taken to a page where all of the books comments are displayed. And a form is given
 for the user to enter their own comment. Upon clicking on the submit button, the comment is saved to the database and the new comment is 
-reflected in the list.
+reflected in the list. For only the comments that have been written, two icons appear. One allows them to edit the comment and the other allows them to delete the comment. The user is prompted with a confirmation dialog when they click on the delete comment button.
 ![Comment Form](assets/screenshots/comment-form.png)
-> As a user, I can comment on a book so that I can share my opinion about the book with the community.
+> As a user, I can comment on a book so that I can share my opinion about the book with the community.  
+> As a user, I can delete a comment that I have made so that I can remove content that I no longer wish others to see.  
 
 ## Liking a Book
 For each book, there is an icon for the user to like the book. If the user has already liked the book, the icon is filled. Otherwise it
@@ -330,6 +333,14 @@ The testing done here is BDD testing.
 |Username as link in post|As a logged in user <br> When I look at each book post <br> the other users' names appear as a link |PASS|
 |Links to user posts|As a logged in user <br> when I click on the user name link in a post <br> All of the posts by that user are shown|PASS|
 
+## Delete Comment Tests
+| Test Description              | Test | Result |
+|-------------------------------|------------------------------------------|--------|
+|Modify own comment|As a logged in user <br> When I look at the comments for a book <br> I only see icons to delete or edit a comment <br> if I am the one that created the comment.|PASS|
+|Confirmation of Delete|As a logged in user <br> When I click on the trash icon to delete a comment <br> A dialog asking me to confirm my choice is shown. |PASS|
+|Delete Works|As a logged in user <br> When I click on the trash icon to delete a comment <br> And I press the Delete button <br> The comment is deleted <br> and is no longer visible in the comments list|PASS|
+|Cancel Button Works|As a logged in user <br> When I click on the trash icon to delete a comment <br> And I press the Cancel button <br> The dialog is dismissed <br> the comment is still visible|PASS|
+|Delete Someone Else's Comment|As a logged in user <br> When I enter the delete_comment/ url in the search bar with the id of a comment that is not mine <br> an error message saying "Comment Cannot Be Deleted." is shown <br> And I am redirected back to the book detail page|PASS|
 
 ## User Likes
 | Test Description              | Test | Result |
