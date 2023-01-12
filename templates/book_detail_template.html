@@ -4,32 +4,38 @@
 <div class="container">
 
 
-    <h2 class="display-3">{{ book.title }}</h2>
-    <h3 class="display-5 text-muted">{{ book.author }}</h3>
+    <h3 class="display-3">{{ book.title }}</h3>
+    <h6 class="display-6 text-muted mb-5">{{ book.author }}</h6>
 
 
     <div class="row">
 
         <div class="col-md-6 order-md-2">
 
-            <h3 class="display-4">Leave a Comment</h3>
+            <h6 class="display-6">Leave a Comment</h6>
             <form method="post" action="/add_comment/{{ book.id}}">
                 {{ comment_form | crispy }}
                 {% csrf_token %}
-                <button type="submit" class="btn btn-secondary">Submit</button>
+                <button type="submit" class="btn btn-primary"> <span class="display-6">Submit Comment</span></button>
             </form>
 
         </div>
 
         <div class="col-md-6 order-md-1">
 
-            <h3 class="display-6">Comments</h3>
+            <h6 class="display-6">Comments</h6>
+            {% if comments %}
             {% for comment in comments %}
             <p>{{ comment.body }}</p>
             <span class="text-muted">{{ comment.author.username}}</span>    
             <span class="text-muted small">{{ comment.written_on}}</span>
             <hr>
             {% endfor %}
+
+            {% else %}
+            <p class="lead">Be the first to leave a comment.</p>
+            <img class="img-fluid" src="https://res.cloudinary.com/dzg7yacrw/image/upload/v1673517763/assets/site_images/comments_sxmt9j.jpg" alt="Image of people commenting.">
+            {% endif %}
 
             <!--BEGIN Pagination Code-->
             {% if comments.has_other_pages %}
