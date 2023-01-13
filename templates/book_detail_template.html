@@ -46,7 +46,7 @@
                   {{ comment.written_on}}
                 </h6>
 
-                <p class="card-text">{{ comment.body }}</p>
+                <p id="comment-body" class="card-text">{{ comment.body }}</p>
               </div>
 
             </div>
@@ -163,6 +163,8 @@
     var button = event.relatedTarget;
     var comment_id = button.getAttribute('data-comment-id');
     $("#edit-comment-modal-form").attr('action', `/update_comment/${comment_id}`);
+    var current_comment_body = $("#comment-body").text();
+    $("#edit-comment-text").text(current_comment_body);
     
   });
 </script>
