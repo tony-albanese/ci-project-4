@@ -109,7 +109,8 @@
     <!--End confirm delete modal-->
 
     <!--Begin edit comment modal-->
-    <div class="modal fade" id="edit-comment-modal" tabindex="-1" aria-labelledby="edit-comment-label" aria-hidden="true">
+    <div class="modal fade" id="edit-comment-modal" tabindex="-1" aria-labelledby="edit-comment-label"
+      aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -117,17 +118,20 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form>
+            <form id="edit-comment-modal-form" method="POST">
+              {% csrf_token %}
               <div class="mb-3">
                 <label for="message-text" class="col-form-label">Comment:</label>
-                <textarea class="form-control" id="edit-comment-text"></textarea>
+                <textarea class="form-control" id="edit-comment-text" name="new-comment-text"></textarea>
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button id="confirm-update-button" type="submit" class="btn btn-primary" >Update Comment</button>
               </div>
             </form>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Update Comment</button>
-          </div>
+
         </div>
       </div>
     </div>
@@ -138,18 +142,28 @@
 </div>
 
 <script>
-  var deleteModal = document.getElementById('confirm-delete-modal')
+  var deleteModal = document.getElementById('confirm-delete-modal');
   deleteModal.addEventListener('show.bs.modal', function (event) {
     
     // Button that triggered the modal
-    var button = event.relatedTarget
-    var comment_id = button.getAttribute('data-comment-id')
-    var confirmDeleteButton = deleteModal.querySelector('#confirm-delete-button')
+    var button = event.relatedTarget;
+    var comment_id = button.getAttribute('data-comment-id');
+    var confirmDeleteButton = deleteModal.querySelector('#confirm-delete-button');
     
     confirmDeleteButton.addEventListener("click", function(){
       window.open(`/delete_comment/${comment_id}`, "_self");
     });
     
-  })
+  });
+
+  var editCommentModal = document.getElementById('edit-comment-modal');
+
+  editCommentModal.addEventListener('show.bs.modal', function(event){
+    // Button that triggered the modal
+    var button = event.relatedTarget;
+    var comment_id = button.getAttribute('data-comment-id');
+    $("#edit-comment-modal-form").attr('action', `/update_comment/${comment_id}`);
+    
+  });
 </script>
 {% endblock %}
