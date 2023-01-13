@@ -35,8 +35,8 @@
 
                   {% if comment.author == user %}
                   <span class="float-end action-buttons">
-                    <button class="btn btn-light btn-small"><a href="#"><i class="fa-solid fa-pen"></i></a></button>
-                    <button class="btn btn-light btn-small" data-bs-toggle="modal" data-bs-target="#confirm-delete-modal" data-bs-whatever="{{comment.id}}"><a href="#"><i class="fa-regular fa-trash-can"></i></a></button>
+                    <button class="btn btn-light btn-small" data-bs-toggle="modal" data-bs-target="#edit-comment-modal" data-comment-id="{{comment.id}}"><i class="fa-solid fa-pen"></i></button>
+                    <button class="btn btn-light btn-small" data-bs-toggle="modal" data-bs-target="#confirm-delete-modal" data-comment-id="{{comment.id}}"><i class="fa-regular fa-trash-can"></i></button>
                   </span>
                   {% endif %}
 
@@ -109,6 +109,29 @@
     <!--End confirm delete modal-->
 
     <!--Begin edit comment modal-->
+    <div class="modal fade" id="edit-comment-modal" tabindex="-1" aria-labelledby="edit-comment-label" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="edit-comment-label">Edit Comment</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">Comment:</label>
+                <textarea class="form-control" id="edit-comment-text"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Update Comment</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!--End edit comment modal delete modal-->
 
 
@@ -120,7 +143,7 @@
     
     // Button that triggered the modal
     var button = event.relatedTarget
-    var comment_id = button.getAttribute('data-bs-whatever')
+    var comment_id = button.getAttribute('data-comment-id')
     var confirmDeleteButton = deleteModal.querySelector('#confirm-delete-button')
     
     confirmDeleteButton.addEventListener("click", function(){
