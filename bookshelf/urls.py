@@ -35,4 +35,5 @@ urlpatterns = [
     path('books_by_owner/<owner_id>', books_by_owner, name='books_by_owner'),
     path('search/', perform_search, name='perform_search'),
     path('delete_comment/<comment_id>', delete_comment, name='delete_comment'),
+    path('update_comment/<comment_id>', update_comment, name='update_comment'),
 ]
