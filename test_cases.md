@@ -52,6 +52,12 @@
 |Cancel Button Works|As a logged in user <br> When I click on the trash icon to delete a comment <br> And I press the Cancel button <br> The dialog is dismissed <br> the comment is still visible|PASS|
 |Delete Someone Else's Comment|As a logged in user <br> When I enter the delete_comment/ url in the search bar with the id of a comment that is not mine <br> an error message saying "Comment Cannot Be Deleted." is shown <br> And I am redirected back to the book detail page|PASS|
 
+## Edit Comment Tests 
+| Test Description              | Test | Result |
+|-------------------------------|------------------------------------------|--------|
+|Modal is pre-populated | As a logged in user <br> When I click on the edit button for a comment <br> a modal form appears with my comment text in it.|PASS|
+|Comment is updated|As a logged in user <br> When I click on the edit button for a comment <br> And modify the contents <br> and click Update Comment <br> I am redirected to the current book page <br> my updated comment appears|PASS|
+
 ## User Likes
 | Test Description              | Test | Result |
 |-------------------------------|------------------------------------------|--------|

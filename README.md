@@ -65,6 +65,7 @@ on books and like them. The whole idea is to get inspiration from other readers 
 + As a user, I can modify a book so that I can correct mistakes or improve content.
 + As a user, I can comment on a book so that I can share my opinion about the book with the community.
 + As a user, I can delete a comment that I have made so that I can remove content that I no longer wish others to see.
++ As a user, I can edit my own comments so that I have the abilitty to correct a mistake I have made.
 
 + As a user, I can like or unlike a book so that other users can make a decision to read a book based on popularity.
 
@@ -241,7 +242,7 @@ to edit a book if they are the owner of that book - they are the one that submit
 ## Leaving a Comment
 When the user clicks on the View Comments link, they are taken to a page where all of the books comments are displayed. And a form is given
 for the user to enter their own comment. Upon clicking on the submit button, the comment is saved to the database and the new comment is 
-reflected in the list. For only the comments that have been written, two icons appear. One allows them to edit the comment and the other allows them to delete the comment. The user is prompted with a confirmation dialog when they click on the delete comment button.
+reflected in the list. For only the comments that have been written, two icons appear. One allows them to edit the comment and the other allows them to delete the comment. The user is prompted with a confirmation dialog when they click on the delete comment button. When the user clicks on the edit comment button, a modal form appears prepopulated with the user's comment. If they submit, the comment is updated, if not the modal is dismissed.
 ![Comment Form](assets/screenshots/comment-form.png)
 > As a user, I can comment on a book so that I can share my opinion about the book with the community.  
 > As a user, I can delete a comment that I have made so that I can remove content that I no longer wish others to see.  
