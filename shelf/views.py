@@ -6,7 +6,7 @@ from django.template.defaultfilters import slugify
 from django.db.models import Q
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .models import Book
+from .models import Book, Comment
 from .forms import BookForm, CommentForm
 
 # Create your views here.
@@ -146,12 +146,38 @@ def add_comment(request, book_id):
     return render(request, 'book_detail_template.html', context)
 
 
+def delete_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    book_id = comment.book.id
+
+    if request.user == comment.author:
+        comment.delete()
+        messages.info(request, "Comment deleted.")
+    else:
+        messages.error(request, "Could not delete comment.")
+    return redirect(f'/book_detail/{book_id}')
+
+
+def update_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    book_id = comment.book.id
+
+    if request.user == comment.author:   
+        new_comment_body = request.POST.get('new-comment-text')
+        new_comment_body.strip()
+        comment.body = new_comment_body
+        comment.save()
+        messages.info(request, "Updated Comment")
+    else:
+        messages.error(request, "Could not update comment.")
+    return redirect(f'/book_detail/{book_id}')
+
+
 def view_book_detail(request, book_id):
     book = get_object_or_404(Book, id=book_id)
     comments = book.comments.order_by("-written_on")
     template = loader.get_template('book_detail_template.html')
     form = CommentForm()
-
 
     # Paginate the comments
     page = request.GET.get('page', 1)
