@@ -224,12 +224,15 @@ a new book.
 > As a user, I can add a book from a form so that I can share my recommendation with other users. 
 
 ## Delete a Book
-Next to each book is a link for the user to delete a book. Upon clicking, the book is deleted and the user is redirected to the home page. The user will only see link to delete a book if they are the owner of the book - they are the one that submitted it.
-> This is the card footer when the user is the owner of the book. ![Card Footer for User](assets/screenshots/card-footer-user.png)   
+Next to each book is a link for the user to delete a book. Upon clicking, the book is deleted and the user is redirected to the home page. The user will only see link to delete a book if they are the owner of the book - they are the one that submitted it.  
+This is the card footer when the user is the owner of the book. 
+![Card Footer for User](assets/screenshots/card-footer-user.png)   
 and this
-> is the footers when the user is NOT the owner of the book. ![Card Footer Others](assets/screenshots/card-footer-others.png)
-> So the user can only delete (or edit) a book that they own.  
-> As a user, I can delete a book from list so that I can keep my recommendations current and germane. 
+is the footers when the user is NOT the owner of the book. 
+![Card Footer Others](assets/screenshots/card-footer-others.png)  
+So the user can only delete (or edit) a book that they own.  
+
+> As a user, I can delete a book from list so that I can keep my recommendations current and germane.  
 > As a user, I can only modify or delete my own entries so that others may not tamper with my recommendations.
 
 ## Modify a Book Entry
@@ -245,10 +248,11 @@ When the user clicks on the View Comments link, they are taken to a page where a
 for the user to enter their own comment. Upon clicking on the submit button, the comment is saved to the database and the new comment is 
 reflected in the list. For only the comments that have been written, two icons appear. One allows them to edit the comment and the other allows them to delete the comment. The user is prompted with a confirmation dialog when they click on the delete comment button. When the user clicks on the edit comment button, a modal form appears populated with the user's comment. If they submit, the comment is updated, if not the modal is dismissed.
 ![Comment Form](assets/screenshots/comments_page.png)
-> As a user, I can comment on a book so that I can share my opinion about the book with the community.
+> As a user, I can comment on a book so that I can share my opinion about the book with the community.  
 > As a user, I can delete a comment that I have made so that I can remove content that I no longer wish others to see.  
-This is the modal that appears asking the user to confirm that they want to delete the comment.
-![Delete Comment Confirmation](assets/screenshots/delete_comment_confirmation.png)  
+
+This is the modal that appears asking the user to confirm that they want to delete the comment.  
+![Delete Comment Confirmation](assets/screenshots/delete_comment_confirmation.png)    
 When the user edits a comment, a modal populated with the comment appears.  
 ![Edit Comment Modal](assets/screenshots/edit_comment_modal.png) 
 
@@ -257,12 +261,12 @@ For each book, there is an icon for the user to like the book. If the user has a
 is empty. The total likes are displayed next to the icon. When the user clicks on the like icon, the status toggles - like goes to unlike
 and vice versa. 
 ![Card Footer](assets/screenshots/card-footer-others.png)  
-> As a user, I can like or unlike a book so that other users can make a decision to read a book based on popularity.
+> As a user, I can like or unlike a book so that other users can make a decision to read a book based on popularity.  
 
 ## Alerts
 When the user has successfully interacted with the site - signing in or out, creating an account,  adding a book entry, updating a book entry, adding a comment or a like, the user is alerted.
-Upon success, a green alert message underneath the navbar appears letting the user know they have successfully interacted with the site. The following is an example to let the user know their comment has been successfully added.
-![Modal Alert](assets/screenshots/modal-add-comment.png)
+Upon success, a green alert message underneath the navbar appears letting the user know they have successfully interacted with the site. The following is an example to let the user know their comment has been successfully added.  
+![Modal Alert](assets/screenshots/modal-add-comment.png)  
 > As a user, I can receive feedback when I interact with the site so that I know if my actions are successful or not and why.  
 
 ## Filter and Search
@@ -278,9 +282,9 @@ When the user clicks on the magnifying glass icon in the upper right corner, a m
 > As a user, I can filter posts by genre so that I can better find content that is relevant to me.  
 
 ### Search by Author, Title, Description
-When the user clicks on the magnifying glass icon in the upper right corner, a modal search form is displayed. In addition to the check boxes corresponding to the genres, there are three text input fields for Title, Author, and Description. These are all optional. The database will queries the fields based on the words entered. The search is an AND search, since that is how the user would expect the database to behave. For example, if they enter "Ray Bradbury" for the author and "gripping and exciting", they mean books by Ray Bradbury that are also described as being gripping and exciting.
-> For example, the following books were returned after entering 'Sicilian' and 'Holmes' in the description of the form. The books have Holmes OR Sicilian in the description.  
-> ![Description Search Result](assets/screenshots/description-search-result.png)
+When the user clicks on the magnifying glass icon in the upper right corner, a modal search form is displayed. In addition to the check boxes corresponding to the genres, there are three text input fields for Title, Author, and Description. These are all optional. The database will queries the fields based on the words entered. The search is an AND search, since that is how the user would expect the database to behave. For example, if they enter "Ray Bradbury" for the author and "gripping and exciting", they mean books by Ray Bradbury that are also described as being gripping and exciting.  
+For example, the following books were returned after entering 'Sicilian' and 'Holmes' in the description of the form. The books have Holmes OR Sicilian in the description.  
+![Description Search Result](assets/screenshots/description-search-result.png)
 > As a user, I can search for posts so that I can better find books to suit my interests.  
 
 ### No Results Found
@@ -301,7 +305,17 @@ Git was employed in this project and the project code hosted on GitHub. I used b
 
 > The following screenshot shows some of the git branches in the project. Each branch is clearly labelled and is dedicated to one feature.  
 > ![GitHub Branches](assets/screenshots/branches.png)
+# Unfixed Bugs
++ An uncaught TypeError is thrown when the pages load. This does not seem to cause any performance issues. The reason that it is unfixed is that it is triggered by the Bootstrap JavaScript method having to do with the closing the alert dialog. The method timeout in which alert.close() is called is taken directly from Code Institute. 
+![TypeError](assets/screenshots/bs_error.png)
++ The SignUp and SignIn pages are using the default Bootstrap form styling and are not aligned properly. Using the crispyforms in the template would automatically align these elements. However, this tag causes the elements not to render. Since this is a cosmetic issue, a fix will have to wait for a future release.
 
+## Features to Improve
+The following features could be added to BookShelf in future development cycles:
++ AJAX calls - Right now, there is decreased performance in the site because every update involves reloading the page whenever the UI needs to be updated. The inclusion of AJAX would mean that elements could make asynchronous calls to the server (for example in adding a like), and then updated only one part of the UI when the server response is received.
++ Live updates - right now, if the user makes a comment or adds a book, their page is refreshed and the UI is updated. However, if other users add books, then the current user would not be aware until they refresh the page. To improve, the UI should be in sync with the database - the UI should be updated whenever the database is updated. This involves the use of websockets.
++ Adding sign in with Google, GitHub, and other providers would be a convenient for user.
++ Adding email password recovery. This is a feature people expect in modern web applications if they forget their password.
 # Deployment
 ## Technology used
 + [gunicorn](https://gunicorn.org/) - Server to run django on heroku
