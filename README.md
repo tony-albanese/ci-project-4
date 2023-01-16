@@ -53,38 +53,40 @@ on books and like them. The whole idea is to get inspiration from other readers 
 
 ## User Stories
 
+### Account Creation Stories
 + As a administrator, I can login with privileges so that moderate all content on the site.
 + As a new user, I can create an account with a user name and password, so that I can log in to access content.
 + As a user, I can login with a user name and password, so that I can access the content of the site.
++ As a user, I can only modify or delete my own entries so that others may not tamper with my recommendations.
 
-
+### Book CRUD Stories
 + As a user, I can see a list of books so that I can get inspiration as to what I want to read next. 
 + As a user, I can add a book from a form so that I can share my recommendation with other users. 
 + As a user, I can delete a book from list so that I can keep my recommendations current and germane. 
-
 + As a user, I can modify a book so that I can correct mistakes or improve content.
++ As a user, I can see a list of my liked books so that I can keep track of books I am really interested in.
++ As a user, I can see a list of books that I have added so I can better manage the content I contribute.
+
+### Comment CRUD Stories
 + As a user, I can comment on a book so that I can share my opinion about the book with the community.
 + As a user, I can delete a comment that I have made so that I can remove content that I no longer wish others to see.
 + As a user, I can edit my own comments so that I have the ability to correct a mistake I have made.
 
+### Like Stories
 + As a user, I can like or unlike a book so that other users can make a decision to read a book based on popularity.
 
-+ As a user, I can only modify or delete my own entries so that others may not tamper with my recommendations.
-
+### Feedback Stories
 + As a user, I can receive feedback when I interact with the site so that I know if my actions are successful.
 
-+ As a user, I can see a list of books so that I can get inspiration as to what I want to read next.
-+ As a user, I can see a list of my liked books so that I can keep track of books I am really interested in.
-+ As a user, I can see a list of books that I have added so I can better manage the content I contribute.
-
+### UI Stories
 + As a user, I can see the relevant information for a book entry in an organized, visually appealing format.
++ As a user, I can interact with content that is paginated so that I can more easily consume large lists of content.
 + As a user, I can see a image for book based on genre so that it is visually easier to find books of the genre I am interested in.
 
+### Search and Filter Stories
 + As a user, I can filter posts by contributor so that I can better find content that is relevant to me.
 + As a user, I can filter posts by genre so that I can better find content that is relevant to me.
 + As a user, I can search for posts so that I can better find books to suit my interests.
-
-+ As a user, I can interact with content that is paginated so that I can more easily consume large lists of content.
 
 # Database Design
 ## Classes
