@@ -53,7 +53,7 @@ on books and like them. The whole idea is to get inspiration from other readers 
 
 ## User Stories
 
-+ As a adminstrator, I can login with privileges so that moderate all content on the site.
++ As a administrator, I can login with privileges so that moderate all content on the site.
 + As a new user, I can create an account with a user name and password, so that I can log in to access content.
 + As a user, I can login with a user name and password, so that I can access the content of the site.
 
@@ -65,7 +65,7 @@ on books and like them. The whole idea is to get inspiration from other readers 
 + As a user, I can modify a book so that I can correct mistakes or improve content.
 + As a user, I can comment on a book so that I can share my opinion about the book with the community.
 + As a user, I can delete a comment that I have made so that I can remove content that I no longer wish others to see.
-+ As a user, I can edit my own comments so that I have the abilitty to correct a mistake I have made.
++ As a user, I can edit my own comments so that I have the ability to correct a mistake I have made.
 
 + As a user, I can like or unlike a book so that other users can make a decision to read a book based on popularity.
 
@@ -80,7 +80,7 @@ on books and like them. The whole idea is to get inspiration from other readers 
 + As a user, I can see the relevant information for a book entry in an organized, visually appealing format.
 + As a user, I can see a image for book based on genre so that it is visually easier to find books of the genre I am interested in.
 
-+ As a user, I can fliter posts by contributor so that I can better find content that is relevant to me.
++ As a user, I can filter posts by contributor so that I can better find content that is relevant to me.
 + As a user, I can filter posts by genre so that I can better find content that is relevant to me.
 + As a user, I can search for posts so that I can better find books to suit my interests.
 
@@ -116,8 +116,8 @@ The **Comment** class is used to represent a block of text that a user creates a
 
 ## Database Relationships
 The following Entity Relationship Diagram shows how the models are related to each other
-+ User-Book is one-to-many because a User can have many Books but each Book can belong to onyl one User
-+ Book-Liks is many-to-many because a Book can have have likes from many users and a User can like many Books
++ User-Book is one-to-many because a User can have many Books but each Book can belong to only one User
++ Book-Like is many-to-many because a Book can have have likes from many users and a User ca  n like many Books
 + Book-Comment is one-to-many because a Book can have many Comments but each Comment can belong to only one Book
 + Comment-User is one-to-many because a User can have many Comments but each Comment can belong to only one User.
 
@@ -136,7 +136,7 @@ A sketch of how the site was built is as follows:
 + the simplest authentication with allauth - username and password
 + creating the simplest database models and relationships that would give a minimally functioning product. This included:
     + adding a book with basic info: title, author, description, genre
-    + deleting a book (only books the user themself posted)
+    + deleting a book (only books the user themselves posted)
     + leaving a comment
     + loading books and displaying them
 Search and filter would be added later.
@@ -149,7 +149,7 @@ Search and filter would be added later.
 
 In subsequent iterations, extra features such as basic search and filtering were added. This included:
 + MyBooks - Only the users own books are displayed
-+ MyFavorites - All of the books the user liked are displyed
++ MyFavorites - All of the books the user liked are displayed
 + Once these features were styled and functioning properly, imagery was added to the site. This included adding images representing each genre to the Book class. 
 + Finally, searching based on genre, title, author and description was added using a modal search form.
 
@@ -175,7 +175,7 @@ Of course, not every task in the board is an issue. The reason is that each issu
 
 ## Admin Panel
 There is an admin panel which users with the correct privileges (superusers), can see and manipulate all of the data in the site.
-> As a adminstrator, I can login with privileges so that moderate all content on the site.
+> As a administrator, I can login with privileges so that moderate all content on the site.
 
 ## allauth authentication
 When the user navigates to the site, they are given a chance to login if they already have an account and to sign up if they do not.
@@ -194,7 +194,7 @@ After successful account creation or login attempt, they are taken to the home s
 ## Home Page
 On the home page, a logged in user will see a list of all the books in the database. The content on this page is paginated, since it will have the most content on it and users will be very frustrated dealing with large lists of content. This is the only page that has paginated content since the others (the user's own books, likes, and search results) will most likely have enough limitation in result size that pagination is not necessary.
 ![Home Page](assets/screenshots/main-page.png)
-![Pgination](assets/screenshots/card-pagination.png) 
+![Pagination](assets/screenshots/card-pagination.png) 
 > As a user, I can see a list of books so that I can get inspiration as to what I want to read next.  
 > As a user, I can interact with content that is paginated so that I can more easily consume large lists of content.  
 
@@ -242,7 +242,7 @@ to edit a book if they are the owner of that book - they are the one that submit
 ## Leaving a Comment
 When the user clicks on the View Comments link, they are taken to a page where all of the books comments are displayed. And a form is given
 for the user to enter their own comment. Upon clicking on the submit button, the comment is saved to the database and the new comment is 
-reflected in the list. For only the comments that have been written, two icons appear. One allows them to edit the comment and the other allows them to delete the comment. The user is prompted with a confirmation dialog when they click on the delete comment button. When the user clicks on the edit comment button, a modal form appears prepopulated with the user's comment. If they submit, the comment is updated, if not the modal is dismissed.
+reflected in the list. For only the comments that have been written, two icons appear. One allows them to edit the comment and the other allows them to delete the comment. The user is prompted with a confirmation dialog when they click on the delete comment button. When the user clicks on the edit comment button, a modal form appears populated with the user's comment. If they submit, the comment is updated, if not the modal is dismissed.
 ![Comment Form](assets/screenshots/comment-form.png)
 > As a user, I can comment on a book so that I can share my opinion about the book with the community.  
 > As a user, I can delete a comment that I have made so that I can remove content that I no longer wish others to see.  
@@ -256,16 +256,16 @@ and vice versa.
 
 ## Alerts
 When the user has successfully interacted with the site - signing in or out, creating an account,  adding a book entry, updating a book entry, adding a comment or a like, the user is alerted.
-Upon success, a green alert message undeneath the navbar appears letting the user know they have successfully interacted with the site. The following is an example to let the user know their comment has been successfuly added.
+Upon success, a green alert message underneath the navbar appears letting the user know they have successfully interacted with the site. The following is an example to let the user know their comment has been successfully added.
 ![Modal Alert](assets/screenshots/modal-add-comment.png)
-> As a user, I can recieve feedback when I interact with the site so that I know if my actions are successful or not and why.  
+> As a user, I can receive feedback when I interact with the site so that I know if my actions are successful or not and why.  
 
 ## Filter and Search
 ### Filter by User
 In each book post, there is a line stating the user that posted that book. For all other users (ie, users that are not the logged in user), their name 
 appears as a link. When clicked, a list of all the posts by that user are shown. 
 ![Filter by User](assets/screenshots/user-link.png)
-> As a user, I can fliter posts so that I can better find content that is relevant to me. 
+> As a user, I can filter posts so that I can better find content that is relevant to me. 
 
 ### Filter by Genre
 When the user clicks on the magnifying glass icon in the upper right corner, a modal search form is displayed. In the form are the check-boxes that correspond to each of the genres in the database. The user can select one, several, (or none) to filter by. When the user clicks the Search button, only those books whose genres match the selected ones are displayed. The search is an OR search - since that is what a user would expect. If they select 'Mysteries', 'Cookbooks',  and 'Biographies' they expect to get books in any of these genres not books that have all three.
@@ -309,7 +309,7 @@ Git was employed in this project and the project code hosted on GitHub. I used b
 
 ## Project Creation
 + Cloned CI Repository
-+ Initalized GitPod Workspace
++ Initialized GitPod Workspace
 + Installed support libraries
     + django
     + gunicorn
@@ -344,7 +344,7 @@ django-admin startproject bookshelf .
 + add template variables
 + create media, static, and templates directories
 + add Procfile
-+ connect to github respository
++ connect to github repository
     + deploy from branch
 + before final deployment, the debug setting was set to false for security
 + before final deployment, the DISABLE_COLLECTSTATIC config var in Heroku was removed
