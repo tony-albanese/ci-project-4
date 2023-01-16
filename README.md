@@ -372,36 +372,66 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 ```
 
++ setup ElephantSQL Account
+  + created account with GitHub
+  + clicked on Create New Instance
+  + Selected TinyTurtle Plan
+  + Entered a name for the project
+  + Entered a region
+  + Clicked on database instance from dashboard
+  + Copied the url and pasted it into env.py
+  + modified settings.py to refer to env.py
+```
+import os
+import dj_database_url
+if os.path.isfile('env.py'):
+  import env
+
+      
+SECRET_KEY = os.environ.get('SECRET_KEY')
+
+#Ensures django uses the ElephantSQL database
+DATABASES = {
+  'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+ }
+ 
+ ```
 + migrate changes
 ```
 $ python manage.py makemigrations
 $ python manage.py migrate
 ```
 
++ setup Cloudinary Account
+  + Created Account with Google
+
++ created env.py to hold sensitive data.
+  + Using add file icon, added env.py to the project root directory
+  + added env.py to git.ignore to avoid pushing this file to GitHub
+  + Added the following entries into the file
+```
+import os
+
+os.environ["DATABASE_URL"] = the databse URL from ElephantSQL
+os.environ["SECRET_KEY"]= a string used to generate security keys
+os.environ["CLOUDINARY_URL"] = The url for Cloudinary storage
+```
 ## Deployment to Heroku
 + Create heroku app
+  + Gave it a name of ci-project-4-bookshelf
+  + added config vars
+    + DATABASE_URL
+    + SECRET_KEY
+    + PORT
 
-+ setup ElephantSQL Account
-+ create env.py
-    + import os
-    + entry for database URL
-    + entry for secret key
-+ update settings.py to connect to new database
-+ run migrations again
-+ check connection though table query in ElephantSQL dashboard
-+ go to heroku dashboard for app
-    + click settings
-    + add three config vars: DATABASE_URL, SECRET_KEY, and PORT
-+ setup cloudinary account (just in case)
-+ add CLOUDINARY_URL as os.environ to settings.py
-+ add CLOUDINARY_URL as config var to heroku
-+ add cloudinary apps to settings.py in INSTALLED_APPS
-+ set static file storage variables
-+ add template variables
-+ create media, static, and templates directories
 + add Procfile
+```
+web: gunicorn bookshelf.wsgi
+```
 + connect to github repository
     + deploy from branch
+    + selected GitHub branch
+    + clicked on Deploy button
 + before final deployment, the debug setting was set to false for security
 + before final deployment, the DISABLE_COLLECTSTATIC config var in Heroku was removed
 
