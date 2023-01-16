@@ -327,23 +327,60 @@ The following features could be added to BookShelf in future development cycles:
 + [Bootstrap 5](https://getbootstrap.com/) - A CSS/JavaScript library to make responsive websites.
 
 ## Project Creation
-+ Cloned CI Repository
-+ Initialized GitPod Workspace
-+ Installed support libraries
-    + django
-    + gunicorn
-    + dj-database-url
-    + dj3-cloudinary storage
++ Cloned Code Institute Repository and gave the new respositry the name [ci-project-4](https://github.com/tony-albanese/ci-project-4)
++ Initialized GitPod Workspace by clicking on the GitPod button on the respository
++ Installed support libraries and Django according to the walkthrough on Code Institute.
+```
+$ pip3 install 'django<4' gunicorn
+$ pip3 install dj_database_url psycopg2
+$ pip3 install dj3-cloudinary-storage
+$ pip3 install django-crispy-forms  
+$ pip3 install crispy-bootstrap5
+```
 + created requirements.txt
+```
+$ pip3 freeze --local > requirements.txt
+```
 + Create django project
 ```
-django-admin startproject bookshelf .
+$ django-admin startproject bookshelf .
 ```
 + create shelf app and add it to settings.py
+```
+$ python3 manage.py startapp shelf
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'cloudinary_storage',
+    'django.contrib.staticfiles',
+    'cloudinary',
+    'crispy_forms',
+    "crispy_bootstrap5",
+    'shelf',
+]
+```
++ Added variables for crispy forms templates in settings.py
+```
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
+```
+
 + migrate changes
+```
+$ python manage.py makemigrations
+$ python manage.py migrate
+```
 
 ## Deployment to Heroku
 + Create heroku app
+
 + setup ElephantSQL Account
 + create env.py
     + import os
