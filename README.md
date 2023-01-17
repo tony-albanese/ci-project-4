@@ -47,7 +47,7 @@
 # Introduction
 This web is a a chance for people who love books to share their favorites. The idea is not for people to create an extensive catalog of their library (although they may). Rather, it is for people to share one or several books from their shelf and have others see, comment on, or like what the books they have posted. 
 
-This site will allow people to sign in, share the books that they're interested in, and see what other people are reading. Users can comment
+This site will allow people to sign in, share informtion on the books that they're interested in, and see what other people are reading. Users can comment
 on books and like them. The whole idea is to get inspiration from other readers as to what books are out there and to share one's love of the printed word with similarly minded people.
 
 ## User Stories
@@ -148,11 +148,16 @@ Search and filter would be added later.
     + Placing those cards in responsive rows and columns.
     + Adding links to add comments and likes
 
-In subsequent iterations, extra features such as basic search and filtering were added. This included:
-+ MyBooks - Only the users own books are displayed
-+ MyFavorites - All of the books the user liked are displayed
-+ Once these features were styled and functioning properly, imagery was added to the site. This included adding images representing each genre to the Book class. 
-+ Finally, searching based on genre, title, author and description was added using a modal search form.
+In subsequent iterations, extra features such as basic search and filtering were added. This included My Books - only the users own books are displayed  My Favorites - all of the books the user liked are displayed.
++ Filter and search were added in increments based on importance and relative difficulty.
+  + The first filter was the list of the user's own books. This was implemented first because it is essential - a reasonable user would expect to be able to quickly access their own posts without having to search a long list themesleves; and secondly - it was relatively simple to implement.
+  + The second filter was the list of the user's likes. This was deemed to be a feature the user of the site would reasonbly expect to see; after all, the purpose is to find books that they might later enjoy reading which they mark with a like. They should expect to see all of their liked books in one place without doing a manual search. This feature was important and relatively easy to implement.
+  + Filtering by genre was added next. This was deemed an important feature. As the content would increase on the site, users would expect to be able to limit what they see based on their interests. Although important, the implementation was more involved so it was added later.
+  + Finally, searching by description, author, and title were added. This feature was deemed nice, but not absolutely essential. Again, the purpose of the site is to find books that the user might not be aware of. Therefore, searching by author and title would not be a feautre that would be used regularly. However, it would be nice to be there in case the user wanted to see if others had posted already posted a book they were thinking of posting or if they wanted to see what others thought of book in their collection. The search by description was considered relativley important as a user might want to search books based on what other people wrote about it.
+  + Once these features were styled and functioning properly, imagery was added to the site in small steps.
+  + An image was added to the login, sign up, and sign out screen first because these were relatively easy to implement and having the user see at least some visual content on these screens was deemed essential.
+  + Images corresponding to each genre were then added - the book's image was set by the genre. This was considered an important enhancement, but not as essential as the images on the signup/signout/signin pages.
+
 
 
 ## GitHub Features
