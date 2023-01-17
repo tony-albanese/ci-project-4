@@ -9,7 +9,7 @@
 |Test admin site login|When I run the server <br> and enter /admin as the endpoint <br>  and login with admin username and password <br>  the default django admin page is loaded| PASS|
 |Test Heroku deployment|After deploying to Heroku <br> and loading the /hello and /hello-template/ endpoints <br> The site content displayed is identical to the local version| PASS|
 |Heroku admin login|When I navigate to the /admin endpoint in heroku, <br> and login with admin username <br> The admin panel is loaded| PASS|
-|Admin Heroku Deployment|When I navigate to the /admin endpoint in heroku, <br> and login with admin username <br> The admin panel looks identical to the local version |FAIL The site loads but there is no styling|
+|Admin Heroku Deployment|When I navigate to the /admin endpoint in heroku, <br> and login with admin username <br> The admin panel looks identical to the local version |PASS|
 
 ## Model Creation Tests
 | Test Description              | Test | Result |
