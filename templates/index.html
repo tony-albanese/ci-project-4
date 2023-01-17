@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="container">
-
+    <!--BEGIN Display the heading-->
     <div class="row justify-content-between">
         <div class="col-4">
             {% if heading_label%}
@@ -15,9 +15,10 @@
         <div class="col-4 text-end my-auto">
             <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 <i id="search-icon" class="fa-solid fa-magnifying-glass"></i>
-              </button>
+            </button>
         </div>
     </div>
+    <!--END Display the heading-->
 
     {% if books %}
 
@@ -28,25 +29,27 @@
 
                 {% for book in books %}
                 <div class="card mx-3 my-2" style="width: 22rem;">
-                   
-                    <img src="{{book.image_url}}" class="card-img-top" alt="An image to describe the genre {{book.get_genre_display}}">
-                    
+
+                    <img src="{{book.image_url}}" class="card-img-top"
+                        alt="An image to describe the genre {{book.get_genre_display}}">
+
                     <div class="card-body">
                         <h4 class="card-title text-center">{{book.title}}</h5>
-                        <h5 class="card-subtitle mb-2 text-muted">{{book.author}}</h6>
-                        <h5 class="card-subtitle mb-2 text-muted">{{book.get_genre_display}}</h6>
-                        <h6 class="card-subtitle mb-2 text-muted">Posted on {{ book.posted_on }}</h6>
+                            <h5 class="card-subtitle mb-2 text-muted">{{book.author}}</h6>
+                                <h5 class="card-subtitle mb-2 text-muted">{{book.get_genre_display}}</h6>
+                                    <h6 class="card-subtitle mb-2 text-muted">Posted on {{ book.posted_on }}</h6>
 
-                        <hr class="hr">
-                       <p class="card-text">{{book.description}}</p>
-                       <hr class="hr">
-                        {% if book.owner == user%}
-                        <p class="card-text text-end">Posted by {{book.owner}} </p>
-                        {% else %}
-                        <p class="card-text text-end">Posted by <a href="/books_by_owner/{{book.owner.id}}">{{book.owner}}</a> </p>
-                        {% endif%}
-                        
-                 
+                                    <hr class="hr">
+                                    <p class="card-text">{{book.description}}</p>
+                                    <hr class="hr">
+                                    {% if book.owner == user%}
+                                    <p class="card-text text-end">Posted by {{book.owner}} </p>
+                                    {% else %}
+                                    <p class="card-text text-end">Posted by <a
+                                            href="/books_by_owner/{{book.owner.id}}">{{book.owner}}</a> </p>
+                                    {% endif%}
+
+
                     </div>
 
                     <div class="card-footer text-center">
@@ -85,27 +88,26 @@
     </div>
     <!--END Display Books-->
 
-
     <!--BEGIN Pagination Code-->
     {% if books.has_other_pages %}
     <ul class="pagination justify-content-center">
         {% if books.has_previous %}
-        <li  class="page-item"><a class="page-link" href="?page={{ books.previous_page_number }}">&laquo;</a></li>
-      {% else %}
-        <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
-      {% endif %}
-      {% for i in books.paginator.page_range %}
-        {% if books.number == i %}
-          <li class="page-item active"><span class="page-link">{{ i }}</span></li>
+        <li class="page-item"><a class="page-link" href="?page={{ books.previous_page_number }}">&laquo;</a></li>
         {% else %}
-          <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+        <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
         {% endif %}
-      {% endfor %}
-      {% if books.has_next %}
-        <li  class="page-item"><a class="page-link" href="?page={{ books.next_page_number }}">&raquo;</a></li>
-      {% else %}
+        {% for i in books.paginator.page_range %}
+        {% if books.number == i %}
+        <li class="page-item active"><span class="page-link">{{ i }}</span></li>
+        {% else %}
+        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+        {% endif %}
+        {% endfor %}
+        {% if books.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ books.next_page_number }}">&raquo;</a></li>
+        {% else %}
         <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
-      {% endif %}
+        {% endif %}
     </ul>
     {% endif %}
     <!--END Pagination Code-->
@@ -116,88 +118,86 @@
         <div class="col-6">
             <p class="display-6">Looks like I have no books to display.</p>
             <img src="https://res.cloudinary.com/dzg7yacrw/image/upload/v1673264914/assets/site_images/no_results_w3u5d8.jpg"
-            class="img-fluid" alt="Empty shelf.">
+                class="img-fluid" alt="Empty shelf.">
         </div>
     </div>
 
     {% endif %}
 
-
     <!-- Search Modal Form -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel">Search</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="container-fluid">
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Search</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
 
-        
-            <form action="/search/" method="POST">
-                {% csrf_token %}
+                        <form action="/search/" method="POST">
+                            {% csrf_token %}
 
-                {% if genres %}
-                <h3>Genre</h3>
+                            {% if genres %}
+                            <h3>Genre</h3>
 
-                <div class="row">
-                    {% for genre in genres %}
+                            <div class="row">
+                                {% for genre in genres %}
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="{{ genre.0 }}"
+                                            id="{{ genre.0 }}" name="genres">
+                                        <label class="form-check-label" for="{{ genre.0 }}">
+                                            {{ genre.1 }}
+                                        </label>
+                                    </div>
+                                </div>
+                                {% if forloop.counter|divisibleby:2 %}
+                            </div>
 
-                    <div class="col-md-6">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="{{ genre.0 }}" id="{{ genre.0 }}"
-                                name="genres">
-                            <label class="form-check-label" for="{{ genre.0 }}">
-                                {{ genre.1 }}
-                            </label>
-                        </div>
+                            <div class="row">
+                                {% endif %}
+                                {% endfor %}
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="title-search-input">Title</label>
+                                            <input type="text" class="form-control" id="title-search-input"
+                                                name="title-search-input">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="author-search-input">Author</label>
+                                            <input type="text" class="form-control" id="author-search-input"
+                                                name="author-search-input">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="description-search-input">Description Search</label>
+                                            <input type="text" class="form-control" id="description-search-input"
+                                                name="description-search-input">
+                                        </div>
+                                    </div>
+                                </div>
+                                {% else %}
+                                <p>Woops. Something didn't load properly.</p>
+                                {% endif %}
+
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Search</button>
+                            </div>
+                            
+                        </form>
 
                     </div>
 
-                    {% if forloop.counter|divisibleby:2 %}
                 </div>
-                <div class="row">
-                    {% endif %}
-                    
-                    {% endfor %}
-                
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="title-search-input">Title</label>
-                            <input type="text" class="form-control" id="title-search-input" name="title-search-input">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="author-search-input">Author</label>
-                            <input type="text" class="form-control" id="author-search-input" name="author-search-input">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="description-search-input">Description Search</label>
-                            <input type="text" class="form-control" id="description-search-input" name="description-search-input">
-                        </div>
-                    </div>
-                </div>
-                    {% else %}
-                    <p>Woops. Something didn't load properly.</p>
-                    {% endif %}
-
-                </div>
-        
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Search</button>
-                  </div>
-            </form>
-
+            </div>
         </div>
-
-        </div>
-      
-      </div>
     </div>
-  </div>
-
     {% endblock %}
