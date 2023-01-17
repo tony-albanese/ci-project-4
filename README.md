@@ -445,7 +445,7 @@ DEBUG = False
 
 # Credits
 
-The following JavaScript snippet to dismiss the django alerts automatically was taken directly from the [Code Institute's I think, therefore I blog](https://github.com/Code-Institute-Solutions/Django3blog/blob/master/12_final_deployment/templates/base.html) repository.
+The following JavaScript snippet to dismiss the django alerts automatically was taken directly from the Code Institute's [I think, therefore I blog](https://github.com/Code-Institute-Solutions/Django3blog/blob/master/12_final_deployment/templates/base.html) repository.
 ```
     <script>
         setTimeout(function () {
