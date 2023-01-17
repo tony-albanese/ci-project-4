@@ -388,8 +388,9 @@ import os
 import dj_database_url
 if os.path.isfile('env.py'):
   import env
-
-      
+```
+Added envrironment variables to settings.py
+```      
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 #Ensures django uses the ElephantSQL database
@@ -421,23 +422,39 @@ os.environ["CLOUDINARY_URL"] = The url for Cloudinary storage
 ## Deployment to Heroku
 + Create heroku app
   + Gave it a name of ci-project-4-bookshelf
-  + added config vars
+  + Added config vars
     + DATABASE_URL
     + SECRET_KEY
     + PORT
 
-+ add Procfile
++ Add Procfile to project root directory
 ```
 web: gunicorn bookshelf.wsgi
 ```
+
++ before final deployment, the debug setting in settings.py was set to false for security
+```
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
+```
++ before final deployment, the DISABLE_COLLECTSTATIC config var in Heroku was removed
 + connect to github repository
     + deploy from branch
     + selected GitHub branch
     + clicked on Deploy button
-+ before final deployment, the debug setting was set to false for security
-+ before final deployment, the DISABLE_COLLECTSTATIC config var in Heroku was removed
 
 # Credits
+
+The following JavaScript snippet to dismiss the django alerts automatically was taken directly from the [Code Institute's I think, therefore I blog](https://github.com/Code-Institute-Solutions/Django3blog/blob/master/12_final_deployment/templates/base.html) repository.
+```
+    <script>
+        setTimeout(function () {
+            let messages = document.getElementById('msg');
+            let alert = new bootstrap.Alert(messages);
+            alert.close();
+        }, 2000);
+    </script>
+```
 
 The idea and code for using the Bootstrap modals and django messages was from this YouTube video by [DjangoMastery](https://www.youtube.com/watch?v=zbsY-4ZLSkI).
 
