@@ -14,29 +14,28 @@
 </head>
 
 <body>
-
   {% load i18n %}
 
   {% block content %}
   <div class="container">
-
     <div class="row justify-content-center align-items-center h-100">
       <div class="col-4 text-center">
 
         <p class="mt-5 display-6">{% trans 'Are you sure you want to sign out?' %}</p>
         <img src="https://res.cloudinary.com/dzg7yacrw/image/upload/v1673262941/assets/site_images/question_aqbsll.png"
-        class="img-fluid" alt="A question mark on a blue circle background.">
+          class="img-fluid" alt="A question mark on a blue circle background.">
 
         <form method="post" action="{% url 'account_logout' %}">
           {% csrf_token %}
           {% if redirect_field_value %}
           <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
           {% endif %}
-          <button type="submit" class="btn btn-secondary mt-3"><span class="display-6">{% trans 'Sign Out' %}</span></button>
+          <button type="submit" class="btn btn-secondary mt-3"><span
+              class="display-6">{% trans 'Sign Out' %}</span></button>
         </form>
+
       </div>
     </div>
-
   </div>
   {% endblock %}
 </body>
