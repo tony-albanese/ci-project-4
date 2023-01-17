@@ -1,3 +1,4 @@
+![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 - [Introduction](#introduction)
   * [User Stories](#user-stories)
     + [Account Creation Stories](#account-creation-stories)
