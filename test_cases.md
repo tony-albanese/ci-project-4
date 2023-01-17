@@ -2,14 +2,14 @@
 ## Initial Setup Testing
 | Test Description              | Test | Result |
 |-------------------------------|------------------------------------------|--------|
-|Test djano installation| When I run the danjo server, <br> and open the webrowser with the address, <br> the default django landing page is shown| PASS|
+|Test django installation| When I run the django server, <br> and open the browser with the address, <br> the default django landing page is shown| PASS|
 |Test basic routing|When I run the server <br> and enter the hello/ endpoint <br> "Hello world" is displayed| PASS|
 |Test static template| When I run the server <br>  and enter hello-template/ as the endpoint <br> I see the contents of hello_template.html displayed|PASS|
 |Test static css loaded|When I run the server <br>  and enter hello-template/ as the endpoint <br> I see the contents of hello_template.html displayed with blanchedalmond background color and h1 as blue font |PASS|
 |Test admin site login|When I run the server <br> and enter /admin as the endpoint <br>  and login with admin username and password <br>  the default django admin page is loaded| PASS|
-|Test Heroku deployment|After deploying to Heroku <br> and loading the /hello and /hello-template/ endoints <br> The site content displayed is identical to the local version| PASS|
+|Test Heroku deployment|After deploying to Heroku <br> and loading the /hello and /hello-template/ endpoints <br> The site content displayed is identical to the local version| PASS|
 |Heroku admin login|When I navigate to the /admin endpoint in heroku, <br> and login with admin username <br> The admin panel is loaded| PASS|
-|Admin Heroku Deployment|When I navigate to the /admin endpoint in heroku, <br> and login with admin username <br> The admin panel looks identical to the local version |FAIL The site loads but there is no styling|
+|Admin Heroku Deployment|When I navigate to the /admin endpoint in heroku, <br> and login with admin username <br> The admin panel looks identical to the local version |PASS|
 
 ## Model Creation Tests
 | Test Description              | Test | Result |
@@ -19,13 +19,13 @@
 ## User Login Tests
 | Test Description              | Test | Result |
 |-------------------------------|------------------------------------------|--------|
-|allauth installation|When I enter accounts/signup as the url in the site <br> I am taken to the allauth signup screen|PASS|
+|allauth installation|As a user <br> when I enter accounts/signup as the url in the site <br> I am taken to the allauth signup screen|PASS|
 |allauth user  creation|When I go the signup screen, and enter a user name and password, and press signup , my account is created and I am redirected to home screen| PASS|
-|user creation verification|When I login to the admin panel, the new user is visible in the user table.| PASS|
-|content display after login|When I login successfully, the homepage is displayed|PASS|
-|redirect if not authenticated|When I navigate to the site <br> and I am not authenticated <br> I am taken to the login screen| PASS|
-|redirect after sign up|When I successfully create an account <br> The site content is displayed| PASS|
-|redirect after logout|Wheb I successfully logout <br> I am taken to the login screen|PASS|
+|user creation verification|As a user <br> when I login to the admin panel, the new user is visible in the user table.| PASS|
+|content display after login|As a user <br> when I login successfully, the homepage is displayed|PASS|
+|redirect if not authenticated|As a user <br>when I navigate to the site <br> and I am not authenticated <br> I am taken to the login screen| PASS|
+|redirect after sign up|As a user <br>when I successfully create an account <br> The site content is displayed| PASS|
+|redirect after logout|As a user <br>when I successfully logout <br> I am taken to the login screen|PASS|
 
 ## CRUD for Book Objects Tests
 | Test Description              | Test | Result |
@@ -68,21 +68,21 @@
 ## Alerts 
 | Test Description              | Test | Result |
 |-------------------------------|------------------------------------------|--------|
-|Successully add book alert| As a logged in user <br> When I successfully add a book <br> An alert is shown under the nav bar telling me. |PASS|
-|Successully edit book alert|As a logged in user <br> When I successfully edit a book <br> An alert is shown under the nav bar telling me.|PASS|
-|Successully add comment alert|As a logged in user <br> When I successfully add a comment <br> An alert is shown under the nav bar telling me.|PASS|
-|Successully sign in alert|As a logged in user <br> When I successfully sign in <br> An alert is shown under the nav bar telling me.|PASS|
-|Successully sign out alert|As a logged in user <br> When I successfully sign out <br> An alert is shown under the nav bar telling me.|PASS|
-|Successully create account alert|As a logged in user <br> When I successfully create an account <br> An alert is shown under the nav bar telling me.|PASS|
-|Alert auto dismiss|After the alert is shown <br> The alert dismisses itslef.|PASS|
+|Successfully add book alert| As a logged in user <br> When I successfully add a book <br> An alert is shown under the nav bar telling me. |PASS|
+|Successfully edit book alert|As a logged in user <br> When I successfully edit a book <br> An alert is shown under the nav bar telling me.|PASS|
+|Successfully add comment alert|As a logged in user <br> When I successfully add a comment <br> An alert is shown under the nav bar telling me.|PASS|
+|Successfully sign in alert|As a logged in user <br> When I successfully sign in <br> An alert is shown under the nav bar telling me.|PASS|
+|Successfully sign out alert|As a logged in user <br> When I successfully sign out <br> An alert is shown under the nav bar telling me.|PASS|
+|Successfully create account alert|As a logged in user <br> When I successfully create an account <br> An alert is shown under the nav bar telling me.|PASS|
+|Alert auto dismiss|After the alert is shown <br> The alert dismisses itself.|PASS|
 
 
 ## Search and Filtering Tests
 | Test Description              | Test | Result |
 |-------------------------------|------------------------------------------|--------|
 |Modal Form Loads|As a logged in user <br> when I click on the magnifying glass  <br> a modal form appears. |PASS|
-|Modal Form Dismissal|As a logged in user <br> when I load the modal form <br> and click the Close button  <br> the modal form disapeears |PASS|
-|Filter by Genre|As a logged in user <br> when I select one or several genres <br> and click on the Search button <br> A page showing all books whos genre I have selected loads.|PASS|
+|Modal Form Dismissal|As a logged in user <br> when I load the modal form <br> and click the Close button  <br> the modal form disappears |PASS|
+|Filter by Genre|As a logged in user <br> when I select one or several genres <br> and click on the Search button <br> A page showing all books whose genre I have selected loads.|PASS|
 |Search by Author|As a logged in user <br> when I enter a name in the Author field <br> and click the Search Button <br> A page listing the books whose author contain any of the entered terms is loaded. |PASS|
 |Search by Title|As a logged in user <br> when I enter text in the Title field <br> and click the Search Button <br> A page listing the books whose Title contains any of the entered terms is loaded.|PASS|
 |Search by Description|As a logged in user<br> when I enter text in the description field <br> and click the Search Button <br> A page listing the books whose Description contains any of the entered terms is loaded.|PASS|

@@ -1,6 +1,13 @@
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 - [Introduction](#introduction)
   * [User Stories](#user-stories)
+    + [Account Creation Stories](#account-creation-stories)
+    + [Book CRUD Stories](#book-crud-stories)
+    + [Comment CRUD Stories](#comment-crud-stories)
+    + [Like Stories](#like-stories)
+    + [Feedback Stories](#feedback-stories)
+    + [UI Stories](#ui-stories)
+    + [Search and Filter Stories](#search-and-filter-stories)
 - [Database Design](#database-design)
   * [Classes](#classes)
   * [Database Relationships](#database-relationships)
@@ -29,62 +36,60 @@
     + [No Results Found](#no-results-found)
     + [404](#404)
 - [Testing](#testing)
-  * [Initial Setup Testing](#initial-setup-testing)
-  * [Model Creation Tests](#model-creation-tests)
-  * [User Login Tests](#user-login-tests)
-  * [CRUD for Book Objects Tests](#crud-for-book-objects-tests)
-  * [User Likes](#user-likes)
-  * [Alerts](#alerts-1)
-  * [Search and Filtering Tests](#search-and-filtering-tests)
 - [Version Control Strategy](#version-control-strategy)
+- [Unfixed Bugs](#unfixed-bugs)
+  * [Features to Improve](#features-to-improve)
 - [Deployment](#deployment)
-  * [technology used](#technology-used)
+  * [Technology used](#technology-used)
   * [Project Creation](#project-creation)
   * [Deployment to Heroku](#deployment-to-heroku)
 - [Credits](#credits)
   * [Page Image Credits](#page-image-credits)
   * [Book Genre Image Credits](#book-genre-image-credits)
 
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 # Introduction
 This web is a a chance for people who love books to share their favorites. The idea is not for people to create an extensive catalog of their library (although they may). Rather, it is for people to share one or several books from their shelf and have others see, comment on, or like what the books they have posted. 
 
-This site will allow people to sign in, share the books that they're interested in, and see what other people are reading. Users can comment
+This site will allow people to sign in, share informtion on the books that they're interested in, and see what other people are reading. Users can comment
 on books and like them. The whole idea is to get inspiration from other readers as to what books are out there and to share one's love of the printed word with similarly minded people.
 
 ## User Stories
 
-+ As a adminstrator, I can login with privileges so that moderate all content on the site.
+### Account Creation Stories
++ As a administrator, I can login with privileges so that moderate all content on the site.
 + As a new user, I can create an account with a user name and password, so that I can log in to access content.
 + As a user, I can login with a user name and password, so that I can access the content of the site.
++ As a user, I can only modify or delete my own entries so that others may not tamper with my recommendations.
 
-
+### Book CRUD Stories
 + As a user, I can see a list of books so that I can get inspiration as to what I want to read next. 
 + As a user, I can add a book from a form so that I can share my recommendation with other users. 
 + As a user, I can delete a book from list so that I can keep my recommendations current and germane. 
-
 + As a user, I can modify a book so that I can correct mistakes or improve content.
-+ As a user, I can comment on a book so that I can share my opinion about the book with the community.
-+ As a user, I can delete a comment that I have made so that I can remove content that I no longer wish others to see.
-+ As a user, I can edit my own comments so that I have the abilitty to correct a mistake I have made.
-
-+ As a user, I can like or unlike a book so that other users can make a decision to read a book based on popularity.
-
-+ As a user, I can only modify or delete my own entries so that others may not tamper with my recommendations.
-
-+ As a user, I can receive feedback when I interact with the site so that I know if my actions are successful.
-
-+ As a user, I can see a list of books so that I can get inspiration as to what I want to read next.
 + As a user, I can see a list of my liked books so that I can keep track of books I am really interested in.
 + As a user, I can see a list of books that I have added so I can better manage the content I contribute.
 
+### Comment CRUD Stories
++ As a user, I can comment on a book so that I can share my opinion about the book with the community.
++ As a user, I can delete a comment that I have made so that I can remove content that I no longer wish others to see.
++ As a user, I can edit my own comments so that I have the ability to correct a mistake I have made.
+
+### Like Stories
++ As a user, I can like or unlike a book so that other users can make a decision to read a book based on popularity.
+
+### Feedback Stories
++ As a user, I can receive feedback when I interact with the site so that I know if my actions are successful.
+
+### UI Stories
 + As a user, I can see the relevant information for a book entry in an organized, visually appealing format.
++ As a user, I can interact with content that is paginated so that I can more easily consume large lists of content.
 + As a user, I can see a image for book based on genre so that it is visually easier to find books of the genre I am interested in.
 
-+ As a user, I can fliter posts by contributor so that I can better find content that is relevant to me.
+### Search and Filter Stories
++ As a user, I can filter posts by contributor so that I can better find content that is relevant to me.
 + As a user, I can filter posts by genre so that I can better find content that is relevant to me.
 + As a user, I can search for posts so that I can better find books to suit my interests.
-
-+ As a user, I can interact with content that is paginated so that I can more easily consume large lists of content.
 
 # Database Design
 ## Classes
@@ -116,8 +121,8 @@ The **Comment** class is used to represent a block of text that a user creates a
 
 ## Database Relationships
 The following Entity Relationship Diagram shows how the models are related to each other
-+ User-Book is one-to-many because a User can have many Books but each Book can belong to onyl one User
-+ Book-Liks is many-to-many because a Book can have have likes from many users and a User can like many Books
++ User-Book is one-to-many because a User can have many Books but each Book can belong to only one User
++ Book-Like is many-to-many because a Book can have have likes from many users and a User ca  n like many Books
 + Book-Comment is one-to-many because a Book can have many Comments but each Comment can belong to only one Book
 + Comment-User is one-to-many because a User can have many Comments but each Comment can belong to only one User.
 
@@ -136,7 +141,7 @@ A sketch of how the site was built is as follows:
 + the simplest authentication with allauth - username and password
 + creating the simplest database models and relationships that would give a minimally functioning product. This included:
     + adding a book with basic info: title, author, description, genre
-    + deleting a book (only books the user themself posted)
+    + deleting a book (only books the user themselves posted)
     + leaving a comment
     + loading books and displaying them
 Search and filter would be added later.
@@ -147,11 +152,16 @@ Search and filter would be added later.
     + Placing those cards in responsive rows and columns.
     + Adding links to add comments and likes
 
-In subsequent iterations, extra features such as basic search and filtering were added. This included:
-+ MyBooks - Only the users own books are displayed
-+ MyFavorites - All of the books the user liked are displyed
-+ Once these features were styled and functioning properly, imagery was added to the site. This included adding images representing each genre to the Book class. 
-+ Finally, searching based on genre, title, author and description was added using a modal search form.
+In subsequent iterations, extra features such as basic search and filtering were added. This included My Books - only the users own books are displayed  My Favorites - all of the books the user liked are displayed.
++ Filter and search were added in increments based on importance and relative difficulty.
+  + The first filter was the list of the user's own books. This was implemented first because it is essential - a reasonable user would expect to be able to quickly access their own posts without having to search a long list themesleves; and secondly - it was relatively simple to implement.
+  + The second filter was the list of the user's likes. This was deemed to be a feature the user of the site would reasonbly expect to see; after all, the purpose is to find books that they might later enjoy reading which they mark with a like. They should expect to see all of their liked books in one place without doing a manual search. This feature was important and relatively easy to implement.
+  + Filtering by genre was added next. This was deemed an important feature. As the content would increase on the site, users would expect to be able to limit what they see based on their interests. Although important, the implementation was more involved so it was added later.
+  + Finally, searching by description, author, and title were added. This feature was deemed nice, but not absolutely essential. Again, the purpose of the site is to find books that the user might not be aware of. Therefore, searching by author and title would not be a feautre that would be used regularly. However, it would be nice to be there in case the user wanted to see if others had posted already posted a book they were thinking of posting or if they wanted to see what others thought of book in their collection. The search by description was considered relativley important as a user might want to search books based on what other people wrote about it.
+  + Once these features were styled and functioning properly, imagery was added to the site in small steps.
+  + An image was added to the login, sign up, and sign out screen first because these were relatively easy to implement and having the user see at least some visual content on these screens was deemed essential.
+  + Images corresponding to each genre were then added - the book's image was set by the genre. This was considered an important enhancement, but not as essential as the images on the signup/signout/signin pages.
+
 
 
 ## GitHub Features
@@ -168,14 +178,14 @@ For example, one can see here that there are projects based on CRUD, django setu
 ![GitHub kanban board](assets/agile/sample-project-board.png)
 Of course, not every task in the board is an issue. The reason is that each issue often requires several steps to achieve. Therefore, under each issue, I would plan the steps to solve each issue. This was for two reasons:
  1. It helped break the task down into smaller chunks which helped me organize my workday productively - I was able to dedicate time and effort to completing each task rather than planning over and over again.
- 2. It is very satisfying to move tasks from the ToDo, to Doing to Done. It gives me a sense of accomplishment - even if the issue is not entirely solved, progress was made in its resolution.
+ 2. It is very satisfying to move tasks from the Todo, to In Progress,  to Done. It gave me a sense of accomplishment - even if the issue is not entirely solved, progress was made in its resolution.
 
 
 # Features
 
 ## Admin Panel
 There is an admin panel which users with the correct privileges (superusers), can see and manipulate all of the data in the site.
-> As a adminstrator, I can login with privileges so that moderate all content on the site.
+> As a administrator, I can login with privileges so that moderate all content on the site.
 
 ## allauth authentication
 When the user navigates to the site, they are given a chance to login if they already have an account and to sign up if they do not.
@@ -194,7 +204,7 @@ After successful account creation or login attempt, they are taken to the home s
 ## Home Page
 On the home page, a logged in user will see a list of all the books in the database. The content on this page is paginated, since it will have the most content on it and users will be very frustrated dealing with large lists of content. This is the only page that has paginated content since the others (the user's own books, likes, and search results) will most likely have enough limitation in result size that pagination is not necessary.
 ![Home Page](assets/screenshots/main-page.png)
-![Pgination](assets/screenshots/card-pagination.png) 
+![Pagination](assets/screenshots/card-pagination.png) 
 > As a user, I can see a list of books so that I can get inspiration as to what I want to read next.  
 > As a user, I can interact with content that is paginated so that I can more easily consume large lists of content.  
 
@@ -223,49 +233,54 @@ a new book.
 > As a user, I can add a book from a form so that I can share my recommendation with other users. 
 
 ## Delete a Book
-Next to each book is a link for the user to delete a book. Upon clicking, the book is deleted and the user is redirected to the home page. The user will only see link to delete a book if they are the owner of the book - they are the one that submitted it.
-> This is the card footer when the user is the owner of the book. ![Card Footer for User](assets/screenshots/card-footer-user.png)   
+Next to each book is a trash icon for the user to delete a book. Upon clicking, the book is deleted and the user is redirected to the home page. The user will only see link to delete a book if they are the owner of the book - they are the one that submitted it.  
+This is the card footer when the user is the owner of the book. 
+![Card Footer for User](assets/screenshots/card-footer-user.png)   
 and this
-> is the footers when the user is NOT the owner of the book. ![Card Footer Others](assets/screenshots/card-footer-others.png)
-> So the user can only delete (or edit) a book that they own.  
-> As a user, I can delete a book from list so that I can keep my recommendations current and germane. 
+is the footer when the user is NOT the owner of the book. 
+![Card Footer Others](assets/screenshots/card-footer-others.png)  
+So the user can only delete (or edit) a book that they own.  
+
+> As a user, I can delete a book from list so that I can keep my recommendations current and germane.  
 > As a user, I can only modify or delete my own entries so that others may not tamper with my recommendations.
 
 ## Modify a Book Entry
-With each book is a link to edit the book. Here, the user is taken to a form field pre-populated with the book's details. They can change the fields
-as they like. When they press update, the new details are updated in the database and the user is taken back to the home page. The user will only see a link
-to edit a book if they are the owner of that book - they are the one that submitted it.
+With each book is a pen icon  that links to a page to edit the book. Here, the user is taken to a form field pre-populated with the book's details. They can change the fields as they like. When they press update, the new details are updated in the database and the user is taken back to the home page. The user will only see a link to edit a book if they are the owner of that book - they are the one that submitted it.
 ![Modify Book Page](assets/screenshots/edit-book.png)  
 > As a user, I can modify a book so that I can correct mistakes or improve content.
 > As a user, I can only modify or delete my own entries so that others may not tamper with my recommendations.
 
 ## Leaving a Comment
-When the user clicks on the View Comments link, they are taken to a page where all of the books comments are displayed. And a form is given
-for the user to enter their own comment. Upon clicking on the submit button, the comment is saved to the database and the new comment is 
-reflected in the list. For only the comments that have been written, two icons appear. One allows them to edit the comment and the other allows them to delete the comment. The user is prompted with a confirmation dialog when they click on the delete comment button. When the user clicks on the edit comment button, a modal form appears prepopulated with the user's comment. If they submit, the comment is updated, if not the modal is dismissed.
-![Comment Form](assets/screenshots/comment-form.png)
+When the user clicks on the comment icon (the conversation bubble), they are taken to a page where all of the books comments are displayed as well as a form for the user to enter their own comment. Upon clicking on the Submit Comment button, the comment is saved to the database and the new comment is 
+reflected in the list. Two icons appear for comments written by the user. The pen icon allows them to edit the comment and the trash icon allows them to delete the comment. The user is prompted with a confirmation dialog when they click on the delete comment button. When the user clicks on the edit comment button, a modal form appears populated with the user's comment. If they submit, the comment is updated, if not the modal is dismissed.
+![Comment Form](assets/screenshots/comments_page.png)
 > As a user, I can comment on a book so that I can share my opinion about the book with the community.  
 > As a user, I can delete a comment that I have made so that I can remove content that I no longer wish others to see.  
+
+This is the modal that appears asking the user to confirm that they want to delete the comment.  
+![Delete Comment Confirmation](assets/screenshots/delete_comment_confirmation.png)    
+When the user edits a comment, a modal populated with the comment appears.  
+![Edit Comment Modal](assets/screenshots/edit_comment_modal.png) 
 
 ## Liking a Book
 For each book, there is an icon for the user to like the book. If the user has already liked the book, the icon is filled. Otherwise it
 is empty. The total likes are displayed next to the icon. When the user clicks on the like icon, the status toggles - like goes to unlike
-and vice versa. 
+and vice versa.  
 ![Card Footer](assets/screenshots/card-footer-others.png)  
-> As a user, I can like or unlike a book so that other users can make a decision to read a book based on popularity.
+> As a user, I can like or unlike a book so that other users can make a decision to read a book based on popularity.  
 
 ## Alerts
 When the user has successfully interacted with the site - signing in or out, creating an account,  adding a book entry, updating a book entry, adding a comment or a like, the user is alerted.
-Upon success, a green alert message undeneath the navbar appears letting the user know they have successfully interacted with the site. The following is an example to let the user know their comment has been successfuly added.
-![Modal Alert](assets/screenshots/modal-add-comment.png)
-> As a user, I can recieve feedback when I interact with the site so that I know if my actions are successful or not and why.  
+Upon success, a green alert message underneath the navbar appears letting the user know they have successfully interacted with the site. The following is an example to let the user know their comment has been successfully added.  
+![Modal Alert](assets/screenshots/modal-add-comment.png)  
+> As a user, I can receive feedback when I interact with the site so that I know if my actions are successful or not and why.  
 
 ## Filter and Search
 ### Filter by User
 In each book post, there is a line stating the user that posted that book. For all other users (ie, users that are not the logged in user), their name 
 appears as a link. When clicked, a list of all the posts by that user are shown. 
 ![Filter by User](assets/screenshots/user-link.png)
-> As a user, I can fliter posts so that I can better find content that is relevant to me. 
+> As a user, I can filter posts so that I can better find content that is relevant to me. 
 
 ### Filter by Genre
 When the user clicks on the magnifying glass icon in the upper right corner, a modal search form is displayed. In the form are the check-boxes that correspond to each of the genres in the database. The user can select one, several, (or none) to filter by. When the user clicks the Search button, only those books whose genres match the selected ones are displayed. The search is an OR search - since that is what a user would expect. If they select 'Mysteries', 'Cookbooks',  and 'Biographies' they expect to get books in any of these genres not books that have all three.
@@ -273,9 +288,9 @@ When the user clicks on the magnifying glass icon in the upper right corner, a m
 > As a user, I can filter posts by genre so that I can better find content that is relevant to me.  
 
 ### Search by Author, Title, Description
-When the user clicks on the magnifying glass icon in the upper right corner, a modal search form is displayed. In addition to the check boxes corresponding to the genres, there are three text input fields for Title, Author, and Description. These are all optional. The database will queries the fields based on the words entered. The search is an AND search, since that is how the user would expect the database to behave. For example, if they enter "Ray Bradbury" for the author and "gripping and exciting", they mean books by Ray Bradbury that are also described as being gripping and exciting.
-> For example, the following books were returned after entering 'Sicilian' and 'Holmes' in the description of the form. The books have Holmes OR Sicilian in the description.  
-> ![Description Search Result](assets/screenshots/description-search-result.png)
+When the user clicks on the magnifying glass icon in the upper right corner, a modal search form is displayed. In addition to the check boxes corresponding to the genres, there are three text input fields for Title, Author, and Description. These are all optional. The database will queries the fields based on the words entered. The search is an AND search, since that is how the user would expect the database to behave. For example, if they enter "Ray Bradbury" for the author and "gripping and exciting", they mean books by Ray Bradbury that are also described as being gripping and exciting.  
+For example, the following books were returned after entering 'Sicilian' and 'Holmes' in the description of the form. The books have Holmes OR Sicilian in the description.  
+![Description Search Result](assets/screenshots/description-search-result.png)
 > As a user, I can search for posts so that I can better find books to suit my interests.  
 
 ### No Results Found
@@ -296,7 +311,17 @@ Git was employed in this project and the project code hosted on GitHub. I used b
 
 > The following screenshot shows some of the git branches in the project. Each branch is clearly labelled and is dedicated to one feature.  
 > ![GitHub Branches](assets/screenshots/branches.png)
+# Unfixed Bugs
++ An uncaught TypeError is thrown when the pages load. This does not seem to cause any performance issues. The reason that it is unfixed is that it is triggered by the Bootstrap JavaScript method having to do with the closing the alert dialog. The method timeout in which alert.close() is called is taken directly from Code Institute. 
+![TypeError](assets/screenshots/bs_error.png)
++ The SignUp and SignIn pages are using the default Bootstrap form styling and the form fields are not aligned properly. Using the crispyforms in the template would automatically align these elements. However, this tag causes the elements not to render. Since this is a cosmetic issue, a fix will have to wait for a future release.
 
+## Features to Improve
+The following features could be added to BookShelf in future development cycles:
++ AJAX calls - Right now, there is decreased performance in the site because every update involves reloading the page whenever the UI needs to be updated. The inclusion of AJAX would mean that elements could make asynchronous calls to the server (for example in adding a like), and then updated only one part of the UI when the server response is received.
++ Live updates - right now, if the user makes a comment or adds a book, their page is refreshed and the UI is updated. However, if other users add books, then the current user would not be aware until they refresh the page. To improve, the UI should be in sync with the database - the UI should be updated whenever the database is updated. This involves the use of websockets.
++ Adding sign in with Google, GitHub, and other providers would be a convenient for user.
++ Adding email password recovery. This is a feature people expect in modern web applications if they forget their password.
 # Deployment
 ## Technology used
 + [gunicorn](https://gunicorn.org/) - Server to run django on heroku
@@ -308,48 +333,132 @@ Git was employed in this project and the project code hosted on GitHub. I used b
 + [Bootstrap 5](https://getbootstrap.com/) - A CSS/JavaScript library to make responsive websites.
 
 ## Project Creation
-+ Cloned CI Repository
-+ Initalized GitPod Workspace
-+ Installed support libraries
-    + django
-    + gunicorn
-    + dj-database-url
-    + dj3-cloudinary storage
++ Cloned Code Institute Repository and gave the new respositry the name [ci-project-4](https://github.com/tony-albanese/ci-project-4)
++ Initialized GitPod Workspace by clicking on the GitPod button on the respository
++ Installed support libraries and Django according to the walkthrough on Code Institute.
+```
+$ pip3 install 'django<4' gunicorn
+$ pip3 install dj_database_url psycopg2
+$ pip3 install dj3-cloudinary-storage
+$ pip3 install django-crispy-forms  
+$ pip3 install crispy-bootstrap5
+```
 + created requirements.txt
+```
+$ pip3 freeze --local > requirements.txt
+```
 + Create django project
 ```
-django-admin startproject bookshelf .
+$ django-admin startproject bookshelf .
 ```
 + create shelf app and add it to settings.py
-+ migrate changes
+```
+$ python3 manage.py startapp shelf
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'cloudinary_storage',
+    'django.contrib.staticfiles',
+    'cloudinary',
+    'crispy_forms',
+    "crispy_bootstrap5",
+    'shelf',
+]
+```
++ Added variables for crispy forms templates in settings.py
+```
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
+```
 
++ setup ElephantSQL Account
+  + created account with GitHub
+  + clicked on Create New Instance
+  + Selected TinyTurtle Plan
+  + Entered a name for the project
+  + Entered a region
+  + Clicked on database instance from dashboard
+  + Copied the url and pasted it into env.py
+  + modified settings.py to refer to env.py
+```
+import os
+import dj_database_url
+if os.path.isfile('env.py'):
+  import env
+```
+Added envrironment variables to settings.py
+```      
+SECRET_KEY = os.environ.get('SECRET_KEY')
+
+#Ensures django uses the ElephantSQL database
+DATABASES = {
+  'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+ }
+ 
+ ```
++ migrate changes
+```
+$ python manage.py makemigrations
+$ python manage.py migrate
+```
+
++ setup Cloudinary Account
+  + Created Account with Google
+
++ created env.py to hold sensitive data.
+  + Using add file icon, added env.py to the project root directory
+  + added env.py to git.ignore to avoid pushing this file to GitHub
+  + Added the following entries into the file
+```
+import os
+
+os.environ["DATABASE_URL"] = the databse URL from ElephantSQL
+os.environ["SECRET_KEY"]= a string used to generate security keys
+os.environ["CLOUDINARY_URL"] = The url for Cloudinary storage
+```
 ## Deployment to Heroku
 + Create heroku app
-+ setup ElephantSQL Account
-+ create env.py
-    + import os
-    + entry for database URL
-    + entry for secret key
-+ update settings.py to connect to new database
-+ run migrations again
-+ check connection though table query in ElephantSQL dashboard
-+ go to heroku dashboard for app
-    + click settings
-    + add three config vars: DATABASE_URL, SECRET_KEY, and PORT
-+ setup cloudinary account (just in case)
-+ add CLOUDINARY_URL as os.environ to settings.py
-+ add CLOUDINARY_URL as config var to heroku
-+ add cloudinary apps to settings.py in INSTALLED_APPS
-+ set static file storage variables
-+ add template variables
-+ create media, static, and templates directories
-+ add Procfile
-+ connect to github respository
-    + deploy from branch
-+ before final deployment, the debug setting was set to false for security
+  + Gave it a name of ci-project-4-bookshelf
+  + Added config vars
+    + DATABASE_URL
+    + SECRET_KEY
+    + PORT
+
++ Add Procfile to project root directory
+```
+web: gunicorn bookshelf.wsgi
+```
+
++ before final deployment, the debug setting in settings.py was set to false for security
+```
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
+```
 + before final deployment, the DISABLE_COLLECTSTATIC config var in Heroku was removed
++ connect to github repository
+    + deploy from branch
+    + selected GitHub branch
+    + clicked on Deploy button
 
 # Credits
+
+The following JavaScript snippet to dismiss the django alerts automatically was taken directly from the Code Institute's [I think, therefore I blog](https://github.com/Code-Institute-Solutions/Django3blog/blob/master/12_final_deployment/templates/base.html) repository.
+```
+    <script>
+        setTimeout(function () {
+            let messages = document.getElementById('msg');
+            let alert = new bootstrap.Alert(messages);
+            alert.close();
+        }, 2000);
+    </script>
+```
 
 The idea and code for using the Bootstrap modals and django messages was from this YouTube video by [DjangoMastery](https://www.youtube.com/watch?v=zbsY-4ZLSkI).
 
