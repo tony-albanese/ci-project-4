@@ -36,6 +36,8 @@
     + [404](#404)
 - [Testing](#testing)
 - [Version Control Strategy](#version-control-strategy)
+- [Unfixed Bugs](#unfixed-bugs)
+  * [Features to Improve](#features-to-improve)
 - [Deployment](#deployment)
   * [Technology used](#technology-used)
   * [Project Creation](#project-creation)
@@ -44,6 +46,7 @@
   * [Page Image Credits](#page-image-credits)
   * [Book Genre Image Credits](#book-genre-image-credits)
 
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 # Introduction
 This web is a a chance for people who love books to share their favorites. The idea is not for people to create an extensive catalog of their library (although they may). Rather, it is for people to share one or several books from their shelf and have others see, comment on, or like what the books they have posted. 
 
