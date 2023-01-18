@@ -111,8 +111,11 @@ def edit_book(request, book_id):
 
 def delete_book(request, book_id):
     book = get_object_or_404(Book, id=book_id)
-    book.delete()
-    messages.info(request, "Book succssfully deleted.")
+    if book.owner == request.user:
+        book.delete()
+        messages.info(request, "Book succssfully deleted.")
+    else:
+        messages.error(request, "Could not delete that book.")
     return redirect('/')
 
 
