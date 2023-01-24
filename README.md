@@ -1,4 +1,3 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 - [Introduction](#introduction)
   * [User Stories](#user-stories)
     + [Account Creation Stories](#account-creation-stories)
@@ -36,6 +35,8 @@
     + [No Results Found](#no-results-found)
     + [404](#404)
 - [Testing](#testing)
+  * [Code Validation](#code-validation)
+  * [Behavior Driven Development (BDD)](#behavior-driven-development--bdd-)
 - [Version Control Strategy](#version-control-strategy)
 - [Unfixed Bugs](#unfixed-bugs)
   * [Features to Improve](#features-to-improve)
@@ -48,6 +49,7 @@
   * [Book Genre Image Credits](#book-genre-image-credits)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 # Introduction
 This web is a a chance for people who love books to share their favorites. The idea is not for people to create an extensive catalog of their library (although they may). Rather, it is for people to share one or several books from their shelf and have others see, comment on, or like what the books they have posted. 
 
