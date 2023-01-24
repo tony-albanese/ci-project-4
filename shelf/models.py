@@ -65,7 +65,7 @@ class Book(models.Model):
 
     def number_of_like(self):
         return self.likes.count()
-   
+
     def get_absolute_url(self):
         return reverse("book_detail",  kwargs={"slug": self.slug})
 
