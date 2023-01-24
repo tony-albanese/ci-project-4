@@ -1,4 +1,3 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 - [Introduction](#introduction)
   * [User Stories](#user-stories)
     + [Account Creation Stories](#account-creation-stories)
@@ -36,6 +35,8 @@
     + [No Results Found](#no-results-found)
     + [404](#404)
 - [Testing](#testing)
+  * [Code Validation](#code-validation)
+  * [Behavior Driven Development (BDD)](#behavior-driven-development--bdd-)
 - [Version Control Strategy](#version-control-strategy)
 - [Unfixed Bugs](#unfixed-bugs)
   * [Features to Improve](#features-to-improve)
@@ -48,6 +49,7 @@
   * [Book Genre Image Credits](#book-genre-image-credits)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 # Introduction
 This web is a a chance for people who love books to share their favorites. The idea is not for people to create an extensive catalog of their library (although they may). Rather, it is for people to share one or several books from their shelf and have others see, comment on, or like what the books they have posted. 
 
@@ -304,7 +306,17 @@ If the user decides to type random endpoints, they will be served the following 
 
 
 # Testing
-The testing done here is BDD testing. To reduce the length of the readme, here is a link to the [testing tables](test_cases.md) describing the various test cases.
+## Code Validation
+The files models.py, settings.py, forms.py, views.py, and urls.py were validated using the python linter that was included with Gitpod's default settings from Code Institute's template. These ptoblems were reported in the PROBLEMS tab in GitPod's output panel. No errors were found in these files except the following:
+```
+line too long (82 > 79 characters)pycodestyle(E501)
+```
+which simply meant that these lines of code were too long. This does not mean the code is invalid - it is more a style. Therefore, these warnings were ignored. 
+The following is an example of the output:  
+![lint output](/assets/screenshots/linter_results.png)  
+
+## Behavior Driven Development (BDD)
+The testing done here is BDD - each test is described as a story in which a description of the software requirements, the user actions, and the expected outcome are given along with a result of PASS or FAIL. To reduce the length of the readme, here is a link to the [testing tables](test_cases.md) describing the various test cases.
 
 # Version Control Strategy
 Git was employed in this project and the project code hosted on GitHub. I used branches in order to keep the main branch as "pure" as possible. The strategy was to have each branch dedicated to one feature or fix. Once I was satisfied at a particular stage of a branch, I would navigate to GitHub, click on my repository, select the branch, and create a pull request. GitHub would then check if there are no conflicts and indicate if the branch could be merged into main. (One can choose which branch to merge into.) Once the pull request is created, I navigated down, wrote a comment, and clicked on the green Merge button and the commits would be merged into the main branch. I tried to keep commits as atomic as possible - focusing only on one element or feature at a time. This was not always the case, but most of the commits are relatively small changes. In addition, I tried not to mix features in a branch. Small tweaks to other features were allowed, but the majority of the work on each branch was dedicated to that one feature. This is in line with the agile method of tackling a project - the team (in this case me) should only work on one feature at a time. 

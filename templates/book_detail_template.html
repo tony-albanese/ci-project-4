@@ -4,168 +4,157 @@
 {% block content %}
 <div class="container">
 
+  <h3 class="display-3">{{ book.title }}</h3>
+  <h6 class="display-6 text-muted mb-5">{{ book.author }}</h6>
 
-    <h3 class="display-3">{{ book.title }}</h3>
-    <h6 class="display-6 text-muted mb-5">{{ book.author }}</h6>
+  <div class="row">
+    <!--BEGIN Leave a Comment Form-->
+    <div class="col-md-6 order-md-2 mb-5">
+      <h6 class="display-6">Leave a Comment</h6>
+      <form method="post" action="/add_comment/{{ book.id}}">
+        {{ comment_form | crispy }}
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary"> <span class="display-6">Submit Comment</span></button>
+      </form>
+    </div>
+    <!--END Leave a Comment Form-->
 
+    <!--BEGIN comments list-->
+    <div class="col-md-6 order-md-1">
+      <h6 class="display-6">Comments</h6>
+      {% if comments %}
+      {% for comment in comments %}
 
-    <div class="row">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title fs-6">
+            {{ comment.author.username}}
+            {% if comment.author == user %}
+            <span class="float-end action-buttons">
+              <button class="btn btn-light btn-small" data-bs-toggle="modal" data-bs-target="#edit-comment-modal"
+                data-comment-id="{{comment.id}}"><i class="fa-solid fa-pen"></i></button>
+              <button class="btn btn-light btn-small" data-bs-toggle="modal" data-bs-target="#confirm-delete-modal"
+                data-comment-id="{{comment.id}}"><i class="fa-regular fa-trash-can"></i></button>
+            </span>
+            {% endif %}
+          </h5>
 
-        <div class="col-md-6 order-md-2 mb-5">
-
-            <h6 class="display-6">Leave a Comment</h6>
-            <form method="post" action="/add_comment/{{ book.id}}">
-                {{ comment_form | crispy }}
-                {% csrf_token %}
-                <button type="submit" class="btn btn-primary"> <span class="display-6">Submit Comment</span></button>
-            </form>
-
+          <h6 class="card-subtitle mb-2 text-secondary small">
+            {{ comment.written_on}}
+          </h6>
+          <p id="comment-body" class="card-text">{{ comment.body }}</p>
         </div>
 
-        <div class="col-md-6 order-md-1">
+      </div>
+      {% endfor %}
 
-            <h6 class="display-6">Comments</h6>
-            {% if comments %}
-            {% for comment in comments %}
+      {% else %}
+      <p class="lead">Be the first to leave a comment.</p>
+      <img class="img-fluid"
+        src="https://res.cloudinary.com/dzg7yacrw/image/upload/v1673517763/assets/site_images/comments_sxmt9j.jpg"
+        alt="Image of people commenting.">
+      {% endif %}
 
-            <div class="card mb-3">
-              <div class="card-body">
-                <h5 class="card-title fs-6">
-                  {{ comment.author.username}}
+      <!--BEGIN Pagination Code-->
+      {% if comments.has_other_pages %}
+      <ul class="pagination">
+        {% if books.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page={{ comments.previous_page_number }}">&laquo;</a></li>
+        {% else %}
+        <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+        {% endif %}
+        {% for i in comments.paginator.page_range %}
+        {% if comments.number == i %}
+        <li class="page-item active"><span class="page-link">{{ i }}</span></li>
+        {% else %}
+        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+        {% endif %}
+        {% endfor %}
+        {% if comments.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ comments.next_page_number }}">&raquo;</a></li>
+        {% else %}
+        <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+        {% endif %}
+      </ul>
+      {% endif %}
+      <!--END Pagination Code-->
+    </div>
+    <!--END comments list-->
+  </div>
 
-                  {% if comment.author == user %}
-                  <span class="float-end action-buttons">
-                    <button class="btn btn-light btn-small" data-bs-toggle="modal" data-bs-target="#edit-comment-modal" data-comment-id="{{comment.id}}"><i class="fa-solid fa-pen"></i></button>
-                    <button class="btn btn-light btn-small" data-bs-toggle="modal" data-bs-target="#confirm-delete-modal" data-comment-id="{{comment.id}}"><i class="fa-regular fa-trash-can"></i></button>
-                  </span>
-                  {% endif %}
+  <!--Begin confirm delete modal-->
+  <div class="modal modal-fade" id="confirm-delete-modal" tabindex="-1" aria-labelledby="confirm-delete-label"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" aria-label="confirm-delete-label">Delete Comment</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p id="delete-modal-message">Are you sure you want to delete the comment?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button id="confirm-delete-button" data-bs-dismiss="modal" type="button" class="btn btn-primary">Delete
+            Comment</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--End confirm delete modal-->
 
-                </h5>
-            
-                <h6 class="card-subtitle mb-2 text-secondary small">
-                  {{ comment.written_on}}
-                </h6>
-
-                <p id="comment-body" class="card-text">{{ comment.body }}</p>
-              </div>
-
+  <!--Begin edit comment modal-->
+  <div class="modal fade" id="edit-comment-modal" tabindex="-1" aria-labelledby="edit-comment-label" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="edit-comment-label">Edit Comment</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="edit-comment-modal-form" method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label">Comment:</label>
+              <textarea class="form-control" id="edit-comment-text" name="new-comment-text"></textarea>
             </div>
 
-
-            {% endfor %}
-
-            {% else %}
-            <p class="lead">Be the first to leave a comment.</p>
-            <img class="img-fluid" src="https://res.cloudinary.com/dzg7yacrw/image/upload/v1673517763/assets/site_images/comments_sxmt9j.jpg" alt="Image of people commenting.">
-            {% endif %}
-
-            <!--BEGIN Pagination Code-->
-            {% if comments.has_other_pages %}
-            <ul class="pagination">
-                {% if books.has_previous %}
-                <li  class="page-item"><a class="page-link" href="?page={{ comments.previous_page_number }}">&laquo;</a></li>
-              {% else %}
-                <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
-              {% endif %}
-              {% for i in comments.paginator.page_range %}
-                {% if comments.number == i %}
-                  <li class="page-item active"><span class="page-link">{{ i }}</span></li>
-                {% else %}
-                  <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
-                {% endif %}
-              {% endfor %}
-              {% if comments.has_next %}
-                <li  class="page-item"><a class="page-link" href="?page={{ comments.next_page_number }}">&raquo;</a></li>
-              {% else %}
-                <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
-              {% endif %}
-            </ul>
-            {% endif %}
-            <!--END Pagination Code-->
-
-        </div>
-
-    </div>
-
-
-    <!--Begin confirm delete modal-->
-    <div class="modal modal-fade" id="confirm-delete-modal" tabindex="-1" aria-labelledby="confirm-delete-label" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" aria-label="confirm-delete-label">Delete Comment</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <p id="delete-modal-message">Are you sure you want to delete the comment?</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-            <button id="confirm-delete-button" data-bs-dismiss="modal" type="button" class="btn btn-primary">Delete Comment</button>
-          </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button id="confirm-update-button" type="submit" class="btn btn-primary">Update Comment</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
-    <!--End confirm delete modal-->
-
-    <!--Begin edit comment modal-->
-    <div class="modal fade" id="edit-comment-modal" tabindex="-1" aria-labelledby="edit-comment-label"
-      aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="edit-comment-label">Edit Comment</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form id="edit-comment-modal-form" method="POST">
-              {% csrf_token %}
-              <div class="mb-3">
-                <label for="message-text" class="col-form-label">Comment:</label>
-                <textarea class="form-control" id="edit-comment-text" name="new-comment-text"></textarea>
-              </div>
-
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button id="confirm-update-button" type="submit" class="btn btn-primary" >Update Comment</button>
-              </div>
-            </form>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!--End edit comment modal delete modal-->
-
-
+  </div>
+  <!--End edit comment modal delete modal-->
+  
 </div>
 
 <script>
   var deleteModal = document.getElementById('confirm-delete-modal');
   deleteModal.addEventListener('show.bs.modal', function (event) {
-    
+
     // Button that triggered the modal
     var button = event.relatedTarget;
     var comment_id = button.getAttribute('data-comment-id');
     var confirmDeleteButton = deleteModal.querySelector('#confirm-delete-button');
-    
-    confirmDeleteButton.addEventListener("click", function(){
+
+    confirmDeleteButton.addEventListener("click", function () {
       window.open(`/delete_comment/${comment_id}`, "_self");
     });
-    
   });
 
   var editCommentModal = document.getElementById('edit-comment-modal');
-
-  editCommentModal.addEventListener('show.bs.modal', function(event){
+  editCommentModal.addEventListener('show.bs.modal', function (event) {
     // Button that triggered the modal
     var button = event.relatedTarget;
     var comment_id = button.getAttribute('data-comment-id');
     $("#edit-comment-modal-form").attr('action', `/update_comment/${comment_id}`);
     var current_comment_body = $("#comment-body").text();
     $("#edit-comment-text").text(current_comment_body);
-    
   });
 </script>
 {% endblock %}
